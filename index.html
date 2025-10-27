@@ -1,4 +1,5 @@
-<!DOCTYPE html>
+
+        <!DOCTYPE html>
 <html lang="el">
 <head>
     <meta charset="UTF-8">
@@ -7,14 +8,15 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
-            --primary-color: #0E041D;
-            --secondary-color: #7B61FF;
+            --primary-color: #010128;
+            --secondary-color: #7371FC;
             --accent-color: #A594F9;
             --light-color: #E5D9F2;
             --background-color: #F5EFFF;
             --text-color: #010128;
             --shadow: 0 4px 12px rgba(1, 1, 40, 0.1);
             --transition: all 0.3s ease;
+            --flame-gradient: linear-gradient(135deg, #FF6B6B, #FFA500);
         }
         
         * {
@@ -28,38 +30,118 @@
             background-color: var(--background-color);
             color: var(--text-color);
             line-height: 1.6;
-            padding: 20px;
-            max-width: 1200px;
+            padding: 0;
+            max-width: 100%;
             margin: 0 auto;
         }
         
-        header {
-            text-align: center;
-            margin-bottom: 40px;
-            padding: 40px 0;
+        /* Hero Section */
+        .hero {
             background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
             color: white;
-            border-radius: 15px;
-            box-shadow: var(--shadow);
+            padding: 80px 20px;
+            text-align: center;
             position: relative;
             overflow: hidden;
         }
         
-        header::before {
+        .hero::before {
             content: '';
             position: absolute;
             top: 0;
             left: 0;
             right: 0;
             bottom: 0;
-            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="100" height="100" opacity="0.1"><circle cx="50" cy="50" r="40" stroke="white" stroke-width="2" fill="none" /></svg>');
-            background-size: 80px 80px;
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="100" height="100" opacity="0.05"><path d="M20,20 Q50,5 80,20 T100,50 T80,80 T50,95 T20,80 T0,50 T20,20 Z" fill="white" /></svg>');
+            background-size: 150px 150px;
+        }
+        
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .flame-logo {
+            font-size: 3.5rem;
+            font-weight: 800;
+            margin-bottom: 10px;
+            background: var(--flame-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .hero-tagline {
+            font-size: 1.5rem;
+            margin-bottom: 30px;
+            opacity: 0.9;
+        }
+        
+        .hero-description {
+            font-size: 1.1rem;
+            margin-bottom: 40px;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .highlight {
+            color: #FFA500;
+            font-weight: 600;
+        }
+        
+        .cta-buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        
+        .cta-button {
+            padding: 14px 30px;
+            border-radius: 30px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: var(--transition);
+            font-size: 1rem;
+        }
+        
+        .cta-primary {
+            background: var(--flame-gradient);
+            color: white;
+        }
+        
+        .cta-secondary {
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+        }
+        
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+        }
+        
+        /* Main Content */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        header {
+            text-align: center;
+            margin-bottom: 40px;
+            padding: 40px 0 20px;
         }
         
         h1 {
             font-size: 2.8rem;
             margin-bottom: 15px;
             position: relative;
+            color: var(--primary-color);
         }
         
         .subtitle {
@@ -67,7 +149,6 @@
             opacity: 0.9;
             max-width: 800px;
             margin: 0 auto;
-            position: relative;
         }
         
         .filter-container {
@@ -253,39 +334,7 @@
             color: var(--primary-color);
         }
         
-        @media (max-width: 768px) {
-            .team-grid {
-                grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-            }
-            
-            .flip-card {
-                height: 400px;
-            }
-            
-            h1 {
-                font-size: 2.2rem;
-            }
-        }
-        
-        @media (max-width: 480px) {
-            .team-grid {
-                grid-template-columns: 1fr;
-            }
-            
-            .filter-container {
-                flex-direction: column;
-                align-items: center;
-            }
-            
-            .filter-btn {
-                width: 90%;
-            }
-            
-            .flip-card {
-                height: 450px;
-            }
-        }
-        
+        /* Company Info */
         .section-title {
             text-align: center;
             margin: 50px 0 25px;
@@ -317,58 +366,296 @@
             margin-bottom: 15px;
         }
         
-        footer {
-            text-align: center;
-            margin-top: 60px;
-            padding: 25px;
-            border-top: 1px solid var(--light-color);
-            color: var(--primary-color);
+        /* Legal Info */
+        .legal-info {
             background-color: white;
+            padding: 35px;
             border-radius: 15px;
             box-shadow: var(--shadow);
+            margin: 30px 0;
+            border-left: 5px solid var(--secondary-color);
         }
         
-        .logo {
-            font-weight: bold;
-            font-size: 1.5rem;
+        .legal-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+        
+        .legal-item {
+            margin-bottom: 15px;
+        }
+        
+        .legal-label {
+            font-weight: 600;
             color: var(--secondary-color);
+        }
+        
+        /* Footer */
+        footer {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            padding: 50px 20px 30px;
+            margin-top: 60px;
+        }
+        
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+        }
+        
+        .footer-section h3 {
+            font-size: 1.3rem;
+            margin-bottom: 20px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+        
+        .footer-section h3:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 2px;
+            background: var(--accent-color);
+        }
+        
+        .footer-links {
+            list-style: none;
+        }
+        
+        .footer-links li {
             margin-bottom: 10px;
+        }
+        
+        .footer-links a {
+            color: rgba(255,255,255,0.8);
+            text-decoration: none;
+            transition: var(--transition);
+        }
+        
+        .footer-links a:hover {
+            color: white;
+            padding-left: 5px;
+        }
+        
+        .footer-bottom {
+            max-width: 1200px;
+            margin: 40px auto 0;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            text-align: center;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+        
+        .footer-logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            background: var(--flame-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .copyright {
+            opacity: 0.8;
+        }
+        
+        @media (max-width: 768px) {
+            .team-grid {
+                grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            }
+            
+            .flip-card {
+                height: 400px;
+            }
+            
+            h1 {
+                font-size: 2.2rem;
+            }
+            
+            .hero {
+                padding: 60px 20px;
+            }
+            
+            .flame-logo {
+                font-size: 2.8rem;
+            }
+            
+            .footer-bottom {
+                flex-direction: column;
+                gap: 15px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .team-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .filter-container {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .filter-btn {
+                width: 90%;
+            }
+            
+            .flip-card {
+                height: 450px;
+            }
+            
+            .cta-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .cta-button {
+                width: 80%;
+                text-align: center;
+            }
         }
     </style>
 </head>
 <body>
-    <header>
-        <h1>Η Ομάδα Μας</h1>
-        <p class="subtitle">Γνωρίστε την ομάδα του CareerFlame και το FlameVerse - επαγγελματίες που συνδυάζουν την επιστήμη με την τεχνολογία για να υποστηρίξουν την επαγγελματική σας πορεία</p>
-    </header>
-    
-    <div class="filter-container">
-        <button class="filter-btn active" data-filter="all">Όλη η Ομάδα</button>
-        <button class="filter-btn" data-filter="leadership">Ηγεσία</button>
-        <button class="filter-btn" data-filter="scientific">Επιστημονική Επιτροπή</button>
-        <button class="filter-btn" data-filter="legal">Νομική Υποστήριξη</button>
-        <button class="filter-btn" data-filter="development">Ανάπτυξη</button>
-        <button class="filter-btn" data-filter="support">Διοικητική Υποστήριξη</button>
-        <button class="filter-btn" data-filter="volunteer">Εθελοντική Ομάδα</button>
-    </div>
-    
-    <main>
-        <div class="team-grid" id="teamContainer">
-            <!-- Τα μέλη της ομάδας θα προστεθούν μέσω JavaScript -->
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <div class="flame-logo">FlameVerse AI</div>
+            <div class="hero-tagline">Flame-led. AI-powered.</div>
+            <div class="hero-description">
+                <p>Μπες στο σύμπαν των "αόρατων" επαγγελμάτων που θα καθορίσουν τον κόσμο του αύριο</p>
+                <p>Το FlameVerse AI είναι ένα ταξίδι αυτογνωσίας που συνδυάζει <span class="highlight">ψυχολογία</span>, τεχνητή νοημοσύνη και αφήγηση σε μια εμπειρία serious game και ανοίγει δρόμους προς τα <span class="highlight">επαγγέλματα του μέλλοντος</span>, όπως χαρτογραφούνται ήδη από διεθνείς πηγές και οργανισμούς (πχ WEF).</p>
+            </div>
+            <div class="cta-buttons">
+                <a href="#" class="cta-button cta-primary">Ξεκίνα τώρα</a>
+                <a href="#" class="cta-button cta-secondary">Μάθε περισσότερα</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Team Section -->
+    <div class="container">
+        <header>
+            <h1>Η Ομάδα Μας</h1>
+            <p class="subtitle">Γνωρίστε την ομάδα του CareerFlame και το FlameVerse - επαγγελματίες που συνδυάζουν την επιστήμη με την τεχνολογία για να υποστηρίξουν την επαγγελματική σας πορεία</p>
+        </header>
+        
+        <div class="filter-container">
+            <button class="filter-btn active" data-filter="all">Όλη η Ομάδα</button>
+            <button class="filter-btn" data-filter="leadership">Ηγεσία</button>
+            <button class="filter-btn" data-filter="scientific">Επιστημονική Επιτροπή</button>
+            <button class="filter-btn" data-filter="legal">Νομική Υποστήριξη</button>
+            <button class="filter-btn" data-filter="development">Ανάπτυξη</button>
+            <button class="filter-btn" data-filter="support">Διοικητική Υποστήριξη</button>
+            <button class="filter-btn" data-filter="volunteer">Εθελοντική Ομάδα</button>
         </div>
         
-        <h2 class="section-title">Σχετικά με το CareerFlame</h2>
-        <div class="company-info">
-            <p>Η <strong>Career Flame</strong> (www.careerflame.gr) είναι μια ατομική επιχείρηση που ιδρύθηκε από τη Νίκη Δαλιανά με σκοπό τη δημιουργία καινοτόμων εργαλείων συμβουλευτικής σταδιοδρομίας & επαγγελματικού προσανατολισμού, ψυχολογικής ενδυνάμωσης και προσωπικής ανάπτυξης για νέους και εφήβους.</p>
-            <p>Συνδυάζοντας επιστημονική τεκμηρίωση, ψηφιακή τεχνολογία και δημιουργική εμπειρία χρήστη, η Career Flame στοχεύει στη στήριξη της νέας γενιάς στην επαγγελματική της πορεία με ουσιαστικά, προσωποποιημένα μέσα.</p>
-            <p>Η βασική της πλατφόρμα, το <strong>FlameVerse AI</strong> αναπτύσσεται με τη συμβολή εξειδικευμένης επιστημονικής επιτροπής, επαγγελματιών ψυχικής υγείας και εκπαιδευτικών, και υποστηρίζεται από μια ευρύτερη ομάδα εθελοντών διαφορετικών ειδικοτήτων.</p>
-        </div>
-    </main>
+        <main>
+            <div class="team-grid" id="teamContainer">
+                <!-- Τα μέλη της ομάδας θα προστεθούν μέσω JavaScript -->
+            </div>
+            
+            <h2 class="section-title">Σχετικά με το CareerFlame</h2>
+            <div class="company-info">
+                <p>Η <strong>Career Flame</strong> (www.careerflame.gr) είναι μια ατομική επιχείρηση που ιδρύθηκε από τη Νίκη Δαλιανά με σκοπό τη δημιουργία καινοτόμων εργαλείων συμβουλευτικής σταδιοδρομίας & επαγγελματικού προσανατολισμού, ψυχολογικής ενδυνάμωσης και προσωπικής ανάπτυξης για νέους και εφήβους.</p>
+                <p>Συνδυάζοντας επιστημονική τεκμηρίωση, ψηφιακή τεχνολογία και δημιουργική εμπειρία χρήστη, η Career Flame στοχεύει στη στήριξη της νέας γενιάς στην επαγγελματική της πορεία με ουσιαστικά, προσωποποιημένα μέσα.</p>
+                <p>Η βασική της πλατφόρμα, το <strong>FlameVerse AI</strong> αναπτύσσεται με τη συμβολή εξειδικευμένης επιστημονικής επιτροπής, επαγγελματιών ψυχικής υγείας και εκπαιδευτικών, και υποστηρίζεται από μια ευρύτερη ομάδα εθελοντών διαφορετικών ειδικοτήτων.</p>
+            </div>
+            
+            <h2 class="section-title">Νομικά Στοιχεία Επιχείρησης</h2>
+            <div class="legal-info">
+                <div class="legal-grid">
+                    <div class="legal-item">
+                        <div class="legal-label">Επωνυμία:</div>
+                        <div>Career Flame - Νίκη Δαλιανά</div>
+                    </div>
+                    <div class="legal-item">
+                        <div class="legal-label">ΑΦΜ:</div>
+                        <div>126098004</div>
+                    </div>
+                    <div class="legal-item">
+                        <div class="legal-label">Δ.Ο.Υ.:</div>
+                        <div>ΚΕΦΟΔΕ Αττικής</div>
+                    </div>
+                    <div class="legal-item">
+                        <div class="legal-label">Αριθμός Γ.Ε.ΜΗ.:</div>
+                        <div>159520109000</div>
+                    </div>
+                    <div class="legal-item">
+                        <div class="legal-label">Έδρα:</div>
+                        <div>Οδός Μοσχοπούλου 3, Πειραιάς, ΤΚ 18547</div>
+                    </div>
+                    <div class="legal-item">
+                        <div class="legal-label">Email Επικοινωνίας:</div>
+                        <div>info@careerflame.gr</div>
+                    </div>
+                    <div class="legal-item">
+                        <div class="legal-label">Τηλέφωνο Επικοινωνίας:</div>
+                        <div>+30 6934461324</div>
+                    </div>
+                </div>
+                <p style="margin-top: 20px; font-style: italic;">
+                    Για οποιοδήποτε τεχνικό, νομικό ή διοικητικό ζήτημα, μπορείτε να επικοινωνήσετε απευθείας με την εταιρεία μέσω των παραπάνω στοιχείων.
+                </p>
+            </div>
+        </main>
+    </div>
 
+    <!-- Footer -->
     <footer>
-        <div class="logo">CareerFlame</div>
-        <p>© 2025 CareerFlame. Όλα τα δικαιώματα διατηρούνται.</p>
-        <p>Για περισσότερες πληροφορίες, επισκεφτείτε το <a href="https://www.careerflame.gr" style="color: var(--secondary-color); font-weight: 600;">careerflame.gr</a></p>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>FlameVerse AI</h3>
+                <ul class="footer-links">
+                    <li><a href="#">Ξεκίνα το ταξίδι σου</a></li>
+                    <li><a href="#">Πώς λειτουργεί</a></li>
+                    <li><a href="#">Επαγγέλματα του μέλλοντος</a></li>
+                    <li><a href="#">Συχνές ερωτήσεις</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Η Ομάδα Μας</h3>
+                <ul class="footer-links">
+                    <li><a href="#">Σχετικά με εμάς</a></li>
+                    <li><a href="#">Επιστημονική Επιτροπή</a></li>
+                    <li><a href="#">Συνεργάτες</a></li>
+                    <li><a href="#">Θέσεις εργασίας</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Νομικά</h3>
+                <ul class="footer-links">
+                    <li><a href="#">Όροι χρήσης</a></li>
+                    <li><a href="#">Πολιτική απορρήτου</a></li>
+                    <li><a href="#">Πολιτική cookies</a></li>
+                    <li><a href="#">Συμβατότητα</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Επικοινωνία</h3>
+                <ul class="footer-links">
+                    <li><a href="mailto:info@careerflame.gr">info@careerflame.gr</a></li>
+                    <li><a href="tel:+306934461324">+30 6934461324</a></li>
+                    <li><a href="#">Υποστήριξη</a></li>
+                    <li><a href="#">Συνεργασίες</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <div class="footer-logo">Career Flame</div>
+            <div class="copyright">Developed by Career Flame</div>
+            <div class="copyright">© 2025 CareerFlame. Όλα τα δικαιώματα διατηρούνται.</div>
+        </div>
     </footer>
 
     <script>
@@ -453,10 +740,87 @@
             },
             {
                 name: "Ιάκωβος Δαρζέντας",
-                role: "Διοικητική Υποστήριξη",
+                role: "Web Support Developer & Διοικητική Υποστήριξη",
                 department: "support",
                 initials: "ΙΔ",
                 bio: "Ο Ιάκωβος είναι φοιτητής στο τμήμα Δημόσιας Διοίκησης του Ελληνικού Ανοικτού Πανεπιστημίου, με ενδιαφέροντα που εστιάζουν στην διοίκηση και την τεχνολογία. Ασχολείται ενεργά με projects που έχουν σχέση με την ηλεκτρονική αυτοματοποίηση διαδικασιών, και δίνει ιδιαίτερη έμφαση στη σύνδεση της θεωρητικής γνώσης με πρακτικές εφαρμογές που έχουν κοινωνικό αντίκτυπο. Έχει συμμετάσχει σε διάφορες εθελοντικές ομάδες με διαφορετικό ρόλο κάθε φορά, ενώ τον ενδιαφέρει η διασταύρωση τεχνολογίας – ανθρωπιστικών επιστημών. Στόχος του είναι να συνεισφέρει σε καινοτόμες λύσεις που προωθούν την αυτογνωσία, τη βιώσιμη μάθηση και την ενδυνάμωση των νέων.",
+                social: {
+                    linkedin: "#",
+                    email: "#"
+                }
+            },
+            {
+                name: "Δημήτρης Κώττας",
+                role: "Content Writer",
+                department: "volunteer",
+                initials: "ΔΚ",
+                bio: "Ο Δημήτρης Κώττας είναι Content Writer με εμπειρία στη δημιουργήσει ποιοτικού περιεχομένου για ψηφιακές πλατφόρμες. Έχει εργαστεί σε διάφορα projects που συνδυάζουν τεχνολογία, ψυχολογία και εκπαίδευση, με στόχο τη δημιουργήσει ελκυστικού και αποτελεσματικού περιεχομένου για νέους. Στο FlameVerse συμμετέχει στην ανάπτυξη εκπαιδευτικού υλικού και στην επικοινωνία της πλατφόρμας.",
+                social: {
+                    linkedin: "#",
+                    email: "#"
+                }
+            },
+            {
+                name: "Μαίρη Κάντα",
+                role: "Social Media Coordinator",
+                department: "volunteer",
+                initials: "ΜΚ",
+                bio: "Η Μαίρη Κάντα είναι Social Media Coordinator με πάθος για τη δημιουργία ενδιαφέροντος κοινού και την ανάπτυξη ψηφιακής παρουσίας. Έχει εμπειρία στη διαχείριση κοινωνικών δικτύων και στην ανάπτυξη στρατηγικών περιεχομένου που ελκύουν και διατηρούν το ενδιαφέρον του κοινού. Στο FlameVerse, αναλαμβάνει τη διαχείριση των κοινωνικών δικτύων και την προώθηση της πλατφόρμας.",
+                social: {
+                    linkedin: "#",
+                    email: "#"
+                }
+            },
+            {
+                name: "Θεόδωρος Ξιφαράς",
+                role: "Junior Front-end Developer",
+                department: "development",
+                initials: "ΘΞ",
+                bio: "Ο Θεόδωρος Ξιφαράς είναι Junior Front-end Developer με γνώσεις σε HTML, CSS, JavaScript και React. Ασχολείται με την ανάπτυξη διεπαφών χρήστη που είναι όχι μόνο λειτουργικές αλλά και ελκυστικές. Στο FlameVerse συμβάλλει στην ανάπτυξη της διεπαφής χρήστη, εστιάζοντας στη βελτιστοποίηση της εμπειρίας χρήστη και στην προσβασιμότητα.",
+                social: {
+                    linkedin: "#",
+                    email: "#"
+                }
+            },
+            {
+                name: "Κυριακή Γιαμουστάρη",
+                role: "Data Analyst",
+                department: "development",
+                initials: "ΚΓ",
+                bio: "Η Κυριακή Γιαμουστάρη είναι Data Analyst με εμπειρία στην ανάλυση δεδομένων και την εξαγωγή χρήσιμων πληροφοριών. Έχει εργαστεί σε projects που αφορούν την επεξεργασία μεγάλων όγκων δεδομένων και την ανάπτυξη αναφορών. Στο FlameVerse, συμβάλλει στην ανάλυση των δεδομένων χρήστη και στην ανάπτυξη μοντέλων που βελτιώνουν την προσωποποιημένη εμπειρία.",
+                social: {
+                    linkedin: "#",
+                    email: "#"
+                }
+            },
+            {
+                name: "Μαρίνα Χατζηεφραιμίδου",
+                role: "Back-end Developer",
+                department: "development",
+                initials: "ΜΧ",
+                bio: "Η Μαρίνα Χατζηεφραιμίδου είναι Back-end Developer με εμπειρία στην ανάπτυξη server-side εφαρμογών και APIs. Έχει εργαστεί με τεχνολογίες όπως Node.js, Python και βάσεις δεδομένων. Στο FlameVerse, συμμετέχει στην ανάπτυξη και συντήρηση των back-end υποδομών, διασφαλίζοντας την αξιοπιστία και την επεκτασιμότητα της πλατφόρμας.",
+                social: {
+                    linkedin: "#",
+                    email: "#"
+                }
+            },
+            {
+                name: "Βασίλης Τουμπανάκης",
+                role: "Data Analyst",
+                department: "development",
+                initials: "ΒΤ",
+                bio: "Ο Βασίλης Τουμπανάκης είναι Data Analyst με εμπειρία στην ανάλυση δεδομένων και την ανάπτυξη στατιστικών μοντέλων. Έχει εργαστεί σε projects που αφορούν την εξόρυξη δεδομένων και την προγνωστική ανάλυση. Στο FlameVerse, συμβάλλει στην ανάλυση των δεδομένων χρήστη και στην ανάπτυξη αλγορίθμων που βελτιώνουν την προσωποποίηση της πλατφόρμας.",
+                social: {
+                    linkedin: "#",
+                    email: "#"
+                }
+            },
+            {
+                name: "Βαγγέλης Κάβουρας",
+                role: "Full Stack Developer",
+                department: "development",
+                initials: "ΒΚ",
+                bio: "Ο Βαγγέλης Κάβουρας είναι Full Stack Developer με εμπειρία τόσο σε front-end όσο και σε back-end τεχνολογίες. Έχει εργαστεί σε διάφορα projects που αφορούν την ανάπτυξη web εφαρμογών και την ενοποίηση διαφορετικών συστημάτων. Στο FlameVerse, συμμετέχει στην πλήρη ανάπτυξη της πλατφόρμας, από τη διεπαφή χρήστη έως τις server-side λειτουργίες.",
                 social: {
                     linkedin: "#",
                     email: "#"
