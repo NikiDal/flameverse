@@ -3,14 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Η Ομάδα Μας</title>
+    <title>Η Ομάδα Μας - CareerFlame</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
-            --primary-color: #4169E1;
-            --secondary-color: #1E90FF;
-            --accent-color: #007bff;
-            --light-gray: #f8f9fa;
-            --border-color: #e9ecef;
+            --primary-color: #2c3e50;
+            --secondary-color: #3498db;
+            --accent-color: #e74c3c;
+            --light-color: #ecf0f1;
+            --dark-color: #34495e;
+            --text-color: #333;
+            --shadow: 0 4px 6px rgba(0,0,0,0.1);
+            --transition: all 0.3s ease;
         }
         
         * {
@@ -21,7 +25,8 @@
         }
         
         body {
-            color: var(--primary-color);
+            background-color: #f9f9f9;
+            color: var(--text-color);
             line-height: 1.6;
             padding: 20px;
             max-width: 1200px;
@@ -31,8 +36,11 @@
         header {
             text-align: center;
             margin-bottom: 40px;
-            padding-bottom: 20px;
-            border-bottom: 1px solid var(--border-color);
+            padding: 30px 0;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            border-radius: 10px;
+            box-shadow: var(--shadow);
         }
         
         h1 {
@@ -40,77 +48,182 @@
             margin-bottom: 10px;
         }
         
+        .subtitle {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
         .filter-container {
             display: flex;
             flex-wrap: wrap;
             justify-content: center;
             gap: 10px;
-            margin-bottom: 30px;
+            margin: 30px 0;
+            padding: 0 20px;
         }
         
         .filter-btn {
-            background: none;
-            border: 1px solid var(--border-color);
-            padding: 8px 16px;
-            border-radius: 4px;
+            background: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 30px;
             cursor: pointer;
-            transition: all 0.3s ease;
+            transition: var(--transition);
+            font-weight: 600;
+            box-shadow: var(--shadow);
         }
         
         .filter-btn:hover {
-            background-color: var(--light-gray);
+            background-color: var(--secondary-color);
+            color: white;
+            transform: translateY(-3px);
         }
         
         .filter-btn.active {
-            background-color: var(--accent-color);
+            background-color: var(--secondary-color);
             color: white;
-            border-color: var(--accent-color);
         }
         
         .team-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
             gap: 30px;
+            margin-top: 20px;
         }
         
-        .Νίκη Δαλιανά {
+        .flip-card {
+            background-color: transparent;
+            perspective: 1000px;
+            height: 400px;
+            border-radius: 15px;
+        }
+        
+        .flip-card-inner {
+            position: relative;
+            width: 100%;
+            height: 100%;
             text-align: center;
-            padding: 20px;
-            border-radius: 8px;
-            transition: transform 0.3s ease;
+            transition: transform 0.8s;
+            transform-style: preserve-3d;
+            box-shadow: var(--shadow);
+            border-radius: 15px;
         }
         
-        .team-member:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        .flip-card:hover .flip-card-inner {
+            transform: rotateY(180deg);
+        }
+        
+        .flip-card-front, .flip-card-back {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            -webkit-backface-visibility: hidden;
+            backface-visibility: hidden;
+            border-radius: 15px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+        
+        .flip-card-front {
+            background-color: white;
+            color: var(--text-color);
+        }
+        
+        .flip-card-back {
+            background-color: var(--primary-color);
+            color: white;
+            transform: rotateY(180deg);
+            overflow-y: auto;
+            text-align: left;
+            justify-content: flex-start;
+            padding: 25px;
         }
         
         .member-photo {
-            width: 120px;
-            height: 120px;
+            width: 150px;
+            height: 150px;
             border-radius: 50%;
-            background-color: var(--light-gray);
-            margin: 0 auto 15px;
+            background: linear-gradient(135deg, var(--secondary-color), var(--primary-color));
+            margin: 0 auto 20px;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 2rem;
-            color: var(--secondary-color);
+            font-size: 3rem;
+            color: white;
+            box-shadow: var(--shadow);
         }
         
-        .Ευάγγελος Θεολογής {
+        .member-name {
             font-weight: bold;
+            font-size: 1.4rem;
             margin-bottom: 5px;
         }
         
         .member-role {
             color: var(--secondary-color);
+            font-size: 1rem;
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+        
+        .member-department {
+            background-color: var(--light-color);
+            padding: 5px 15px;
+            border-radius: 20px;
             font-size: 0.9rem;
+            display: inline-block;
+        }
+        
+        .bio-title {
+            font-size: 1.3rem;
+            margin-bottom: 15px;
+            text-align: center;
+            width: 100%;
+            border-bottom: 1px solid rgba(255,255,255,0.3);
+            padding-bottom: 10px;
+        }
+        
+        .bio-text {
+            font-size: 0.9rem;
+            line-height: 1.5;
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        .social-links a {
+            color: white;
+            font-size: 1.2rem;
+            transition: var(--transition);
+        }
+        
+        .social-links a:hover {
+            color: var(--secondary-color);
+            transform: translateY(-3px);
+        }
+        
+        .flip-hint {
+            position: absolute;
+            bottom: 15px;
+            font-size: 0.8rem;
+            opacity: 0.7;
         }
         
         @media (max-width: 768px) {
             .team-grid {
-                grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+                grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            }
+            
+            .flip-card {
+                height: 380px;
             }
         }
         
@@ -127,91 +240,168 @@
             .filter-btn {
                 width: 80%;
             }
+            
+            .flip-card {
+                height: 450px;
+            }
+        }
+        
+        .section-title {
+            text-align: center;
+            margin: 40px 0 20px;
+            color: var(--primary-color);
+            font-size: 1.8rem;
+            position: relative;
+        }
+        
+        .section-title:after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 3px;
+            background: var(--secondary-color);
+            margin: 10px auto;
+        }
+        
+        .company-info {
+            background-color: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: var(--shadow);
+            margin: 30px 0;
+        }
+        
+        footer {
+            text-align: center;
+            margin-top: 50px;
+            padding: 20px;
+            border-top: 1px solid #eee;
+            color: var(--dark-color);
         }
     </style>
 </head>
 <body>
     <header>
         <h1>Η Ομάδα Μας</h1>
-        <div class="filter-container">
-            <button class="filter-btn active" data-filter="all">Όλα</button>
-            <button class="filter-btn" data-filter="leadership">Ηγεσία</button>
-            <button class="filter-btn" data-filter="client-services">Υπηρεσίες Πελατών</button>
-            <button class="filter-btn" data-filter="creative">Δημιουργικό</button>
-            <button class="filter-btn" data-filter="development">Ανάπτυξη</button>
-            <button class="filter-btn" data-filter="marketing-sales">Μάρκετινγκ & Πωλήσεις</button>
-            <button class="filter-btn" data-filter="strategy">Στρατηγική</button>
-        </div>
+        <p class="subtitle">Γνωρίστε την ομάδα του CareerFlame και το FlameVerse - επαγγελματίες που συνδυάζουν την επιστήμη με την τεχνολογία για να υποστηρίξουν την επαγγελματική σας πορεία</p>
     </header>
+    
+    <div class="filter-container">
+        <button class="filter-btn active" data-filter="all">Όλη η Ομάδα</button>
+        <button class="filter-btn" data-filter="leadership">Ηγεσία</button>
+        <button class="filter-btn" data-filter="scientific">Επιστημονική Επιτροπή</button>
+        <button class="filter-btn" data-filter="legal">Νομική Υποστήριξη</button>
+        <button class="filter-btn" data-filter="volunteer">Εθελοντική Ομάδα</button>
+    </div>
     
     <main>
         <div class="team-grid" id="teamContainer">
             <!-- Τα μέλη της ομάδας θα προστεθούν μέσω JavaScript -->
         </div>
+        
+        <h2 class="section-title">Σχετικά με το CareerFlame</h2>
+        <div class="company-info">
+            <p>Η <strong>Career Flame</strong> (www.careerflame.gr) είναι μια ατομική επιχείρηση που ιδρύθηκε από τη Νίκη Δαλιανά με σκοπό τη δημιουργία καινοτόμων εργαλείων συμβουλευτικής σταδιοδρομίας & επαγγελματικού προσανατολισμού, ψυχολογικής ενδυνάμωσης και προσωπικής ανάπτυξης για νέους και εφήβους.</p>
+            <p>Συνδυάζοντας επιστημονική τεκμηρίωση, ψηφιακή τεχνολογία και δημιουργική εμπειρία χρήστη, η Career Flame στοχεύει στη στήριξη της νέας γενιάς στην επαγγελματική της πορεία με ουσιαστικά, προσωποποιημένα μέσα.</p>
+            <p>Η βασική της πλατφόρμα, το <strong>FlameVerse AI</strong> αναπτύσσεται με τη συμβολή εξειδικευμένης επιστημονικής επιτροπής, επαγγελματιών ψυχικής υγείας και εκπαιδευτικών, και υποστηρίζεται από μια ευρύτερη ομάδα εθελοντών διαφορετικών ειδικοτήτων.</p>
+        </div>
     </main>
+
+    <footer>
+        <p>© 2025 CareerFlame. Όλα τα δικαιώματα διατηρούνται.</p>
+        <p>Για περισσότερες πληροφορίες, επισκεφτείτε το <a href="https://www.careerflame.gr" style="color: var(--secondary-color);">careerflame.gr</a></p>
+    </footer>
 
     <script>
         // Δεδομένα μελών ομάδας
         const teamMembers = [
             {
-                name: "Steve Ambuul",
-                role: "Heap of Sales",
-                department: "marketing-sales",
-                initials: "SA"
-            },
-            {
-                name: "Mel Phelps Cevik",
-                role: "Regional Director, ANK",
+                name: "Νίκη Δαλιανά",
+                role: "Ιδρύτρια - Project Manager",
                 department: "leadership",
-                initials: "MP"
+                initials: "ΝΔ",
+                bio: "Η Νίκη Δαλιανά είναι απόφοιτος του τμήματος Φιλοσοφίας, Παιδαγωγικής και Ψυχολογίας (κατεύθυνση Ψυχολογίας) του ΕΚΠΑ, καθώς και κάτοχος μεταπτυχιακού τίτλου στην «Συμβουλευτική και Επαγγελματικό Προσανατολισμό» του ΕΚΠΑ. Ασκεί το αντικείμενο του επαγγελματικού προσανατολισμού και της ψυχολογικής ενδυνάμωσης με εμπειρία τόσο στον δημόσιο όσο και στον ιδιωτικό τομέα. Κατά τη διάρκεια των μεταπτυχιακών της σπουδών, πραγματοποίησε πρακτική άσκηση στο ΚΕΣΥΠ Ελευσίνας και στον ΟΑΕΔ, παρέχοντας συμβουλευτική σε εφήβους και ανέργους. Είναι ιδρύτρια της εταιρείας CareerFlame, μέλος της Εξελεγκτικής Επιτροπής του ΣΕΣΥΣΕΠ και μέλος της Ελληνικής Εταιρίας Συμβουλευτικής & Προσανατολισμού.",
+                social: {
+                    linkedin: "#",
+                    email: "mailto:niki@careerflame.gr"
+                }
             },
             {
-                name: "Alden Dale",
-                role: "Director of Solutions",
-                department: "strategy",
-                initials: "AD"
+                name: "Δρ. Αλέξανδρος-Σταμάτιος Αντωνίου",
+                role: "Καθηγητής Ψυχολογίας, ΕΚΠΑ",
+                department: "scientific",
+                initials: "ΑΑ",
+                bio: "Ο Αλέξανδρος-Σταμάτιος Αντωνίου είναι Καθηγητής Ψυχολογίας και κατέχει προπτυχιακούς και μεταπτυχιακούς τίτλους (3 διδακτορικά) στην Ψυχολογία, τη Φιλοσοφία, την Εκπαίδευση και τη Διοίκηση από πανεπιστήμια της Ελλάδας και του Ηνωμένου Βασιλείου. Έχει διδάξει σε προπτυχιακούς και μεταπτυχιακούς φοιτητές πανεπιστημίων (Ιατρική Σχολή και Σχολή Φιλοσοφίας του ΕΚΠΑ, Πάντειο Πανεπιστήμιο κ.ά.), καθώς και σε γιατρούς νοσοκομείων, νοσηλευτικό προσωπικό, ψυχολόγους, εκπαιδευτικούς κ.ά. Έχει λάβει πολυάριθμα βραβεία και υποτροφίες και έχει συμμετάσχει ως εθνικός συντονιστής/ερευνητής σε πολλά εθνικά και ευρωπαϊκά ερευνητικά προγράμματα.",
+                social: {
+                    linkedin: "#",
+                    email: "#"
+                }
             },
             {
-                name: "Kaley Deneen",
-                role: "Regional Director, EMEA",
-                department: "leadership",
-                initials: "KD"
+                name: "Δρ. Ορέστης Γιωτάκος",
+                role: "Νευροψυχίατρος",
+                department: "scientific",
+                initials: "ΟΓ",
+                bio: "Ο Ορέστης Γιωτάκος ολοκλήρωσε τις βασικές του σπουδές στην Στρατιωτική Ιατρική Σχολή, στη Θεσσαλονίκη, απέκτησε την ειδικότητα του Ψυχιάτρου στο Νοσοκομείο Ευαγγελισμός, το MSc in Neuroscience στο Institute of Psychiatry στο Λονδίνο και το Διδακτορικό στην Ιατρική Σχολή του Πανεπιστημίου Αθηνών. Έχει πλούσιο ερευνητικό και εκπαιδευτικό έργο, συνεργασίες με τοπικούς και διεθνείς επιστημονικούς οργανισμούς και είναι υπεύθυνος διοργάνωσης πολλών τακτικών συνεδρίων και εκδηλώσεων για την ψυχική υγεία. Έχει συγγράψει πλήθος άρθρων και βιβλίων, στην ελληνική και αγγλική γλώσσα, στoυς τομείς της ψυχιατρικής και της νευροεπιστήμης.",
+                social: {
+                    linkedin: "#",
+                    email: "#"
+                }
             },
             {
-                name: "Tony Eades",
-                role: "Chief Strategy Officer",
-                department: "strategy",
-                initials: "TE"
+                name: "Δρ. Δέσποινα Κώτση",
+                role: "Νομική Σύμβουλος",
+                department: "legal",
+                initials: "ΔΚ",
+                bio: "Η Δέσποινα Σπ. Κώτση είναι Δικηγόρος, παρ' Αρείω Πάγω, και Διδάκτωρ της Νομικής Σχολής Αθηνών (ΕΚΠΑ). Είναι κάτοχος δύο μεταπτυχιακών τίτλων, ήτοι στο Εξειδικευμένο Δημόσιο Δίκαιο (Νομική Σχολή Αθηνών & Νομική Σχολή Παν/μίου Montesquieu - Bordeaux IV) και στο Διεθνές Δίκαιο & Διπλωματικές Σπουδές (Πάντειο Πανεπιστήμιο). Το δημόσιο δίκαιο ως παράμετρος του εκπαιδευτικού συστήματος στην Ελλάδα ήταν η θεματική της διδακτορικής της διατριβής. Στα ενδιαφέροντα της περιλαμβάνεται η εφαρμογή του υπολογιστικού τρόπου σκέψης (computational thinking) στις κοινωνικές επιστήμες και ειδικά στο χώρο της νομικής.",
+                social: {
+                    linkedin: "#",
+                    email: "#"
+                }
             },
             {
-                name: "Megan Erickson",
-                role: "Executive Director, Finance and Administration",
-                department: "leadership",
-                initials: "ME"
+                name: "Ζωή Τσακιρίδου",
+                role: "Υπεύθυνη Προστασίας Δεδομένων",
+                department: "legal",
+                initials: "ΖΤ",
+                bio: "Η Ζωή Τσακιρίδου, ως Υπεύθυνη Διοικητικού Τομέα στην εταιρεία ena Σύμβουλοι Ανάπτυξης, διαθέτει έντεκα χρόνια εμπειρίας και βαθιά γνώση στις διοικητικές λειτουργίες, την οργάνωση εσωτερικών διαδικασιών και την υποστήριξη έργων ψηφιακού μετασχηματισμού. Κατά την επαγγελματική της πορεία έχει αναλάβει ποικίλους ρόλους που συνδέονται με την εκπαίδευση, την ασφάλεια εργαζομένων και δεδομένων (DPO), την υποστήριξη ΙΤ, καθώς και την εταιρική επικοινωνία και κουλτούρα. Διαθέτει Πτυχίο Διοίκησης Επιχειρήσεων (ΤΕΙ ΑΜΘ) και Μεταπτυχιακό στη Διοίκηση Καινοτομίας, Τεχνολογίας και Επιχειρήσεων (ΔΠΘ).",
+                social: {
+                    linkedin: "#",
+                    email: "#"
+                }
             },
             {
-                name: "Ursula Feller",
-                role: "People and Culture Generalist",
-                department: "client-services",
-                initials: "UF"
+                name: "Ιάκωβος Δαρζέντας",
+                role: "Web Support Developer",
+                department: "volunteer",
+                initials: "ΙΔ",
+                bio: "Ο Ιάκωβος είναι φοιτητής στο τμήμα Δημόσιας Διοίκησης του Ελληνικού Ανοικτού Πανεπιστημίου, με ενδιαφέροντα που εστιάζουν στην διοίκηση και την τεχνολογία. Ασχολείται ενεργά με projects που έχουν σχέση με την ηλεκτρονική αυτοματοποίηση διαδικασιών, και δίνει ιδιαίτερη έμφαση στη σύνδεση της θεωρητικής γνώσης με πρακτικές εφαρμογές που έχουν κοινωνικό αντίκτυπο. Έχει συμμετάσχει σε διάφορες εθελοντικές ομάδες με διαφορετικό ρόλο κάθε φορά, ενώ τον ενδιαφέρει η διασταύρωση τεχνολογίας – ανθρωπιστικών επιστημών.",
+                social: {
+                    linkedin: "#",
+                    email: "#"
+                }
             },
             {
-                name: "Brandon Jones",
-                role: "Executive Regional Director, MA",
-                department: "leadership",
-                initials: "BJ"
+                name: "Ευάγγελος Θεολογής",
+                role: "Σύμβουλος Σταδιοδρομίας",
+                department: "volunteer",
+                initials: "ΕΘ",
+                bio: "Ο Ευάγγελος Θεολογής, ΠΕ83, MSc, είναι Πιστοποιημένος Σύμβουλος Σταδιοδρομίας/Επαγγελματικού Προσανατολισμού επιπέδου Α και υπηρετεί ως Υπεύθυνος Σχολικού Επαγγελματικού Προσανατολισμού στη Διεύθυνση Δευτεροβάθμιας Εκπαίδευσης Δυτικής Αττικής. Στο παρελθόν έχει υπηρετήσει στο 2ο ΚΕΣΥ Β' Αθήνας και στο ΚΕΣΥ Δυτικής Αττικής, με εξειδίκευση στη συμβουλευτική επαγγελματικού προσανατολισμού. Κατέχει μεταπτυχιακούς τίτλους στη Συμβουλευτική και τον Επαγγελματικό Προσανατολισμό, καθώς και στη Διδακτική Μαθημάτων Ειδικότητας με χρήση Νέων Τεχνολογιών.",
+                social: {
+                    linkedin: "#",
+                    email: "#"
+                }
             },
             {
-                name: "Alaire Jones",
-                role: "Director of Operations",
-                department: "strategy",
-                initials: "AJ"
-            },
-            {
-                name: "Andrew Levy",
-                role: "Executive Director, Revenue Operations",
-                department: "leadership",
-                initials: "AL"
+                name: "Μαρία Λάππα",
+                role: "Front-end Developer",
+                department: "volunteer",
+                initials: "ΜΛ",
+                bio: "Η Μαρία Λάππα έχει σπουδάσει στο Τμήμα Ηλεκτρολόγων Μηχανικών και Μηχανικών Υπολογιστών του ΔΠΘ όπου ήρθε σε επαφή με ένα ευρύ φάσμα θεματικών, από μελέτη ηλεκτρικών κυκλωμάτων μέχρι εξόρυξη δεδομένων και machine learning. Το web development αποτελεί για εκείνη το σημείο συνάντησης ανάμεσα στη δημιουργική έκφραση και τη μηχανική σκέψη. Ασχολείται με τον σχεδιασμό και την κατασκευή ιστοσελίδων και εφαρμογών κυρίως με ReactJS ή WordPress, ενώ διαθέτει πιστοποιήσεις σε προγράμματα εκπαίδευσης στον σχεδιασμό διεπαφής και εμπειρίας χρήστη (Google UX Design Certificate).",
+                social: {
+                    linkedin: "#",
+                    email: "#"
+                }
             }
         ];
 
@@ -226,17 +416,41 @@
             
             filteredMembers.forEach(member => {
                 const memberElement = document.createElement("div");
-                memberElement.className = "team-member";
-                memberElement.setAttribute("data-department", member.department);
+                memberElement.className = "flip-card";
                 
                 memberElement.innerHTML = `
-                    <div class="member-photo">${member.initials}</div>
-                    <div class="member-name">${member.name}</div>
-                    <div class="member-role">${member.role}</div>
+                    <div class="flip-card-inner">
+                        <div class="flip-card-front">
+                            <div class="member-photo">${member.initials}</div>
+                            <div class="member-name">${member.name}</div>
+                            <div class="member-role">${member.role}</div>
+                            <div class="member-department">${getDepartmentName(member.department)}</div>
+                            <div class="flip-hint">Κάντε κλικ για περισσότερες πληροφορίες</div>
+                        </div>
+                        <div class="flip-card-back">
+                            <div class="bio-title">Βιογραφικό</div>
+                            <div class="bio-text">${member.bio}</div>
+                            <div class="social-links">
+                                ${member.social.linkedin !== '#' ? `<a href="${member.social.linkedin}" target="_blank"><i class="fab fa-linkedin"></i></a>` : ''}
+                                ${member.social.email !== '#' ? `<a href="${member.social.email}"><i class="fas fa-envelope"></i></a>` : ''}
+                            </div>
+                        </div>
+                    </div>
                 `;
                 
                 container.appendChild(memberElement);
             });
+        }
+
+        // Βοηθητική συνάρτηση για ονόματα τμημάτων
+        function getDepartmentName(department) {
+            const departments = {
+                "leadership": "Ηγεσία",
+                "scientific": "Επιστημονική Επιτροπή",
+                "legal": "Νομική Υποστήριξη",
+                "volunteer": "Εθελοντική Ομάδα"
+            };
+            return departments[department] || department;
         }
 
         // Εκκίνηση με όλα τα μέλη
