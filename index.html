@@ -7,17 +7,15 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
-            --primary-color: #0E041D;
-            --secondary-color: #6E40FF;
-            --accent-color: #D160FF;
-            --blue-gradient: linear-gradient(90deg, #1E90FF, #00E0FF);
-            --purple-gradient: linear-gradient(90deg, #6E40FF, #D160FF);
-            --light-color: #E5D9F2;
-            --background-color: #0E041D;
-            --text-color: #FFFFFF;
-            --shadow: 0 8px 25px rgba(123, 97, 255, 0.25);
+            --primary-color: #4A6FA5;
+            --secondary-color: #6D9DC5;
+            --accent-color: #7DBBC3;
+            --light-color: #E8F4F8;
+            --background-color: #F8FBFD;
+            --text-color: #2C3E50;
+            --card-bg: #FFFFFF;
+            --shadow: 0 8px 25px rgba(74, 111, 165, 0.15);
             --transition: all 0.3s ease;
-            --flame-gradient: linear-gradient(135deg, #FF6B6B, #FFA500);
         }
         
         * {
@@ -38,7 +36,7 @@
         
         /* Hero Section */
         .hero {
-            background: var(--primary-color);
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
             color: white;
             padding: 60px 20px;
             text-align: center;
@@ -57,10 +55,6 @@
             font-size: 2.8rem;
             font-weight: 800;
             margin-bottom: 10px;
-            background: var(--purple-gradient);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
         }
         
         .hero-tagline {
@@ -79,10 +73,10 @@
         }
         
         .highlight {
-            background: var(--blue-gradient);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
+            background: rgba(255, 255, 255, 0.9);
+            padding: 2px 6px;
+            border-radius: 4px;
+            color: var(--primary-color);
             font-weight: 600;
         }
         
@@ -103,20 +97,20 @@
         }
         
         .cta-primary {
-            background: var(--purple-gradient);
-            color: white;
+            background: white;
+            color: var(--primary-color);
             box-shadow: var(--shadow);
         }
         
         .cta-secondary {
-            background: rgba(255, 255, 255, 0.1);
+            background: rgba(255, 255, 255, 0.2);
             color: white;
-            border: 2px solid rgba(255, 255, 255, 0.2);
+            border: 2px solid rgba(255, 255, 255, 0.3);
         }
         
         .cta-button:hover {
             transform: translateY(-3px);
-            box-shadow: 0 12px 30px rgba(123, 97, 255, 0.35);
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.2);
         }
         
         /* Main Content */
@@ -141,7 +135,7 @@
         
         .subtitle {
             font-size: 1.2rem;
-            opacity: 0.9;
+            opacity: 0.8;
             max-width: 800px;
             margin: 0 auto;
         }
@@ -156,8 +150,8 @@
         }
         
         .filter-btn {
-            background: rgba(30, 144, 255, 0.1);
-            border: 2px solid rgba(30, 144, 255, 0.3);
+            background: white;
+            border: 2px solid var(--light-color);
             padding: 12px 24px;
             border-radius: 30px;
             cursor: pointer;
@@ -168,16 +162,16 @@
         }
         
         .filter-btn:hover {
-            background: var(--blue-gradient);
+            background-color: var(--secondary-color);
             color: white;
             transform: translateY(-3px);
-            border-color: transparent;
+            border-color: var(--secondary-color);
         }
         
         .filter-btn.active {
-            background: var(--purple-gradient);
+            background-color: var(--primary-color);
             color: white;
-            border-color: transparent;
+            border-color: var(--primary-color);
         }
         
         .team-grid {
@@ -224,14 +218,13 @@
         }
         
         .flip-card-front {
-            background: rgba(30, 144, 255, 0.05);
+            background-color: var(--card-bg);
             color: var(--text-color);
-            border: 1px solid rgba(110, 64, 255, 0.2);
-            backdrop-filter: blur(10px);
+            border: 1px solid var(--light-color);
         }
         
         .flip-card-back {
-            background: var(--purple-gradient);
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
             color: white;
             transform: rotateY(180deg);
             overflow-y: auto;
@@ -244,7 +237,7 @@
             width: 150px;
             height: 150px;
             border-radius: 50%;
-            background: var(--blue-gradient);
+            background: linear-gradient(135deg, var(--secondary-color), var(--accent-color));
             margin: 0 auto 20px;
             display: flex;
             align-items: center;
@@ -252,7 +245,7 @@
             font-size: 3rem;
             color: white;
             box-shadow: var(--shadow);
-            border: 4px solid rgba(255, 255, 255, 0.2);
+            border: 4px solid white;
         }
         
         .member-name {
@@ -262,21 +255,20 @@
         }
         
         .member-role {
-            color: #00E0FF;
+            color: var(--secondary-color);
             font-size: 1.1rem;
             margin-bottom: 15px;
             font-weight: 600;
         }
         
         .member-department {
-            background: rgba(110, 64, 255, 0.2);
+            background-color: var(--light-color);
             padding: 8px 18px;
             border-radius: 20px;
             font-size: 0.9rem;
             display: inline-block;
             color: var(--text-color);
             font-weight: 600;
-            border: 1px solid rgba(110, 64, 255, 0.3);
         }
         
         .bio-title {
@@ -325,11 +317,10 @@
             bottom: 15px;
             font-size: 0.85rem;
             opacity: 0.7;
-            background: rgba(255,255,255,0.1);
+            background: rgba(255,255,255,0.8);
             padding: 5px 10px;
             border-radius: 15px;
             color: var(--text-color);
-            backdrop-filter: blur(5px);
         }
         
         /* Company Info */
@@ -346,61 +337,30 @@
             display: block;
             width: 100px;
             height: 4px;
-            background: var(--blue-gradient);
+            background: var(--accent-color);
             margin: 15px auto;
             border-radius: 2px;
         }
         
         .company-info {
-            background: rgba(30, 144, 255, 0.05);
+            background-color: var(--card-bg);
             padding: 35px;
             border-radius: 15px;
             box-shadow: var(--shadow);
             margin: 30px 0;
-            border-left: 5px solid #00E0FF;
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(110, 64, 255, 0.2);
+            border-left: 5px solid var(--accent-color);
         }
         
         .company-info p {
             margin-bottom: 15px;
         }
         
-        /* Legal Info */
-        .legal-info {
-            background: rgba(30, 144, 255, 0.05);
-            padding: 35px;
-            border-radius: 15px;
-            box-shadow: var(--shadow);
-            margin: 30px 0;
-            border-left: 5px solid #D160FF;
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(110, 64, 255, 0.2);
-        }
-        
-        .legal-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 20px;
-            margin-top: 20px;
-        }
-        
-        .legal-item {
-            margin-bottom: 15px;
-        }
-        
-        .legal-label {
-            font-weight: 600;
-            color: #00E0FF;
-        }
-        
         /* Footer */
         footer {
-            background: rgba(14, 4, 29, 0.9);
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
             color: white;
             padding: 50px 20px 30px;
             margin-top: 60px;
-            border-top: 1px solid rgba(110, 64, 255, 0.3);
         }
         
         .footer-content {
@@ -425,7 +385,7 @@
             left: 0;
             width: 50px;
             height: 2px;
-            background: var(--blue-gradient);
+            background: var(--accent-color);
         }
         
         .footer-links {
@@ -443,7 +403,7 @@
         }
         
         .footer-links a:hover {
-            color: #00E0FF;
+            color: white;
             padding-left: 5px;
         }
         
@@ -451,7 +411,7 @@
             max-width: 1200px;
             margin: 40px auto 0;
             padding-top: 20px;
-            border-top: 1px solid rgba(255,255,255,0.1);
+            border-top: 1px solid rgba(255,255,255,0.2);
             text-align: center;
             display: flex;
             justify-content: space-between;
@@ -462,10 +422,6 @@
         .footer-logo {
             font-size: 1.8rem;
             font-weight: 700;
-            background: var(--purple-gradient);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
         }
         
         .copyright {
@@ -574,43 +530,6 @@
                 <p>Συνδυάζοντας επιστημονική τεκμηρίωση, ψηφιακή τεχνολογία και δημιουργική εμπειρία χρήστη, η Career Flame στοχεύει στη στήριξη της νέας γενιάς στην επαγγελματική της πορεία με ουσιαστικά, προσωποποιημένα μέσα.</p>
                 <p>Η βασική της πλατφόρμα, το <strong>FlameVerse AI</strong> αναπτύσσεται με τη συμβολή εξειδικευμένης επιστημονικής επιτροπής, επαγγελματιών ψυχικής υγείας και εκπαιδευτικών, και υποστηρίζεται από μια ευρύτερη ομάδα εθελοντών διαφορετικών ειδικοτήτων.</p>
             </div>
-            
-            <h2 class="section-title">Νομικά Στοιχεία Επιχείρησης</h2>
-            <div class="legal-info">
-                <div class="legal-grid">
-                    <div class="legal-item">
-                        <div class="legal-label">Επωνυμία:</div>
-                        <div>Career Flame - Νίκη Δαλιανά</div>
-                    </div>
-                    <div class="legal-item">
-                        <div class="legal-label">ΑΦΜ:</div>
-                        <div>126098004</div>
-                    </div>
-                    <div class="legal-item">
-                        <div class="legal-label">Δ.Ο.Υ.:</div>
-                        <div>ΚΕΦΟΔΕ Αττικής</div>
-                    </div>
-                    <div class="legal-item">
-                        <div class="legal-label">Αριθμός Γ.Ε.ΜΗ.:</div>
-                        <div>159520109000</div>
-                    </div>
-                    <div class="legal-item">
-                        <div class="legal-label">Έδρα:</div>
-                        <div>Οδός Μοσχοπούλου 3, Πειραιάς, ΤΚ 18547</div>
-                    </div>
-                    <div class="legal-item">
-                        <div class="legal-label">Email Επικοινωνίας:</div>
-                        <div>info@careerflame.gr</div>
-                    </div>
-                    <div class="legal-item">
-                        <div class="legal-label">Τηλέφωνο Επικοινωνίας:</div>
-                        <div>+30 6934461324</div>
-                    </div>
-                </div>
-                <p style="margin-top: 20px; font-style: italic;">
-                    Για οποιοδήποτε τεχνικό, νομικό ή διοικητικό ζήτημα, μπορείτε να επικοινωνήσετε απευθείας με την εταιρεία μέσω των παραπάνω στοιχείων.
-                </p>
-            </div>
         </main>
     </div>
 
@@ -632,16 +551,13 @@
                     <li><a href="#">Σχετικά με εμάς</a></li>
                     <li><a href="#">Επιστημονική Επιτροπή</a></li>
                     <li><a href="#">Συνεργάτες</a></li>
-                    <li><a href="#">Θέσεις εργασίας</a></li>
                 </ul>
             </div>
             <div class="footer-section">
                 <h3>Νομικά</h3>
                 <ul class="footer-links">
                     <li><a href="#">Όροι χρήσης</a></li>
-                    <li><a href="#">Πολιτική απορρήτου</a></li>
-                    <li><a href="#">Πολιτική cookies</a></li>
-                    <li><a href="#">Συμβατότητα</a></li>
+                    <li><a href="#">Πολιτική απορήτου</a></li>
                 </ul>
             </div>
             <div class="footer-section">
@@ -650,7 +566,6 @@
                     <li><a href="mailto:info@careerflame.gr">info@careerflame.gr</a></li>
                     <li><a href="tel:+306934461324">+30 6934461324</a></li>
                     <li><a href="#">Υποστήριξη</a></li>
-                    <li><a href="#">Συνεργασίες</a></li>
                 </ul>
             </div>
         </div>
