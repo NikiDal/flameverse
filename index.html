@@ -7,14 +7,14 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
-            --primary-color: #4A6FA5;
-            --secondary-color: #6D9DC5;
-            --accent-color: #7DBBC3;
-            --light-color: #E8F4F8;
-            --background-color: #F8FBFD;
-            --text-color: #2C3E50;
-            --card-bg: #FFFFFF;
-            --shadow: 0 8px 25px rgba(74, 111, 165, 0.15);
+            --primary-color: #1a365d;
+            --secondary-color: #2d3748;
+            --accent-color: #3182ce;
+            --light-color: #4a5568;
+            --background-color: #0f1419;
+            --text-color: #ffffff;
+            --card-bg: #1e293b;
+            --shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
             --transition: all 0.3s ease;
         }
         
@@ -26,19 +26,20 @@
         }
         
         body {
-            background-color: var(--background-color);
+            background: linear-gradient(135deg, var(--primary-color), var(--background-color));
             color: var(--text-color);
             line-height: 1.6;
             padding: 0;
             max-width: 100%;
             margin: 0 auto;
+            min-height: 100vh;
         }
         
         /* Hero Section */
         .hero {
             background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
             color: white;
-            padding: 60px 20px;
+            padding: 80px 20px;
             text-align: center;
             position: relative;
             overflow: hidden;
@@ -52,32 +53,20 @@
         }
         
         .flame-logo {
-            font-size: 2.8rem;
+            font-size: 3.5rem;
             font-weight: 800;
-            margin-bottom: 10px;
+            margin-bottom: 20px;
+            background: linear-gradient(45deg, #ff6b6b, #ffa500);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
         }
         
         .hero-tagline {
-            font-size: 1.3rem;
-            margin-bottom: 25px;
+            font-size: 1.5rem;
+            margin-bottom: 30px;
             opacity: 0.9;
-        }
-        
-        .hero-description {
-            font-size: 1.1rem;
-            margin-bottom: 35px;
-            max-width: 700px;
-            margin-left: auto;
-            margin-right: auto;
-            line-height: 1.7;
-        }
-        
-        .highlight {
-            background: rgba(255, 255, 255, 0.9);
-            padding: 2px 6px;
-            border-radius: 4px;
-            color: var(--primary-color);
-            font-weight: 600;
+            font-weight: 300;
         }
         
         .cta-buttons {
@@ -88,56 +77,62 @@
         }
         
         .cta-button {
-            padding: 14px 30px;
+            padding: 16px 35px;
             border-radius: 30px;
             font-weight: 600;
             text-decoration: none;
             transition: var(--transition);
-            font-size: 1rem;
+            font-size: 1.1rem;
         }
         
         .cta-primary {
-            background: white;
-            color: var(--primary-color);
+            background: linear-gradient(45deg, #ff6b6b, #ffa500);
+            color: white;
             box-shadow: var(--shadow);
         }
         
         .cta-secondary {
-            background: rgba(255, 255, 255, 0.2);
+            background: rgba(255, 255, 255, 0.1);
             color: white;
             border: 2px solid rgba(255, 255, 255, 0.3);
+            backdrop-filter: blur(10px);
         }
         
         .cta-button:hover {
             transform: translateY(-3px);
-            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.4);
         }
         
         /* Main Content */
         .container {
             max-width: 1200px;
             margin: 0 auto;
-            padding: 20px;
+            padding: 40px 20px;
         }
         
         header {
             text-align: center;
-            margin-bottom: 40px;
+            margin-bottom: 50px;
             padding: 40px 0 20px;
         }
         
         h1 {
-            font-size: 2.8rem;
-            margin-bottom: 15px;
+            font-size: 3rem;
+            margin-bottom: 20px;
             position: relative;
             color: var(--text-color);
+            background: linear-gradient(45deg, #ffffff, #a0aec0);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
         }
         
         .subtitle {
-            font-size: 1.2rem;
+            font-size: 1.3rem;
             opacity: 0.8;
             max-width: 800px;
             margin: 0 auto;
+            font-weight: 300;
         }
         
         .filter-container {
@@ -145,47 +140,48 @@
             flex-wrap: wrap;
             justify-content: center;
             gap: 12px;
-            margin: 30px 0;
+            margin: 40px 0;
             padding: 0 20px;
         }
         
         .filter-btn {
-            background: white;
-            border: 2px solid var(--light-color);
-            padding: 12px 24px;
+            background: rgba(255, 255, 255, 0.1);
+            border: 2px solid rgba(255, 255, 255, 0.2);
+            padding: 14px 28px;
             border-radius: 30px;
             cursor: pointer;
             transition: var(--transition);
             font-weight: 600;
             box-shadow: var(--shadow);
             color: var(--text-color);
+            backdrop-filter: blur(10px);
         }
         
         .filter-btn:hover {
-            background-color: var(--secondary-color);
+            background: var(--accent-color);
             color: white;
             transform: translateY(-3px);
-            border-color: var(--secondary-color);
+            border-color: var(--accent-color);
         }
         
         .filter-btn.active {
-            background-color: var(--primary-color);
+            background: var(--accent-color);
             color: white;
-            border-color: var(--primary-color);
+            border-color: var(--accent-color);
         }
         
         .team-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 30px;
-            margin-top: 20px;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 35px;
+            margin-top: 30px;
         }
         
         .flip-card {
             background-color: transparent;
             perspective: 1000px;
-            height: 420px;
-            border-radius: 15px;
+            height: 450px;
+            border-radius: 20px;
         }
         
         .flip-card-inner {
@@ -196,7 +192,7 @@
             transition: transform 0.8s;
             transform-style: preserve-3d;
             box-shadow: var(--shadow);
-            border-radius: 15px;
+            border-radius: 20px;
         }
         
         .flip-card:hover .flip-card-inner {
@@ -209,97 +205,98 @@
             height: 100%;
             -webkit-backface-visibility: hidden;
             backface-visibility: hidden;
-            border-radius: 15px;
+            border-radius: 20px;
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            padding: 25px;
+            padding: 30px;
         }
         
         .flip-card-front {
-            background-color: var(--card-bg);
+            background: linear-gradient(135deg, var(--card-bg), var(--light-color));
             color: var(--text-color);
-            border: 1px solid var(--light-color);
+            border: 1px solid rgba(255, 255, 255, 0.1);
         }
         
         .flip-card-back {
-            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            background: linear-gradient(135deg, var(--accent-color), #2b6cb0);
             color: white;
             transform: rotateY(180deg);
             overflow-y: auto;
             text-align: left;
             justify-content: flex-start;
-            padding: 25px;
+            padding: 30px;
         }
         
         .member-photo {
-            width: 150px;
-            height: 150px;
+            width: 160px;
+            height: 160px;
             border-radius: 50%;
-            background: linear-gradient(135deg, var(--secondary-color), var(--accent-color));
-            margin: 0 auto 20px;
+            background: linear-gradient(135deg, var(--accent-color), #2b6cb0);
+            margin: 0 auto 25px;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 3rem;
+            font-size: 3.5rem;
             color: white;
             box-shadow: var(--shadow);
-            border: 4px solid white;
+            border: 4px solid rgba(255, 255, 255, 0.2);
         }
         
         .member-name {
             font-weight: bold;
-            font-size: 1.5rem;
-            margin-bottom: 8px;
+            font-size: 1.6rem;
+            margin-bottom: 10px;
         }
         
         .member-role {
-            color: var(--secondary-color);
-            font-size: 1.1rem;
-            margin-bottom: 15px;
-            font-weight: 600;
+            color: #a0aec0;
+            font-size: 1.2rem;
+            margin-bottom: 20px;
+            font-weight: 500;
         }
         
         .member-department {
-            background-color: var(--light-color);
-            padding: 8px 18px;
+            background: rgba(255, 255, 255, 0.15);
+            padding: 10px 20px;
             border-radius: 20px;
-            font-size: 0.9rem;
+            font-size: 1rem;
             display: inline-block;
             color: var(--text-color);
             font-weight: 600;
+            border: 1px solid rgba(255, 255, 255, 0.2);
         }
         
         .bio-title {
-            font-size: 1.4rem;
-            margin-bottom: 15px;
+            font-size: 1.5rem;
+            margin-bottom: 20px;
             text-align: center;
             width: 100%;
             border-bottom: 1px solid rgba(255,255,255,0.3);
-            padding-bottom: 10px;
+            padding-bottom: 15px;
         }
         
         .bio-text {
-            font-size: 0.95rem;
-            line-height: 1.6;
+            font-size: 1rem;
+            line-height: 1.7;
         }
         
         .social-links {
             display: flex;
             gap: 15px;
-            margin-top: 20px;
+            margin-top: 25px;
             justify-content: center;
             width: 100%;
         }
         
         .social-links a {
             color: white;
-            font-size: 1.3rem;
+            font-size: 1.4rem;
             transition: var(--transition);
             background: rgba(255,255,255,0.2);
-            width: 40px;
-            height: 40px;
+            width: 45px;
+            height: 45px;
             border-radius: 50%;
             display: flex;
             align-items: center;
@@ -314,53 +311,56 @@
         
         .flip-hint {
             position: absolute;
-            bottom: 15px;
-            font-size: 0.85rem;
+            bottom: 20px;
+            font-size: 0.9rem;
             opacity: 0.7;
-            background: rgba(255,255,255,0.8);
-            padding: 5px 10px;
+            background: rgba(255,255,255,0.1);
+            padding: 8px 15px;
             border-radius: 15px;
             color: var(--text-color);
+            backdrop-filter: blur(5px);
         }
         
         /* Company Info */
         .section-title {
             text-align: center;
-            margin: 50px 0 25px;
+            margin: 60px 0 30px;
             color: var(--text-color);
-            font-size: 2rem;
+            font-size: 2.2rem;
             position: relative;
         }
         
         .section-title:after {
             content: '';
             display: block;
-            width: 100px;
+            width: 120px;
             height: 4px;
             background: var(--accent-color);
-            margin: 15px auto;
+            margin: 20px auto;
             border-radius: 2px;
         }
         
         .company-info {
-            background-color: var(--card-bg);
-            padding: 35px;
-            border-radius: 15px;
+            background: linear-gradient(135deg, var(--card-bg), var(--light-color));
+            padding: 40px;
+            border-radius: 20px;
             box-shadow: var(--shadow);
-            margin: 30px 0;
-            border-left: 5px solid var(--accent-color);
+            margin: 40px 0;
+            border: 1px solid rgba(255, 255, 255, 0.1);
         }
         
         .company-info p {
-            margin-bottom: 15px;
+            margin-bottom: 20px;
+            font-size: 1.1rem;
+            line-height: 1.7;
         }
         
         /* Footer */
         footer {
             background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
             color: white;
-            padding: 50px 20px 30px;
-            margin-top: 60px;
+            padding: 60px 20px 30px;
+            margin-top: 80px;
         }
         
         .footer-content {
@@ -372,10 +372,10 @@
         }
         
         .footer-section h3 {
-            font-size: 1.3rem;
-            margin-bottom: 20px;
+            font-size: 1.4rem;
+            margin-bottom: 25px;
             position: relative;
-            padding-bottom: 10px;
+            padding-bottom: 15px;
         }
         
         .footer-section h3:after {
@@ -384,7 +384,7 @@
             bottom: 0;
             left: 0;
             width: 50px;
-            height: 2px;
+            height: 3px;
             background: var(--accent-color);
         }
         
@@ -393,7 +393,7 @@
         }
         
         .footer-links li {
-            margin-bottom: 10px;
+            margin-bottom: 12px;
         }
         
         .footer-links a {
@@ -404,13 +404,13 @@
         
         .footer-links a:hover {
             color: white;
-            padding-left: 5px;
+            padding-left: 8px;
         }
         
         .footer-bottom {
             max-width: 1200px;
-            margin: 40px auto 0;
-            padding-top: 20px;
+            margin: 50px auto 0;
+            padding-top: 30px;
             border-top: 1px solid rgba(255,255,255,0.2);
             text-align: center;
             display: flex;
@@ -420,38 +420,53 @@
         }
         
         .footer-logo {
-            font-size: 1.8rem;
+            font-size: 2rem;
             font-weight: 700;
+            background: linear-gradient(45deg, #ff6b6b, #ffa500);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
         }
         
         .copyright {
-            opacity: 0.8;
+            opacity: 0.7;
         }
         
         @media (max-width: 768px) {
             .team-grid {
-                grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+                grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
             }
             
             .flip-card {
-                height: 400px;
+                height: 420px;
             }
             
             h1 {
-                font-size: 2.2rem;
+                font-size: 2.5rem;
             }
             
             .hero {
-                padding: 50px 20px;
+                padding: 60px 20px;
             }
             
             .flame-logo {
-                font-size: 2.2rem;
+                font-size: 2.8rem;
             }
             
             .footer-bottom {
                 flex-direction: column;
-                gap: 15px;
+                gap: 20px;
+            }
+            
+            .cta-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .cta-button {
+                width: 100%;
+                max-width: 300px;
+                text-align: center;
             }
         }
         
@@ -466,21 +481,24 @@
             }
             
             .filter-btn {
-                width: 90%;
+                width: 100%;
+                max-width: 280px;
             }
             
             .flip-card {
                 height: 450px;
             }
             
-            .cta-buttons {
-                flex-direction: column;
-                align-items: center;
+            .hero {
+                padding: 50px 20px;
             }
             
-            .cta-button {
-                width: 80%;
-                text-align: center;
+            .flame-logo {
+                font-size: 2.2rem;
+            }
+            
+            h1 {
+                font-size: 2rem;
             }
         }
     </style>
@@ -491,10 +509,6 @@
         <div class="hero-content">
             <div class="flame-logo">FlameVerse AI</div>
             <div class="hero-tagline">Flame-led. AI-powered.</div>
-            <div class="hero-description">
-                <p>Μπες στο σύμπαν των "αόρατων" επαγγελμάτων που θα καθορίσουν τον κόσμο του αύριο</p>
-                <p>Το FlameVerse AI είναι ένα ταξίδι αυτογνωσίας που συνδυάζει <span class="highlight">ψυχολογία</span>, τεχνητή νοημοσύνη και αφήγηση σε μια εμπειρία serious game και ανοίγει δρόμους προς τα <span class="highlight">επαγγέλματα του μέλλοντος</span>, όπως χαρτογραφούνται ήδη από διεθνείς πηγές και οργανισμούς (πχ WEF).</p>
-            </div>
             <div class="cta-buttons">
                 <a href="#" class="cta-button cta-primary">Ξεκίνα τώρα</a>
                 <a href="#" class="cta-button cta-secondary">Μάθε περισσότερα</a>
@@ -542,7 +556,6 @@
                     <li><a href="#">Ξεκίνα το ταξίδι σου</a></li>
                     <li><a href="#">Πώς λειτουργεί</a></li>
                     <li><a href="#">Επαγγέλματα του μέλλοντος</a></li>
-                    <li><a href="#">Συχνές ερωτήσεις</a></li>
                 </ul>
             </div>
             <div class="footer-section">
@@ -557,7 +570,7 @@
                 <h3>Νομικά</h3>
                 <ul class="footer-links">
                     <li><a href="#">Όροι χρήσης</a></li>
-                    <li><a href="#">Πολιτική απορήτου</a></li>
+                    <li><a href="#">Πολιτική απορρήτου</a></li>
                 </ul>
             </div>
             <div class="footer-section">
