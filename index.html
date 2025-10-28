@@ -3,921 +3,879 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Η Ομάδα Μας - CareerFlame</title>
+    <title>Career Flame - Η Ομάδα Μας</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        :root {
-            --primary-color: #1a365d;
-            --secondary-color: #2d3748;
-            --accent-color: #3182ce;
-            --light-color: #4a5568;
-            --background-color: #0f1419;
-            --text-color: #ffffff;
-            --card-bg: #1e293b;
-            --shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
-            --transition: all 0.3s ease;
-        }
-        
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
-        
+
+        :root {
+            --color-primary: #010128;
+            --color-secondary: #7371FC;
+            --color-accent: #A594F9;
+            --color-light: #E5D9F2;
+            --color-bg: #F5EFFF;
+        }
+
         body {
-            background: linear-gradient(135deg, var(--primary-color), var(--background-color));
-            color: var(--text-color);
+            background-color: var(--color-bg);
+            color: var(--color-primary);
             line-height: 1.6;
-            padding: 0;
-            max-width: 100%;
-            margin: 0 auto;
-            min-height: 100vh;
         }
-        
-        /* Hero Section */
-        .hero {
-            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
-            color: white;
-            padding: 80px 20px;
-            text-align: center;
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .hero-content {
-            max-width: 800px;
-            margin: 0 auto;
-            position: relative;
-            z-index: 1;
-        }
-        
-        .flame-logo {
-            font-size: 3.5rem;
-            font-weight: 800;
-            margin-bottom: 20px;
-            background: linear-gradient(45deg, #ff6b6b, #ffa500);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-        
-        .hero-tagline {
-            font-size: 1.5rem;
-            margin-bottom: 30px;
-            opacity: 0.9;
-            font-weight: 300;
-        }
-        
-        .cta-buttons {
-            display: flex;
-            gap: 20px;
-            justify-content: center;
-            flex-wrap: wrap;
-        }
-        
-        .cta-button {
-            padding: 16px 35px;
-            border-radius: 30px;
-            font-weight: 600;
-            text-decoration: none;
-            transition: var(--transition);
-            font-size: 1.1rem;
-        }
-        
-        .cta-primary {
-            background: linear-gradient(45deg, #ff6b6b, #ffa500);
-            color: white;
-            box-shadow: var(--shadow);
-        }
-        
-        .cta-secondary {
-            background: rgba(255, 255, 255, 0.1);
-            color: white;
-            border: 2px solid rgba(255, 255, 255, 0.3);
-            backdrop-filter: blur(10px);
-        }
-        
-        .cta-button:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.4);
-        }
-        
-        /* Main Content */
+
         .container {
             max-width: 1200px;
             margin: 0 auto;
-            padding: 40px 20px;
-        }
-        
-        header {
-            text-align: center;
-            margin-bottom: 50px;
-            padding: 40px 0 20px;
-        }
-        
-        h1 {
-            font-size: 3rem;
-            margin-bottom: 20px;
-            position: relative;
-            color: var(--text-color);
-            background: linear-gradient(45deg, #ffffff, #a0aec0);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-        
-        .subtitle {
-            font-size: 1.3rem;
-            opacity: 0.8;
-            max-width: 800px;
-            margin: 0 auto;
-            font-weight: 300;
-        }
-        
-        .filter-container {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 12px;
-            margin: 40px 0;
             padding: 0 20px;
         }
-        
-        .filter-btn {
-            background: rgba(255, 255, 255, 0.1);
-            border: 2px solid rgba(255, 255, 255, 0.2);
-            padding: 14px 28px;
-            border-radius: 30px;
-            cursor: pointer;
-            transition: var(--transition);
-            font-weight: 600;
-            box-shadow: var(--shadow);
-            color: var(--text-color);
-            backdrop-filter: blur(10px);
-        }
-        
-        .filter-btn:hover {
-            background: var(--accent-color);
+
+        /* Header Styles */
+        header {
+            background: linear-gradient(135deg, var(--color-primary), var(--color-secondary));
             color: white;
-            transform: translateY(-3px);
-            border-color: var(--accent-color);
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 4px 12px rgba(1, 1, 40, 0.1);
         }
-        
-        .filter-btn.active {
-            background: var(--accent-color);
-            color: white;
-            border-color: var(--accent-color);
-        }
-        
-        .team-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-            gap: 35px;
-            margin-top: 30px;
-        }
-        
-        .flip-card {
-            background-color: transparent;
-            perspective: 1000px;
-            height: 450px;
-            border-radius: 20px;
-        }
-        
-        .flip-card-inner {
-            position: relative;
-            width: 100%;
-            height: 100%;
-            text-align: center;
-            transition: transform 0.8s;
-            transform-style: preserve-3d;
-            box-shadow: var(--shadow);
-            border-radius: 20px;
-        }
-        
-        .flip-card:hover .flip-card-inner {
-            transform: rotateY(180deg);
-        }
-        
-        .flip-card-front, .flip-card-back {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            -webkit-backface-visibility: hidden;
-            backface-visibility: hidden;
-            border-radius: 20px;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            padding: 30px;
-        }
-        
-        .flip-card-front {
-            background: linear-gradient(135deg, var(--card-bg), var(--light-color));
-            color: var(--text-color);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-        }
-        
-        .flip-card-back {
-            background: linear-gradient(135deg, var(--accent-color), #2b6cb0);
-            color: white;
-            transform: rotateY(180deg);
-            overflow-y: auto;
-            text-align: left;
-            justify-content: flex-start;
-            padding: 30px;
-        }
-        
-        .member-photo {
-            width: 160px;
-            height: 160px;
-            border-radius: 50%;
-            background: linear-gradient(135deg, var(--accent-color), #2b6cb0);
-            margin: 0 auto 25px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 3.5rem;
-            color: white;
-            box-shadow: var(--shadow);
-            border: 4px solid rgba(255, 255, 255, 0.2);
-        }
-        
-        .member-name {
-            font-weight: bold;
-            font-size: 1.6rem;
-            margin-bottom: 10px;
-        }
-        
-        .member-role {
-            color: #a0aec0;
-            font-size: 1.2rem;
-            margin-bottom: 20px;
-            font-weight: 500;
-        }
-        
-        .member-department {
-            background: rgba(255, 255, 255, 0.15);
-            padding: 10px 20px;
-            border-radius: 20px;
-            font-size: 1rem;
-            display: inline-block;
-            color: var(--text-color);
-            font-weight: 600;
-            border: 1px solid rgba(255, 255, 255, 0.2);
-        }
-        
-        .bio-title {
-            font-size: 1.5rem;
-            margin-bottom: 20px;
-            text-align: center;
-            width: 100%;
-            border-bottom: 1px solid rgba(255,255,255,0.3);
-            padding-bottom: 15px;
-        }
-        
-        .bio-text {
-            font-size: 1rem;
-            line-height: 1.7;
-        }
-        
-        .social-links {
-            display: flex;
-            gap: 15px;
-            margin-top: 25px;
-            justify-content: center;
-            width: 100%;
-        }
-        
-        .social-links a {
-            color: white;
-            font-size: 1.4rem;
-            transition: var(--transition);
-            background: rgba(255,255,255,0.2);
-            width: 45px;
-            height: 45px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-        
-        .social-links a:hover {
-            color: var(--accent-color);
-            transform: translateY(-3px);
-            background: white;
-        }
-        
-        .flip-hint {
-            position: absolute;
-            bottom: 20px;
-            font-size: 0.9rem;
-            opacity: 0.7;
-            background: rgba(255,255,255,0.1);
-            padding: 8px 15px;
-            border-radius: 15px;
-            color: var(--text-color);
-            backdrop-filter: blur(5px);
-        }
-        
-        /* Company Info */
-        .section-title {
-            text-align: center;
-            margin: 60px 0 30px;
-            color: var(--text-color);
-            font-size: 2.2rem;
-            position: relative;
-        }
-        
-        .section-title:after {
-            content: '';
-            display: block;
-            width: 120px;
-            height: 4px;
-            background: var(--accent-color);
-            margin: 20px auto;
-            border-radius: 2px;
-        }
-        
-        .company-info {
-            background: linear-gradient(135deg, var(--card-bg), var(--light-color));
-            padding: 40px;
-            border-radius: 20px;
-            box-shadow: var(--shadow);
-            margin: 40px 0;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-        }
-        
-        .company-info p {
-            margin-bottom: 20px;
-            font-size: 1.1rem;
-            line-height: 1.7;
-        }
-        
-        /* Footer */
-        footer {
-            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
-            color: white;
-            padding: 60px 20px 30px;
-            margin-top: 80px;
-        }
-        
-        .footer-content {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 40px;
-        }
-        
-        .footer-section h3 {
-            font-size: 1.4rem;
-            margin-bottom: 25px;
-            position: relative;
-            padding-bottom: 15px;
-        }
-        
-        .footer-section h3:after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 50px;
-            height: 3px;
-            background: var(--accent-color);
-        }
-        
-        .footer-links {
-            list-style: none;
-        }
-        
-        .footer-links li {
-            margin-bottom: 12px;
-        }
-        
-        .footer-links a {
-            color: rgba(255,255,255,0.8);
-            text-decoration: none;
-            transition: var(--transition);
-        }
-        
-        .footer-links a:hover {
-            color: white;
-            padding-left: 8px;
-        }
-        
-        .footer-bottom {
-            max-width: 1200px;
-            margin: 50px auto 0;
-            padding-top: 30px;
-            border-top: 1px solid rgba(255,255,255,0.2);
-            text-align: center;
+
+        .header-content {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            flex-wrap: wrap;
         }
-        
-        .footer-logo {
-            font-size: 2rem;
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo i {
+            font-size: 1.8rem;
+            color: var(--color-light);
+        }
+
+        .logo h1 {
+            font-size: 1.5rem;
             font-weight: 700;
-            background: linear-gradient(45deg, #ff6b6b, #ffa500);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
         }
-        
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+            position: relative;
+        }
+
+        nav a:hover {
+            color: var(--color-light);
+        }
+
+        nav a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -5px;
+            left: 0;
+            background-color: var(--color-light);
+            transition: width 0.3s;
+        }
+
+        nav a:hover::after {
+            width: 100%;
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 4rem 0;
+            text-align: center;
+            background: linear-gradient(135deg, var(--color-light), var(--color-bg));
+        }
+
+        .hero h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: var(--color-primary);
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: 0 auto 2rem;
+            color: var(--color-primary);
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: var(--color-secondary);
+            color: white;
+            padding: 12px 30px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn:hover {
+            background-color: var(--color-accent);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(115, 113, 252, 0.3);
+        }
+
+        /* Team Section */
+        .team-section {
+            padding: 4rem 0;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+            color: var(--color-primary);
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(to right, var(--color-secondary), var(--color-accent));
+            margin: 10px auto;
+            border-radius: 2px;
+        }
+
+        .team-category {
+            margin-bottom: 4rem;
+        }
+
+        .category-title {
+            font-size: 1.8rem;
+            margin-bottom: 2rem;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--color-light);
+            color: var(--color-secondary);
+        }
+
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .team-member {
+            background-color: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .team-member:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(115, 113, 252, 0.15);
+        }
+
+        .member-header {
+            padding: 1.5rem;
+            background: linear-gradient(135deg, var(--color-secondary), var(--color-accent));
+            color: white;
+        }
+
+        .member-name {
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin-bottom: 5px;
+        }
+
+        .member-role {
+            font-size: 1rem;
+            opacity: 0.9;
+        }
+
+        .member-bio {
+            padding: 1.5rem;
+            max-height: 300px;
+            overflow-y: auto;
+        }
+
+        .member-bio p {
+            margin-bottom: 1rem;
+        }
+
+        /* About Section */
+        .about-section {
+            padding: 4rem 0;
+            background: linear-gradient(135deg, var(--color-light), var(--color-bg));
+        }
+
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .about-text h3 {
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+            color: var(--color-primary);
+        }
+
+        .about-text p {
+            margin-bottom: 1.5rem;
+        }
+
+        .about-image {
+            text-align: center;
+        }
+
+        .about-image img {
+            max-width: 100%;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--color-primary);
+            color: white;
+            padding: 3rem 0 1.5rem;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-column h3 {
+            font-size: 1.3rem;
+            margin-bottom: 1.5rem;
+            position: relative;
+            padding-bottom: 10px;
+        }
+
+        .footer-column h3::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 50px;
+            height: 2px;
+            background-color: var(--color-secondary);
+        }
+
+        .footer-column ul {
+            list-style: none;
+        }
+
+        .footer-column ul li {
+            margin-bottom: 10px;
+        }
+
+        .footer-column a {
+            color: var(--color-light);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-column a:hover {
+            color: var(--color-secondary);
+        }
+
+        .legal-info {
+            margin-top: 1rem;
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+
         .copyright {
+            text-align: center;
+            padding-top: 1.5rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 0.9rem;
             opacity: 0.7;
         }
-        
-        @media (max-width: 768px) {
-            .team-grid {
-                grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+
+        /* Back to Top Button */
+        .back-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background-color: var(--color-secondary);
+            color: white;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 1.2rem;
+            cursor: pointer;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s;
+            z-index: 99;
+            box-shadow: 0 5px 15px rgba(115, 113, 252, 0.3);
+        }
+
+        .back-to-top.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .back-to-top:hover {
+            background-color: var(--color-accent);
+            transform: translateY(-5px);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .about-content {
+                grid-template-columns: 1fr;
             }
             
-            .flip-card {
-                height: 420px;
-            }
-            
-            h1 {
-                font-size: 2.5rem;
-            }
-            
-            .hero {
-                padding: 60px 20px;
-            }
-            
-            .flame-logo {
-                font-size: 2.8rem;
-            }
-            
-            .footer-bottom {
-                flex-direction: column;
-                gap: 20px;
-            }
-            
-            .cta-buttons {
-                flex-direction: column;
-                align-items: center;
-            }
-            
-            .cta-button {
-                width: 100%;
-                max-width: 300px;
-                text-align: center;
+            .about-image {
+                order: -1;
             }
         }
-        
-        @media (max-width: 480px) {
+
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                gap: 1rem;
+            }
+            
+            nav ul {
+                gap: 1rem;
+            }
+            
+            .hero h2 {
+                font-size: 2rem;
+            }
+            
             .team-grid {
                 grid-template-columns: 1fr;
             }
             
-            .filter-container {
-                flex-direction: column;
-                align-items: center;
+            .mobile-menu-btn {
+                display: block;
             }
             
-            .filter-btn {
+            .nav-menu {
+                display: none;
                 width: 100%;
-                max-width: 280px;
+                text-align: center;
+                margin-top: 1rem;
             }
             
-            .flip-card {
-                height: 450px;
+            .nav-menu.active {
+                display: block;
             }
             
-            .hero {
-                padding: 50px 20px;
-            }
-            
-            .flame-logo {
-                font-size: 2.2rem;
-            }
-            
-            h1 {
-                font-size: 2rem;
+            .nav-menu ul {
+                flex-direction: column;
+                gap: 1rem;
             }
         }
     </style>
 </head>
 <body>
-    <!-- Hero Section -->
-    <section class="hero">
-        <div class="hero-content">
-            <div class="flame-logo">FlameVerse AI</div>
-            <div class="hero-tagline">Flame-led. AI-powered.</div>
-            <div class="cta-buttons">
-                <a href="#" class="cta-button cta-primary">Ξεκίνα τώρα</a>
-                <a href="#" class="cta-button cta-secondary">Μάθε περισσότερα</a>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <i class="fas fa-fire"></i>
+                    <h1>Career Flame</h1>
+                </div>
+                <button class="mobile-menu-btn">
+                    <i class="fas fa-bars"></i>
+                </button>
+                <nav class="nav-menu">
+                    <ul>
+                        <li><a href="#home">Αρχική</a></li>
+                        <li><a href="#team">Η Ομάδα</a></li>
+                        <li><a href="#about">Σχετικά με εμάς</a></li>
+                        <li><a href="#contact">Επικοινωνία</a></li>
+                    </ul>
+                </nav>
             </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="container">
+            <h2>Η Ομάδα του FlameVerse</h2>
+            <p>Συνδυάζουμε επιστημονική γνώση, τεχνολογία και δημιουργικότητα για να αναπτύξουμε λύσεις που ενδυναμώνουν ουσιαστικά τους νέους και υποστηρίζουν την προσωπική τους εξέλιξη.</p>
+            <a href="#team" class="btn">Γνωρίστε την Ομάδα</a>
         </div>
     </section>
 
     <!-- Team Section -->
-    <div class="container">
-        <header>
-            <h1>Η Ομάδα Μας</h1>
-            <p class="subtitle">Γνωρίστε την ομάδα του CareerFlame και το FlameVerse - επαγγελματίες που συνδυάζουν την επιστήμη με την τεχνολογία για να υποστηρίξουν την επαγγελματική σας πορεία</p>
-        </header>
-        
-        <div class="filter-container">
-            <button class="filter-btn active" data-filter="all">Όλη η Ομάδα</button>
-            <button class="filter-btn" data-filter="founder">Ιδρύτρια</button>
-            <button class="filter-btn" data-filter="scientific">Επιστημονική Επιτροπή</button>
-            <button class="filter-btn" data-filter="legal">Νομική Υποστήριξη</button>
-            <button class="filter-btn" data-filter="development">Ανάπτυξη</button>
-            <button class="filter-btn" data-filter="support">Διοικητική Υποστήριξη</button>
-            <button class="filter-btn" data-filter="volunteer">Εθελοντική Ομάδα</button>
-        </div>
-        
-        <main>
-            <div class="team-grid" id="teamContainer">
-                <!-- Τα μέλη της ομάδας θα προστεθούν μέσω JavaScript -->
+    <section class="team-section" id="team">
+        <div class="container">
+            <h2 class="section-title">Η Ομάδα Μας</h2>
+            
+            <!-- Founder -->
+            <div class="team-category">
+                <h3 class="category-title">Ιδρύτρια - Project Manager</h3>
+                <div class="team-grid">
+                    <div class="team-member">
+                        <div class="member-header">
+                            <h3 class="member-name">Νίκη Δαλιανά</h3>
+                            <p class="member-role">Ιδρύτρια - Project Manager</p>
+                        </div>
+                        <div class="member-bio">
+                            <p>Η Νίκη Δαλιανά είναι απόφοιτος του τμήματος Φιλοσοφίας, Παιδαγωγικής και Ψυχολογίας (κατεύθυνση Ψυχολογίας) του Εθνικού και Καποδιστριακού Πανεπιστημίου Αθηνών, καθώς και κάτοχος μεταπτυχιακού τίτλου στην «Συμβουλευτική και Επαγγελματικό Προσανατολισμό» του ΕΚΠΑ. Ασκεί το αντικείμενο του επαγγελματικού προσανατολισμού και της ψυχολογικής ενδυνάμωσης με εμπειρία τόσο στον δημόσιο όσο και στον ιδιωτικό τομέα.</p>
+                            <p>Κατά τη διάρκεια των μεταπτυχιακών της σπουδών, πραγματοποίησε πρακτική άσκηση στο ΚΕΣΥΠ Ελευσίνας και στον ΟΑΕΔ, παρέχοντας συμβουλευτική σε εφήβους και ανέργους. Επί πέντε χρόνια υπήρξε υπεύθυνη της υπηρεσίας «Από Φοιτητές για Φοιτητές» του ΕΚΠΑ, ενώ υπήρξε και επιστημονικός συνεργάτης στη Μονάδα Εφηβικής Υγείας (ΜΕΥ) του Νοσοκομείου Παίδων «Π. & Α. Κυριακού» και της ΕΕΕΙ, παρέχοντας υποστήριξη σε εφήβους, γονείς και εκπαιδευτικούς.</p>
+                            <p>Έχει συμμετάσχει στο πρόγραμμα Αθλητικές Ακαδημίες ΟΠΑΠ και στο πρόγραμμα «Από το Α ως το Ω – Ακαδημία για Γονείς», ενώ διαθέτει εμπειρία και στη συμβουλευτική ατόμων με άνοια, MCI και Alzheimer. Έχει επίσης συνεργαστεί με την ΑΜΚΕ Με Άλλα Μάτια ως σύμβουλος σταδιοδρομίας και προσβασιμότητας για ΑμεΑ.</p>
+                            <p>Έχει παρακολουθήσει προγράμματα εξειδίκευσης στη Γνωσιακή Συμπεριφοριστική Θεραπεία (ΕΚΠΑ), στην Ειδική Αγωγή (Πανεπιστήμιο Πατρών) και στο University of Minnesota (ΗΠΑ) στον τομέα του Human Resource Management. Παράλληλα, διαθέτει πιστοποιήσεις σε δεξιότητες αιχμής, όπως το Social Media Marketing από τη Meta, το Digital Marketing & E-commerce από την Google, τις εφαρμογές Generative AI και την ανάπτυξη λύσεων τεχνητής νοημοσύνης από την IBM, καθώς και τη δημιουργία ψηφιακού περιεχομένου από την Adobe.</p>
+                            <p>Είναι ιδρύτρια της εταιρείας CareerFlame, μέλος της Εξελεγκτικής Επιτροπής του ΣΕΣΥΣΕΠ (Σύλλογος Ελλήνων Συμβούλων Σταδιοδρομίας & Επαγγελματικού Προσανατολισμού) και μέλος της Ελληνικής Εταιρίας Συμβουλευτικής & Προσανατολισμού. Παράλληλα, είναι ενταγμένη στο Μητρώο Συμβούλων Σταδιοδρομίας/Επαγγελματικού Προσανατολισμού του ΕΟΠΠΕΠ (Επίπεδο Α1 – Αξιολογητών).</p>
+                            <p>Έχει επίσης ολοκληρώσει με άριστα (100/100) το πρόγραμμα επαγγελματικής κατάρτισης «GrowYourBusiness: DevelopmentofDigitalSkills» του Οικονομικού Πανεπιστημίου Αθηνών (ΚΕΔΙΒΙΜ ΟΠΑ, 2024–2025), εστιάζοντας στην ανάπτυξη ψηφιακών δεξιοτήτων και στρατηγικών επιχειρηματικής ενίσχυσης.</p>
+                            <p>Έχει δημοσιεύσεις σε ελληνικά και διεθνή περιοδικά, συμμετοχές σε συλλογικούς τόμους και παρουσιάσεις σε συνέδρια. Αρθρογραφεί σε μέσα όπως το Κανάλι Ένα 90.4 FM, LIFO, Palmografos και meallamatia.gr. Παράλληλα δραστηριοποιείται στην υποκριτική, τη μουσική και τη φωτογραφία.</p>
+                            <p>Στόχος της είναι η αξιοποίηση της επιστημονικής γνώσης, της τεχνολογίας, της καινοτομίας και της δημιουργικότητας για την ανάπτυξη εργαλείων και λύσεων που ενδυναμώνουν ουσιαστικά τους νέους και υποστηρίζουν οργανισμούς που επενδύουν στην ψυχολογική ασφάλεια και στην προσωπική εξέλιξη.</p>
+                        </div>
+                    </div>
+                </div>
             </div>
             
-            <h2 class="section-title">Σχετικά με το CareerFlame</h2>
-            <div class="company-info">
-                <p>Η <strong>Career Flame</strong> (www.careerflame.gr) είναι μια ατομική επιχείρηση που ιδρύθηκε από τη Νίκη Δαλιανά με σκοπό τη δημιουργία καινοτόμων εργαλείων συμβουλευτικής σταδιοδρομίας & επαγγελματικού προσανατολισμού, ψυχολογικής ενδυνάμωσης και προσωπικής ανάπτυξης για νέους και εφήβους.</p>
-                <p>Συνδυάζοντας επιστημονική τεκμηρίωση, ψηφιακή τεχνολογία και δημιουργική εμπειρία χρήστη, η Career Flame στοχεύει στη στήριξη της νέας γενιάς στην επαγγελματική της πορεία με ουσιαστικά, προσωποποιημένα μέσα.</p>
-                <p>Η βασική της πλατφόρμα, το <strong>FlameVerse AI</strong> αναπτύσσεται με τη συμβολή εξειδικευμένης επιστημονικής επιτροπής, επαγγελματιών ψυχικής υγείας και εκπαιδευτικών, και υποστηρίζεται από μια ευρύτερη ομάδα εθελοντών διαφορετικών ειδικοτήτων.</p>
+            <!-- Scientific Committee -->
+            <div class="team-category">
+                <h3 class="category-title">Επιστημονική Επιτροπή</h3>
+                <div class="team-grid">
+                    <div class="team-member">
+                        <div class="member-header">
+                            <h3 class="member-name">Δρ. Αλέξανδρος-Σταμάτιος Αντωνίου</h3>
+                            <p class="member-role">Καθηγητής Ψυχολογίας, ΕΚΠΑ</p>
+                        </div>
+                        <div class="member-bio">
+                            <p>Ο Αλέξανδρος-Σταμάτιος Αντωνίου είναι Καθηγητής Ψυχολογίας και κατέχει προπτυχιακούς και μεταπτυχιακούς τίτλους (3 διδακτορικά) στην Ψυχολογία, τη Φιλοσοφία, την Εκπαίδευση και τη Διοίκηση από πανεπιστήμια της Ελλάδας και του Ηνωμένου Βασιλείου (με υποτροφία του Ιδρύματος Κρατικών Υποτροφιών). Έχει διδάξει σε προπτυχιακούς και μεταπτυχιακούς φοιτητές πανεπιστημίων (Ιατρική Σχολή και Σχολή Φιλοσοφίας του ΕΚΠΑ, Πάντειο Πανεπιστήμιο κ.ά.), καθώς και σε γιατρούς νοσοκομείων, νοσηλευτικό προσωπικό, ψυχολόγους, εκπαιδευτικούς κ.ά.</p>
+                            <p>Έχει λάβει πολυάριθμα βραβεία και υποτροφίες και έχει συμμετάσχει ως εθνικός συντονιστής/ερευνητής σε πολλά εθνικά και ευρωπαϊκά ερευνητικά προγράμματα. Η επαγγελματική του εμπειρία περιλαμβάνει: α) Διευθυντής του Οργανισμού «Επάνοδος» του Υπουργείου Δικαιοσύνης, β) Επιστημονικός Σύμβουλος στην Εθνική Επιτροπή Ραδιοτηλεόρασης και γ) Σύμβουλος Ανθρώπινου Δυναμικού για δημόσιους και ιδιωτικούς οργανισμούς.</p>
+                            <p>Έχει συμμετάσχει με 350 παρουσιάσεις σε εθνικά και διεθνή συνέδρια και έχει διατελέσει συν-διευθυντής του Κλάδου Οργανωσιακής και Εργασιακής Ψυχολογίας της Ελληνικής Ψυχολογικής Εταιρείας για τρεις θητείες. Σήμερα είναι: Διευθυντής του Εργαστηρίου Κοινωνικής και Οργανωσιακής Ψυχολογίας, Διευθυντής του Μεταπτυχιακού Προγράμματος «Ειδικές Εκπαιδευτικές Ανάγκες και Διδασκαλία», Εθνικός Συντονιστής της European Agency for Special Needs & Inclusive Education, καθώς και Διευθυντής/μέλος επιτροπών του Υπουργείου Παιδείας.</p>
+                            <p>Είναι συγγραφέας 12 βιβλίων και άνω των 120 άρθρων σε επιστημονικά περιοδικά με κριτές και 250 κεφαλαίων σε συλλογικούς τόμων (με περισσότερες από 4.150 ετεροαναφορές). Έχει μεταφράσει 40 βιβλία στους τομείς της ψυχολογίας, ιατρικής, εκπαίδευσης και φιλοσοφίας. Είναι διευθυντής δύο επιστημονικών σειρών και επιμελητής/συνεπιμελητής 24 συλλογικών τόμων (10 ελληνικές και 14 διεθνείς εκδόσεις), σε συνεργασία με διακεκριμένους ακαδημαϊκούς.</p>
+                            <p>Τα βασικά ερευνητικά του ενδιαφέροντα περιλαμβάνουν: ευεξία στην εργασία, οργανωσιακή πολιτική και ζητήματα φύλου, εκπαιδευτική κουλτούρα και ηγεσία, ειδικές εκπαιδευτικές ανάγκες και αναπηρίες, καθώς και θέματα ηθικής και αξιών στην εργασία.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="team-member">
+                        <div class="member-header">
+                            <h3 class="member-name">Δρ. Ορέστης Γιωτάκος</h3>
+                            <p class="member-role">Νευροψυχίατρος</p>
+                        </div>
+                        <div class="member-bio">
+                            <p>Ο Ορέστης Γιωτάκος ολοκλήρωσε τις βασικές του σπουδές στην Στρατιωτική Ιατρική Σχολή, στη Θεσσαλονίκη, απέκτησε την ειδικότητα του Ψυχιάτρου στο Νοσοκομείο Ευαγγελισμός, το MSc in Neuroscience στο Institute of Psychiatry στο Λονδίνο και το Διδακτορικό στην Ιατρική Σχολή του Πανεπιστημίου Αθηνών.</p>
+                            <p>Έχει πλούσιο ερευνητικό και εκπαιδευτικό έργο, συνεργασίες με τοπικούς και διεθνείς επιστημονικούς οργανισμούς και είναι υπεύθυνος διοργάνωσης πολλών τακτικών συνεδρίων και εκδηλώσεων για την ψυχική υγεία. Έχει συγγράψει πλήθος άρθρων και βιβλίων, στην ελληνική και αγγλική γλώσσα, στoυς τομείς της ψυχιατρικής και της νευροεπιστήμης, με αντικείμενα κυρίως την ψυχοπαθολογία, τη νευροβιολογία των ψυχικών παθήσεων και την πρόληψη.</p>
+                            <p>Διετέλεσε διευθυντής της Ψυχιατρικής Κλινικής του Στρατιωτικού Νοσοκομείου Αθηνών (2009-2016). Είναι ιδρυτής της ΑΜΚΕ «Ομπρέλα – Νευροεπιστήμες & Ψυχική Υγεία» (www.obrela.gr), Editor του περιοδικού "Dialogues in Clinical Neuroscience & Mental Health" (www.obrela-journal.gr) και ιδρυτής της καμπάνιας "I care for my brain" (www.icareformybrain.org).</p>
+                        </div>
+                    </div>
+                </div>
             </div>
-        </main>
-    </div>
-
-    <!-- Footer -->
-    <footer>
-        <div class="footer-content">
-            <div class="footer-section">
-                <h3>FlameVerse AI</h3>
-                <ul class="footer-links">
-                    <li><a href="#">Ξεκίνα το ταξίδι σου</a></li>
-                    <li><a href="#">Πώς λειτουργεί</a></li>
-                    <li><a href="#">Επαγγέλματα του μέλλοντος</a></li>
-                </ul>
+            
+            <!-- Administrative Support -->
+            <div class="team-category">
+                <h3 class="category-title">Διοικητική Υποστήριξη</h3>
+                <div class="team-grid">
+                    <div class="team-member">
+                        <div class="member-header">
+                            <h3 class="member-name">Ιάκωβος Δαρζέντας</h3>
+                            <p class="member-role">Web Support Developer - Beta Operation Coordinator</p>
+                        </div>
+                        <div class="member-bio">
+                            <p>Ο Ιάκωβος είναι φοιτητής στο τμήμα Δημόσιας Διοίκησης του Ελληνικού Ανοικτού Πανεπιστημίου, με ενδιαφέροντα που εστιάζουν στην διοίκηση και την τεχνολογία. Ασχολείται ενεργά με projects που έχουν σχέση με την ηλεκτρονική αυτοματοποίηση διαδικασιών, και δίνει ιδιαίτερη έμφαση στη σύνδεση της θεωρητικής γνώσης με πρακτικές εφαρμογές που έχουν κοινωνικό αντίκτυπο.</p>
+                            <p>Έχει συμμετάσχει σε διάφορες εθελοντικές ομάδες με διαφορετικό ρόλο κάθε φορά, ενώ τον ενδιαφέρει η διασταύρωση τεχνολογίας – ανθρωπιστικών επιστημών. Στόχος του είναι να συνεισφέρει σε καινοτόμες λύσεις που προωθούν την αυτογνωσία, τη βιώσιμη μάθηση και την ενδυνάμωση των νέων.</p>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <div class="footer-section">
-                <h3>Η Ομάδα Μας</h3>
-                <ul class="footer-links">
-                    <li><a href="#">Σχετικά με εμάς</a></li>
-                    <li><a href="#">Επιστημονική Επιτροπή</a></li>
-                    <li><a href="#">Συνεργάτες</a></li>
-                </ul>
+            
+            <!-- Legal Support -->
+            <div class="team-category">
+                <h3 class="category-title">Νομική Υποστήριξη</h3>
+                <div class="team-grid">
+                    <div class="team-member">
+                        <div class="member-header">
+                            <h3 class="member-name">Δρ. Δέσποινα Κώτση</h3>
+                            <p class="member-role">Νομική Σύμβουλος - Υπεύθυνη Κανονιστικής Συμμόρφωσης</p>
+                        </div>
+                        <div class="member-bio">
+                            <p>Η Δέσποινα Σπ. Κώτση είναι Δικηγόρος, παρ' Αρείω Πάγω, και Διδάκτωρ της Νομικής Σχολής Αθηνών (ΕΚΠΑ). Είναι κάτοχος δύο μεταπτυχιακών τίτλων, ήτοι στο Εξειδικευμένο Δημόσιο Δίκαιο (Νομική Σχολή Αθηνών & Νομική Σχολή Παν/μίου Montesquieu - Bordeaux IV) και στο Διεθνές Δίκαιο & Διπλωματικές Σπουδές (Πάντειο Πανεπιστήμιο).</p>
+                            <p>Το δημόσιο δίκαιο ως παράμετρος του εκπαιδευτικού συστήματος στην Ελλάδα ήταν η θεματική της διδακτορικής της διατριβής, η οποία στηρίχθηκε σε έναν πρωτότυπο τρόπο: την ανάλυση των συστατικών στοιχείων του εν λόγω συστήματος με βάση μία μαθηματική σχέση. Στα ενδιαφέροντα της περιλαμβάνεται η εφαρμογή του υπολογιστικού τρόπου σκέψης (computational thinking) στις κοινωνικές επιστήμες και ειδικά στο χώρο της νομικής.</p>
+                            <p>Έχει συμμετάσχει σε πληθώρα ερευνητικών προγραμμάτων με ποικίλο επιστημονικό ενδιαφέρον, αλλά και ως ομιλήτρια σε συνέδρια, στην Ελλάδα και το εξωτερικό. Έχει δημοσιεύσει άρθρα που αφορούν στο δημόσιο δίκαιο και ειδικά το Εγχειρίδιο για την Διακριτική Ευχέρεια στις Δημόσιες Συμβάσεις (Τίτλος: "Α Handbook on Discretion in Public Procurement") που εκδόθηκε το 2020 από τον εκδοτικό οίκο Cambridge Scholars Publishing.</p>
+                            <p>Επίσης, έχει λάβει βραβεία και διακρίσεις (11 συνολικά) σε πανελλαδικό επίπεδο για το λογοτεχνικό της έργο. Υποστηρίζει εθελοντικά το FlameVerse σε θέματα νομικής συμμόρφωσης, πνευματικών δικαιωμάτων, προστασίας δεδομένων (GDPR) και συμβουλευτικής καθοδήγησης, συμβάλλοντας στη διασφάλιση της αξιοπιστίας και της δεοντολογίας της πλατφόρμας.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="team-member">
+                        <div class="member-header">
+                            <h3 class="member-name">Ζωή Τσακιρίδου</h3>
+                            <p class="member-role">Υπεύθυνη Προστασίας Προσωπικών Δεδομένων (DPO) - Content Writer</p>
+                        </div>
+                        <div class="member-bio">
+                            <p>Η Ζωή Τσακιρίδου, ως Υπεύθυνη Διοικητικού Τομέα στην εταιρεία ena Σύμβουλοι Ανάπτυξης, διαθέτει έντεκα χρόνια εμπειρίας και βαθιά γνώση στις διοικητικές λειτουργίες, την οργάνωση εσωτερικών διαδικασιών και την υποστήριξη έργων ψηφιακού μετασχηματισμού. Κατά την επαγγελματική της πορεία έχει αναλάβει ποικίλους ρόλους που συνδέονται με την εκπαίδευση, την ασφάλεια εργαζομένων και δεδομένων (DPO), την υποστήριξη ΙΤ, καθώς και την εταιρική επικοινωνία και κουλτούρα.</p>
+                            <p>Με αφοσίωση στη συνεχή βελτίωση, συμμετέχει ενεργά σε πρωτοβουλίες και καινοτομίες που ενισχύουν την αποδοτικότητα της ομάδας μέσω αυτοματισμών και βελτιστοποίησης ροών. Διαθέτει Πτυχίο Διοίκησης Επιχειρήσεων (ΤΕΙ ΑΜΘ) και Μεταπτυχιακό στη Διοίκηση Καινοτομίας, Τεχνολογίας και Επιχειρήσεων (ΔΠΘ). Έχει συμβάλει σε έργα πληροφορικής με έμφαση στην οργάνωση και παραμετροποίηση του πληροφοριακού συστήματος Entersoft, αποκτώντας πιστοποίηση ως Σύμβουλος Υλοποίησης Έργων.</p>
+                            <p>Επενδύει διαρκώς στην προσωπική και επαγγελματική της ανάπτυξη μέσω εξειδικευμένων πιστοποιήσεων και σεμιναρίων σε τομείς όπως η προστασία δεδομένων (DPO), η ασφάλεια και ευημερία εργαζομένων και η ανάπτυξη πολιτικών βιωσιμότητας και ανακύκλωσης. Παράλληλα, παρακολουθεί το πρόγραμμα Μεταλλακτική Ηγεσία (miniMBA), με στόχο την ενίσχυση των ηγετικών και στρατηγικών της δεξιοτήτων.</p>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <div class="footer-section">
-                <h3>Νομικά</h3>
-                <ul class="footer-links">
-                    <li><a href="#">Όροι χρήσης</a></li>
-                    <li><a href="#">Πολιτική απορρήτου</a></li>
-                </ul>
-            </div>
-            <div class="footer-section">
-                <h3>Επικοινωνία</h3>
-                <ul class="footer-links">
-                    <li><a href="mailto:info@careerflame.gr">info@careerflame.gr</a></li>
-                    <li><a href="tel:+306934461324">+30 6934461324</a></li>
-                    <li><a href="#">Υποστήριξη</a></li>
-                </ul>
+            
+            <!-- Implementation Team -->
+            <div class="team-category">
+                <h3 class="category-title">Εθελοντική Ομάδα Υλοποίησης</h3>
+                <div class="team-grid">
+                    <!-- Team Member 1 -->
+                    <div class="team-member">
+                        <div class="member-header">
+                            <h3 class="member-name">Κυριακή Γιαμουστάρη</h3>
+                            <p class="member-role">Data Analyst</p>
+                        </div>
+                        <div class="member-bio">
+                            <p>Η Κυριακή Γιαμουστάρη είναι Data Analyst με εμπειρία στην ανάλυση δεδομένων και την εξαγωγή χρήσιμων πληροφοριών. Έχει εργαστεί σε projects που αφορούν την επεξεργασία μεγάλων όγκων δεδομένων και την ανάπτυξη αναφορών. Στο FlameVerse, συμβάλλει στην ανάλυση των δεδομένων χρήστη και στην ανάπτυξη μοντέλων που βελτιώνουν την προσωποποιημένη εμπειρία.</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Team Member 2 -->
+                    <div class="team-member">
+                        <div class="member-header">
+                            <h3 class="member-name">Ευγενία Δρετάκη</h3>
+                            <p class="member-role">Full Stack Developer</p>
+                        </div>
+                        <div class="member-bio">
+                            <p>Η Ευγενία Δρετάκη σπουδάζει Πληροφορική στο Πανεπιστήμιο Δυτικής Μακεδονίας και ασχολείται με την ανάπτυξη δυναμικών ιστοσελίδων (Full Stack Development), συνδυάζοντας την τεχνική σκέψη με τη δημιουργικότητα. Μέσα από τα πανεπιστημιακά της μαθήματα και προσωπικά projects, έχει ασχοληθεί με θέματα που εκτείνονται από την τεχνητή νοημοσύνη μέχρι την ανάπτυξη APIs, βάσεων δεδομένων και σύγχρονων web εφαρμογών με React και .NET. Έχει αναπτύξει ολοκληρωμένα έργα που συνδυάζουν αισθητική και λειτουργικότητα — όπως ιστοσελίδες ευεξίας, εκπαιδευτικά dashboards και IoT συστήματα με αισθητήρες και αυτοματισμούς.</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Team Member 3 -->
+                    <div class="team-member">
+                        <div class="member-header">
+                            <h3 class="member-name">Ευάγγελος Θεολογής</h3>
+                            <p class="member-role">Πιστοποιημένος Σύμβουλος Σταδιοδρομίας - Επαγγελματικού Προσανατολισμού Επιπέδου Α</p>
+                        </div>
+                        <div class="member-bio">
+                            <p>Ο Ευάγγελος Θεολογής, ΠΕ83, MSc, είναι Πιστοποιημένος Σύμβουλος Σταδιοδρομίας/Επαγγελματικού Προσανατολισμού επιπέδου Α και υπηρετεί ως Υπεύθυνος Σχολικού Επαγγελματικού Προσανατολισμού στη Διεύθυνση Δευτεροβάθμιας Εκπαίδευσης Δυτικής Αττικής. Στο παρελθόν έχει υπηρετήσει στο 2ο ΚΕΣΥ Β' Αθήνας και στο ΚΕΣΥ Δυτικής Αττικής, με εξειδίκευση στη συμβουλευτική επαγγελματικού προσανατολισμού.</p>
+                            <p>Έχει επίσης διατελέσει μέλος του ΚΕΣΥΠ Ελευσίνας και του Γραφείου Σύνδεσης με την Αγορά Εργασίας (ΓΡΑΣΥ), ενώ υπηρέτησε και ως Σύμβουλος Σχολικής Ζωής στο 4ο Γυμνάσιο Ν. Ιωνίας.</p>
+                            <p>Κατέχει μεταπτυχιακούς τίτλους στη Συμβουλευτική και τον Επαγγελματικό Προσανατολισμό, καθώς και στη Διδακτική Μαθημάτων Ειδικότητας με χρήση Νέων Τεχνολογιών. Είναι πτυχιούχος στη Διαχείριση Ανθρωπίνων Πόρων και Διοίκηση (ΕΚΠΑ), καθώς και Τεχνολόγος Ηλεκτρολόγος Μηχανικός. Έχει πιστοποιηθεί ως Εκπαιδευτής Ενηλίκων από τον ΕΟΠΠΕΠ και είναι επιμορφωτής του ΙΕΠ.</p>
+                            <p>Διαθέτει επιμορφώσεις στη Συμβουλευτική και τον Επαγγελματικό Προσανατολισμό, την Ψυχική Υγεία, την Παιδαγωγική, τη Νέα Τεχνολογία και τη Διοίκηση Εκπαίδευσης. Έχει εξειδικευτεί στην Ειδική Αγωγή και Εκπαίδευση.</p>
+                            <p>Έχει διοργανώσει και συμμετάσχει ως εισηγητής σε συνέδρια, ημερίδες και βιωματικά σεμινάρια με αντικείμενο τη συμβουλευτική και τον επαγγελματικό προσανατολισμό. Έχει δημοσιεύσει άρθρα σε επιστημονικά περιοδικά, παρουσιάσει καλές πρακτικές και αναπτύξει ψηφιακά διδακτικά σενάρια. Έχει επίσης προσφέρει ιδιωτικό έργο στον ΕΟΠΠΕΠ, το ΙΕΠ, το ΤΤΕ και στο ΕΠΠΑΙΚ της ΑΣΠΑΙΤΕ.</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Team Member 4 -->
+                    <div class="team-member">
+                        <div class="member-header">
+                            <h3 class="member-name">Βαγγέλης Κάβουρας</h3>
+                            <p class="member-role">Full Stack Developer</p>
+                        </div>
+                        <div class="member-bio">
+                            <p>Ο Βαγγέλης Κάβουρας είναι Full Stack Developer με εμπειρία τόσο σε front-end όσο και σε back-end τεχνολογίες. Έχει εργαστεί σε διάφορα projects που αφορούν την ανάπτυξη web εφαρμογών και την ενοποίηση διαφορετικών συστημάτων. Στο FlameVerse, συμμετέχει στην πλήρη ανάπτυξη της πλατφόρμας, από τη διεπαφή χρήστη έως τις server-side λειτουργίες.</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Team Member 5 -->
+                    <div class="team-member">
+                        <div class="member-header">
+                            <h3 class="member-name">Μαίρη Κάντα</h3>
+                            <p class="member-role">Social Media Coordinator</p>
+                        </div>
+                        <div class="member-bio">
+                            <p>Η Μαίρη Κάντα είναι Social Media Coordinator με πάθος για τη δημιουργία ενδιαφέροντος κοινού και την ανάπτυξη ψηφιακής παρουσίας. Έχει εμπειρία στη διαχείριση κοινωνικών δικτύων και στην ανάπτυξη στρατηγικών περιεχομένου που ελκύουν και διατηρούν το ενδιαφέρον του κοινού. Στο FlameVerse, αναλαμβάνει τη διαχείριση των κοινωνικών δικτύων και την προώθηση της πλατφόρμας.</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Team Member 6 -->
+                    <div class="team-member">
+                        <div class="member-header">
+                            <h3 class="member-name">Alexandros Kasapi</h3>
+                            <p class="member-role">Software Developer (Back-end focus)</p>
+                        </div>
+                        <div class="member-bio">
+                            <p>Ο Alexandros Kasapi έχει καταρτιστεί στον τομέα της Πληροφορικής Ειδικότητας Ειδικός Εφαρμογών Πληροφορικής (Πολυμέσα / Web Designer-Developer / Videogames). Ασχολείται στο τμήμα Τεχνικής Υποστήριξης Δικτύων με ενδιαφέροντα που εστιάζουν στο Web Development και την Τεχνητή Νοημοσύνη με τον Προγραμματισμό, την δημιουργία UI - UX και τον εθελοντισμό.</p>
+                            <p>Έχει συμμετάσχει σε σεμινάρια Web Development και Τεχνητής Νοημοσύνης AI. Στόχος του είναι να συνδράμει στον επαγγελματικό προσανατολισμό, στην εξέλιξη της εκμάθησης ενσωματώνοντας την χρήση των σύγχρονων τεχνολογιών.</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Team Member 7 -->
+                    <div class="team-member">
+                        <div class="member-header">
+                            <h3 class="member-name">Νικόλας Κονίδης</h3>
+                            <p class="member-role">Project Manager & Data Analyst</p>
+                        </div>
+                        <div class="member-bio">
+                            <p>Ο Νικόλας Κονίδης έχει εμπειρία στη διαχείριση έργων και την εκπαίδευση, τόσο στην Ελλάδα όσο και στο εξωτερικό, και τα τελευταία χρόνια δραστηριοποιείται στον χώρο της Πληροφορικής και της Ανάλυσης Δεδομένων. Έχει εργαστεί στην Κίνα ως καθηγητής Αγγλικών και Ελληνικών, ενώ σήμερα ηγείται έργων στην Ελλάδα, συνδυάζοντας τεχνολογία, ανάλυση δεδομένων και ομαδική συνεργασία. Σπουδάζει Πληροφοριακά και Επικοινωνιακά Συστήματα στο Πανεπιστήμιο Αιγαίου και είναι απόφοιτος του Τμήματος Αγγλικής και Ελληνικής Φιλολογίας του Πανεπιστημίου Αθηνών. Έχει επίσης συμμετάσχει σε εκδόσεις γλωσσολογικού και πολιτιστικού περιεχομένου στην Κίνα.</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Team Member 8 -->
+                    <div class="team-member">
+                        <div class="member-header">
+                            <h3 class="member-name">Δημήτρης Κώττας</h3>
+                            <p class="member-role">Content Writer</p>
+                        </div>
+                        <div class="member-bio">
+                            <p>Ο Δημήτρης Κώττας είναι Content Writer με εμπειρία στη δημιουργήσει ποιοτικού περιεχομένου για ψηφιακές πλατφόρμες. Έχει εργαστεί σε διάφορα projects που συνδυάζουν τεχνολογία, ψυχολογία και εκπαίδευση, με στόχο τη δημιουργήσει ελκυστικού και αποτελεσματικού περιεχομένου για νέους. Στο FlameVerse συμμετέχει στην ανάπτυξη εκπαιδευτικού υλικού και στην επικοινωνία της πλατφόρμας.</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Team Member 9 -->
+                    <div class="team-member">
+                        <div class="member-header">
+                            <h3 class="member-name">Μαρία Λάππα</h3>
+                            <p class="member-role">Front-end Developer - UX Designer</p>
+                        </div>
+                        <div class="member-bio">
+                            <p>Η Μαρία Λάππα έχει σπουδάσει στο Τμήμα Ηλεκτρολόγων Μηχανικών και Μηχανικών Υπολογιστών του ΔΠΘ όπου ήρθε σε επαφή με ένα ευρύ φάσμα θεματικών, από μελέτη ηλεκτρικών κυκλωμάτων μέχρι εξόρυξη δεδομένων και machine learning. Το web development αποτελεί για εκείνη το σημείο συνάντησης ανάμεσα στη δημιουργική έκφραση και τη μηχανική σκέψη.</p>
+                            <p>Ασχολείται με τον σχεδιασμό και την κατασκευή ιστοσελίδων και εφαρμογών κυρίως με ReactJS ή WordPress, ενώ διαθέτει πιστοποιήσεις σε προγράμματα εκπαίδευσης στον σχεδιασμό διεπαφής και εμπειρίας χρήστη (Google UX Design Certificate), στο back-end development και στις σύγχρονες πρακτικές σχεδιασμού ιστοσελίδων. Παράλληλα, εμβαθύνει στις τεχνολογίες της C# και του Blazor, χτίζοντας τις δεξιότητές της στο σύγχρονο full-stack development.</p>
+                            <p>Στόχος της είναι να φτιάχνει εφαρμογές οι οποίες έχουν να πουν κάτι όχι μόνο μέσα από τη χρηστικότητα αλλά και μέσα από το design τους, διατηρώντας προσβασιμότητα για όλους. Της αρέσουν τα πρότζεκτ που έχουν χαρακτήρα, ξεκάθαρη ταυτότητα και σύγχρονη οπτική προσέγγιση. Όταν δεν είναι μπροστά στην οθόνη, της αρέσει να ακούει μουσική, να διαβάζει ή να εξερευνά τη φύση οργανώνοντας ταξίδια με την παρέα της.</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Team Member 10 -->
+                    <div class="team-member">
+                        <div class="member-header">
+                            <h3 class="member-name">Ιωάννης Νεραντζίδης</h3>
+                            <p class="member-role">Production Coordinator - Front-end & Back-end Developer</p>
+                        </div>
+                        <div class="member-bio">
+                            <p>Ο Ιωάννης Νεραντζίδης είναι φοιτητής του Τμήματος Εφαρμοσμένης Πληροφορικής στο Πανεπιστήμιο Μακεδονίας. Τα κύρια ενδιαφέροντά του περιλαμβάνουν τον προγραμματισμό, την κυβερνοασφάλεια και το Game Development.</p>
+                            <p>Έχει υλοποιήσει προσωπικά projects, όπως εργαστήρια δικτύων και ασφάλειας (personal labs) και μικρά παιχνίδια-demo, με στόχο την πρακτική εξάσκηση και την εμβάθυνση στις γνώσεις του. Παράλληλα, έχει παρακολουθήσει σχετικά σεμινάρια και εκπαιδευτικά courses, επιδιώκοντας να αναπτύξει δεξιότητες που θα του επιτρέψουν να συμβάλει σε καινοτόμες ιδέες και να αξιοποιήσει τη δημιουργικότητά του.</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Team Member 11 -->
+                    <div class="team-member">
+                        <div class="member-header">
+                            <h3 class="member-name">Μαρουσώ Νομικού</h3>
+                            <p class="member-role">Social Media Manager - Front-end Developer</p>
+                        </div>
+                        <div class="member-bio">
+                            <p>Η Μαρουσώ Νομικού είναι φοιτήτρια στο τμήμα Πληροφορικής του ΟΠΑ, με ενδιαφέροντα που εστιάζουν στη ρομποτική, την τεχνητή νοημοσύνη, και το front-end development. Ασχολείται ενεργά με εκμάθηση γλωσσών προγραμματισμού και εξασκεί και αναπτύσσει τις δεξιότητές της με κάθε αφορμή.</p>
+                            <p>Έχει συμμετάσχει στο σεμινάριο της Vodafone "Code Like a Girl", ανάπτυξης ιστοσελίδων, σε εθελοντικές ομάδες διάφορων περιεχομένων, και είναι ενεργό μέλος της θεατρικής ομάδας του ΟΠΑ, ενώ την ενδιαφέρει η συνεργασία τεχνολογίας και τέχνης σε μια εποχή που η τεχνητή νοημοσύνη φαίνεται να περιορίζει την δημιουργικότητα, αντί να συνεργάζεται μαζί της.</p>
+                            <p>Στόχος της είναι να συνεισφέρει σε καινοτόμες λύσεις που προωθούν τη βιώσιμη μάθηση, την κριτική σκέψη και την δημιουργικότητα στους νέους.</p>
+                            <p>Αν δεν γράφει κώδικα, βρίσκεται σε πρόβες για την επόμενη της παράσταση, προετοιμάζεται για κάποια οντισιόν, διαβάζει κάποιο βιβλίο που είχε ξεχάσει ότι είχε αγοράσει, ή εξερευνά την πόλη με την παρέα της.</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Team Member 12 -->
+                    <div class="team-member">
+                        <div class="member-header">
+                            <h3 class="member-name">Θεόδωρος Ξιφαράς</h3>
+                            <p class="member-role">Junior Front-end Developer</p>
+                        </div>
+                        <div class="member-bio">
+                            <p>Ο Θεόδωρος Ξιφαράς είναι Junior Front-end Developer με γνώσεις σε HTML, CSS, JavaScript και React. Ασχολείται με την ανάπτυξη διεπαφών χρήστη που είναι όχι μόνο λειτουργικές αλλά και ελκυστικές. Στο FlameVerse συμβάλλει στην ανάπτυξη της διεπαφής χρήστη, εστιάζοντας στη βελτιστοποίηση της εμπειρίας χρήστη και στην προσβασιμότητα.</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Team Member 13 -->
+                    <div class="team-member">
+                        <div class="member-header">
+                            <h3 class="member-name">Έφη Παρασκευοπούλου</h3>
+                            <p class="member-role">Front-end Developer - UI Designer</p>
+                        </div>
+                        <div class="member-bio">
+                            <p>Η Έφη Παρασκευοπούλου είναι φοιτήτρια στο τμήμα Πληροφορικής του ΟΠΑ, με ενδιαφέροντα που εστιάζουν στην κυβερνοασφάλεια, τα μαθηματικά και την ανάλυση δεδομένων. Ασχολείται ενεργά με τον προγραμματισμό σε διάφορες γλώσσες, καθώς και τον εθελοντισμό, και δίνει ιδιαίτερη έμφαση σε πρακτικές εφαρμογές που έχουν κοινωνικό αντίκτυπο, κυρίως μέσω της τεχνολογίας.</p>
+                            <p>Έχει συμμετάσχει σε ομάδες και events κυβερνοασφάλειας, ημερίδες περί ΑΙ και Οικονομίας και σεμινάρια πληροφορικής ποικίλης θεματολογίας, ενώ την ενδιαφέρει η διασταύρωση των ανθρωπιστικών επιστημών με την τεχνολογία και την επιχειρηματικότητα. Στόχος της είναι να συνεισφέρει έμπρακτα σε δράσεις που προωθούν την αυτογνωσία, τη βιώσιμη μάθηση και την καινοτομία.</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Team Member 14 -->
+                    <div class="team-member">
+                        <div class="member-header">
+                            <h3 class="member-name">Θεοχάρης Στεφανίδης</h3>
+                            <p class="member-role">Back-end Developer</p>
+                        </div>
+                        <div class="member-bio">
+                            <p>Ο Θεοχάρης Στεφανίδης σπούδασε στο Τμήμα Μηχανολόγων Μηχανικών του ΑΠΘ, όπου ανέπτυξε ισχυρή αναλυτική σκέψη και εξοικειώθηκε με ένα ευρύ φάσμα τεχνικών αντικειμένων — από μοντελοποίηση και προσομοιώσεις έως αυτοματισμούς και δομική ανάλυση. Η ενασχόλησή του με τον προγραμματισμό ξεκίνησε ως εργαλείο επίλυσης προβλημάτων, αλλά σύντομα εξελίχθηκε σε βασικό επαγγελματικό του ενδιαφέρον. Έχει ολοκληρώσει κύκλους εκπαίδευσης στο Full Stack Development και πλέον εστιάζει στο back-end, αξιοποιώντας τεχνολογίες όπως Java, C#, SQL και Node.js, ενώ παράλληλα πειραματίζεται με DevOps εργαλεία και data processing. Στο FlameVerse συμμετέχει εθελοντικά στην ανάπτυξη των back-end υποδομών.</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Team Member 15 -->
+                    <div class="team-member">
+                        <div class="member-header">
+                            <h3 class="member-name">Βασίλης Τουμπανάκης</h3>
+                            <p class="member-role">Data Analyst</p>
+                        </div>
+                        <div class="member-bio">
+                            <p>Ο Βασίλης Τουμπανάκης είναι Data Analyst με εμπειρία στην ανάλυση δεδομένων και την ανάπτυξη στατιστικών μοντέλων. Έχει εργαστεί σε projects που αφορούν την εξόρυξη δεδομένων και την προγνωστική ανάλυση. Στο FlameVerse, συμβάλλει στην ανάλυση των δεδομένων χρήστη και στην ανάπτυξη αλγορίθμων που βελτιώνουν την προσωποποίηση της πλατφόρμας.</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Team Member 16 -->
+                    <div class="team-member">
+                        <div class="member-header">
+                            <h3 class="member-name">Συμεών Τσαμκόσογλου</h3>
+                            <p class="member-role">Content Writer - Education & Outreach Advisor</p>
+                        </div>
+                        <div class="member-bio">
+                            <p>Ο Συμεών Τσαμκόσογλου είναι εκπαιδευτικός πρωτοβάθμιας εκπαίδευσης, με ενδιαφέροντα που εστιάζουν στην εφαρμογή καινοτόμων εκπαιδευτικών μεθόδων γύρω από το STEM στην εκπαίδευση. Είναι κάτοχος 2 μεταπτυχιακών τίτλων, στις Ψηφιακές Ανθρωπιστικές Επιστήμες και στις Διεθνείς και Ευρωπαϊκές Πολιτικές για την Έκπαιδευση, την Κατάρτιση και την Έρευνα.</p>
+                            <p>Ασχολείται ενεργά με προγράμματα Erasmus με στόχο την ανταλλαγή βέλτιστων πρακτικών και τη συνεργασία με άλλους εκπαιδευτικούς. Στόχος του είναι να διευρύνει τους ορίζοντες των εκπαιδευομένων ώστε να ανταπεξέλθουν ως μελλοντικοί πολίτες σε μια σύγχρονη κοινωνία.</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Team Member 17 -->
+                    <div class="team-member">
+                        <div class="member-header">
+                            <h3 class="member-name">Μαρίνα Χατζηεφραιμίδου</h3>
+                            <p class="member-role">Back-end Developer</p>
+                        </div>
+                        <div class="member-bio">
+                            <p>Η Μαρίνα Χατζηεφραιμίδου είναι Back-end Developer με εμπειρία στην ανάπτυξη server-side εφαρμογών και APIs. Έχει εργαστεί με τεχνολογίες όπως Node.js, Python και βάσεις δεδομένων. Στο FlameVerse, συμμετέχει στην ανάπτυξη και συντήρηση των back-end υποδομών, διασφαλίζοντας την αξιοπιστία και την επεκτασιμότητα της πλατφόρμας.</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Team Member 18 -->
+                    <div class="team-member">
+                        <div class="member-header">
+                            <h3 class="member-name">Αθηνά Καραμαύρου</h3>
+                            <p class="member-role">Front-end Developer</p>
+                        </div>
+                        <div class="member-bio">
+                            <p>Η Αθηνά Καραμαύρου είναι Front-end Developer με εμπειρία στην ανάπτυξη διεπαφών χρήστη και την εφαρμογή σύγχρονων τεχνολογιών web development. Συμμετέχει ενεργά στην ανάπτυξη της διεπαφής χρήστη του FlameVerse, εστιάζοντας στη δημιουργία μιας βελτιστοποιημένης και προσιτής εμπειρίας για όλους τους χρήστες.</p>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
-        <div class="footer-bottom">
-            <div class="footer-logo">Career Flame</div>
-            <div class="copyright">Developed by Career Flame</div>
-            <div class="copyright">© 2025 CareerFlame. Όλα τα δικαιώματα διατηρούνται.</div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about-section" id="about">
+        <div class="container">
+            <h2 class="section-title">Σχετικά με την Career Flame</h2>
+            <div class="about-content">
+                <div class="about-text">
+                    <h3>Η Φλόγα της Σταδιοδρομίας Σας</h3>
+                    <p>Η Career Flame (www.careerflame.gr) είναι μια ατομική επιχείρηση που ιδρύθηκε από τη Νίκη Δαλιανά με σκοπό τη δημιουργία καινοτόμων εργαλείων συμβουλευτικής σταδιοδρομίας & επαγγελματικού προσανατολισμού, ψυχολογικής ενδυνάμωσης και προσωπικής ανάπτυξης για νέους και εφήβους.</p>
+                    <p>Συνδυάζοντας επιστημονική τεκμηρίωση, ψηφιακή τεχνολογία και δημιουργική εμπειρία χρήστη, η Career Flame στοχεύει στη στήριξη της νέας γενιάς στην επαγγελματική της πορεία με ουσιαστικά, προσωποποιημένα μέσα.</p>
+                    <p>Η βασική της πλατφόρμα, το FlameVerse ΑΙ αναπτύσσεται με τη συμβολή εξειδικευμένης επιστημονικής επιτροπής, επαγγελματιών ψυχικής υγείας και εκπαιδευτικών, και υποστηρίζεται από μια ευρύτερη ομάδα εθελοντών διαφορετικών ειδικοτήτων.</p>
+                    <p>Η επιχείρηση λειτουργεί με γνώμονα την ψυχολογική ασφάλεια, την προσβασιμότητα και την κοινωνική ευαισθησία, θέτοντας στο επίκεντρο την ανθρώπινη κατανόηση και την τεχνολογική καινοτομία. Η Career Flame συμμετέχει ενεργά σε πρωτοβουλίες επιχειρηματικότητας και τεχνολογικής καινοτομίας, με στόχο τη συνεχή εξέλιξη των υπηρεσιών της και τη διεύρυνση του κοινωνικού και εκπαιδευτικού της αποτυπώματος.</p>
+                </div>
+                <div class="about-image">
+                    <i class="fas fa-fire" style="font-size: 15rem; color: var(--color-secondary);"></i>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="contact">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>Career Flame</h3>
+                    <p>Συνδυάζουμε επιστημονική γνώση, τεχνολογία και δημιουργικότητα για να αναπτύξουμε λύσεις που ενδυναμώνουν ουσιαστικά τους νέους.</p>
+                    <div class="legal-info">
+                        <p><strong>Επωνυμία:</strong> Career Flame - Νίκη Δαλιανά</p>
+                        <p><strong>ΑΦΜ:</strong> 126098004</p>
+                        <p><strong>Δ.Ο.Υ.:</strong> ΚΕΦΟΔΕ Αττικής</p>
+                        <p><strong>Αριθμός Γ.Ε.ΜΗ.:</strong> 159520109000</p>
+                        <p><strong>Έδρα:</strong> Οδός Μοσχοπούλου 3, Πειραιάς, ΤΚ 18547</p>
+                    </div>
+                </div>
+                <div class="footer-column">
+                    <h3>Επικοινωνία</h3>
+                    <ul>
+                        <li><i class="fas fa-envelope"></i> info@careerflame.gr</li>
+                        <li><i class="fas fa-phone"></i> +30 6934461324</li>
+                        <li><i class="fas fa-globe"></i> www.careerflame.gr</li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Σύνδεσμοι</h3>
+                    <ul>
+                        <li><a href="#home">Αρχική</a></li>
+                        <li><a href="#team">Η Ομάδα</a></li>
+                        <li><a href="#about">Σχετικά με εμάς</a></li>
+                        <li><a href="#">FlameVerse AI</a></li>
+                        <li><a href="#">Όροι χρήσης</a></li>
+                        <li><a href="#">Πολιτική απορρήτου</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>Developed by Career Flame &copy; 2023</p>
+            </div>
         </div>
     </footer>
 
+    <!-- Back to Top Button -->
+    <div class="back-to-top">
+        <i class="fas fa-chevron-up"></i>
+    </div>
+
     <script>
-        // Δεδομένα μελών ομάδας - Σωστή σειρά όπως ζήτησες
-        const teamMembers = [
-            // Πρώτα οι 6 με συγκεκριμένη σειρά
-            {
-                name: "Νίκη Δαλιανά",
-                role: "Ιδρύτρια - Project Manager",
-                department: "founder",
-                initials: "ΝΔ",
-                bio: "Η Νίκη Δαλιανά είναι απόφοιτος του τμήματος Φιλοσοφίας, Παιδαγωγικής και Ψυχολογίας (κατεύθυνση Ψυχολογίας) του ΕΚΠΑ, καθώς και κάτοχος μεταπτυχιακού τίτλου στην «Συμβουλευτική και Επαγγελματικό Προσανατολισμό» του ΕΚΠΑ. Ασκεί το αντικείμενο του επαγγελματικού προσανατολισμού και της ψυχολογικής ενδυνάμωσης με εμπειρία τόσο στον δημόσιο όσο και στον ιδιωτικό τομέα. Κατά τη διάρκεια των μεταπτυχιακών της σπουδών, πραγματοποίησε πρακτική άσκηση στο ΚΕΣΥΠ Ελευσίνας και στον ΟΑΕΔ, παρέχοντας συμβουλευτική σε εφήβους και ανέργους. Είναι ιδρύτρια της εταιρείας CareerFlame, μέλος της Εξελεγκτικής Επιτροπής του ΣΕΣΥΣΕΠ και μέλος της Ελληνικής Εταιρίας Συμβουλευτικής & Προσανατολισμού.",
-                social: {
-                    linkedin: "#",
-                    email: "mailto:niki@careerflame.gr"
-                }
-            },
-            {
-                name: "Δρ. Αλέξανδρος-Σταμάτιος Αντωνίου",
-                role: "Καθηγητής Ψυχολογίας, ΕΚΠΑ",
-                department: "scientific",
-                initials: "ΑΑ",
-                bio: "Ο Αλέξανδρος-Σταμάτιος Αντωνίου είναι Καθηγητής Ψυχολογίας και κατέχει προπτυχιακούς και μεταπτυχιακούς τίτλους (3 διδακτορικά) στην Ψυχολογία, τη Φιλοσοφία, την Εκπαίδευση και τη Διοίκηση από πανεπιστήμια της Ελλάδας και του Ηνωμένου Βασιλείου. Έχει διδάξει σε προπτυχιακούς και μεταπτυχιακούς φοιτητές πανεπιστημίων (Ιατρική Σχολή και Σχολή Φιλοσοφίας του ΕΚΠΑ, Πάντειο Πανεπιστήμιο κ.ά.), καθώς και σε γιατρούς νοσοκομείων, νοσηλευτικό προσωπικό, ψυχολόγους, εκπαιδευτικούς κ.ά. Έχει λάβει πολυάριθμα βραβεία και υποτροφίες και έχει συμμετάσχει ως εθνικός συντονιστής/ερευνητής σε πολλά εθνικά και ευρωπαϊκά ερευνητικά προγράμματα.",
-                social: {
-                    linkedin: "#",
-                    email: "#"
-                }
-            },
-            {
-                name: "Δρ. Ορέστης Γιωτάκος",
-                role: "Νευροψυχίατρος",
-                department: "scientific",
-                initials: "ΟΓ",
-                bio: "Ο Ορέστης Γιωτάκος ολοκλήρωσε τις βασικές του σπουδές στην Στρατιωτική Ιατρική Σχολή, στη Θεσσαλονίκη, απέκτησε την ειδικότητα του Ψυχιάτρου στο Νοσοκομείο Ευαγγελισμός, το MSc in Neuroscience στο Institute of Psychiatry στο Λονδίνο και το Διδακτορικό στην Ιατρική Σχολή του Πανεπιστημίου Αθηνών. Έχει πλούσιο ερευνητικό και εκπαιδευτικό έργο, συνεργασίες με τοπικούς και διεθνείς επιστημονικούς οργανισμούς και είναι υπεύθυνος διοργάνωσης πολλών τακτικών συνεδρίων και εκδηλώσεων για την ψυχική υγεία. Έχει συγγράψει πλήθος άρθρων και βιβλίων, στην ελληνική και αγγλική γλώσσα, στoυς τομείς της ψυχιατρικής και της νευροεπιστήμης.",
-                social: {
-                    linkedin: "#",
-                    email: "#"
-                }
-            },
-            {
-                name: "Ιάκωβος Δαρζέντας",
-                role: "Web Support Developer & Διοικητική Υποστήριξη",
-                department: "support",
-                initials: "ΙΔ",
-                bio: "Ο Ιάκωβος είναι φοιτητής στο τμήμα Δημόσιας Διοίκησης του Ελληνικού Ανοικτού Πανεπιστημίου, με ενδιαφέροντα που εστιάζουν στην διοίκηση και την τεχνολογία. Ασχολείται ενεργά με projects που έχουν σχέση με την ηλεκτρονική αυτοματοποίηση διαδικασιών, και δίνει ιδιαίτερη έμφαση στη σύνδεση της θεωρητικής γνώσης με πρακτικές εφαρμογές που έχουν κοινωνικό αντίκτυπο. Έχει συμμετάσχει σε διάφορες εθελοντικές ομάδες με διαφορετικό ρόλο κάθε φορά, ενώ τον ενδιαφέρει η διασταύρωση τεχνολογίας – ανθρωπιστικών επιστημών. Στόχος του είναι να συνεισφέρει σε καινοτόμες λύσεις που προωθούν την αυτογνωσία, τη βιώσιμη μάθηση και την ενδυνάμωση των νέων.",
-                social: {
-                    linkedin: "#",
-                    email: "#"
-                }
-            },
-            {
-                name: "Δρ. Δέσποινα Κώτση",
-                role: "Νομική Σύμβουλος",
-                department: "legal",
-                initials: "ΔΚ",
-                bio: "Η Δέσποινα Σπ. Κώτση είναι Δικηγόρος, παρ' Αρείω Πάγω, και Διδάκτωρ της Νομικής Σχολής Αθηνών (ΕΚΠΑ). Είναι κάτοχος δύο μεταπτυχιακών τίτλων, ήτοι στο Εξειδικευμένο Δημόσιο Δίκαιο (Νομική Σχολή Αθηνών & Νομική Σχολή Παν/μίου Montesquieu - Bordeaux IV) και στο Διεθνές Δίκαιο & Διπλωματικές Σπουδές (Πάντειο Πανεπιστήμιο). Το δημόσιο δίκαιο ως παράμετρος του εκπαιδευτικού συστήματος στην Ελλάδα ήταν η θεματική της διδακτορικής της διατριβής. Στα ενδιαφέροντα της περιλαμβάνεται η εφαρμογή του υπολογιστικού τρόπου σκέψης (computational thinking) στις κοινωνικές επιστήμες και ειδικά στο χώρο της νομικής.",
-                social: {
-                    linkedin: "#",
-                    email: "#"
-                }
-            },
-            {
-                name: "Ζωή Τσακιρίδου",
-                role: "Υπεύθυνη Προστασίας Δεδομένων",
-                department: "legal",
-                initials: "ΖΤ",
-                bio: "Η Ζωή Τσακιρίδου, ως Υπεύθυνη Διοικητικού Τομέα στην εταιρεία ena Σύμβουλοι Ανάπτυξης, διαθέτει έντεκα χρόνια εμπειρίας και βαθιά γνώση στις διοικητικές λειτουργίες, την οργάνωση εσωτερικών διαδικασιών και την υποστήριξη έργων ψηφιακού μετασχηματισμού. Κατά την επαγγελματική της πορεία έχει αναλάβει ποικίλους ρόλους που συνδέονται με την εκπαίδευση, την ασφάλεια εργαζομένων και δεδομένων (DPO), την υποστήριξη ΙΤ, καθώς και την εταιρική επικοινωνία και κουλτούρα. Διαθέτει Πτυχίο Διοίκησης Επιχειρήσεων (ΤΕΙ ΑΜΘ) και Μεταπτυχιακό στη Διοίκηση Καινοτομίας, Τεχνολογίας και Επιχειρήσεων (ΔΠΘ).",
-                social: {
-                    linkedin: "#",
-                    email: "#"
-                }
-            },
-            // Μετά όλοι οι υπόλοιποι αλφαβητικά με βάση το επίθετο
-            {
-                name: "Βαγγέλης Κάβουρας",
-                role: "Full Stack Developer",
-                department: "development",
-                initials: "ΒΚ",
-                bio: "Ο Βαγγέλης Κάβουρας είναι Full Stack Developer με εμπειρία τόσο σε front-end όσο και σε back-end τεχνολογίες. Έχει εργαστεί σε διάφορα projects που αφορούν την ανάπτυξη web εφαρμογών και την ενοποίηση διαφορετικών συστημάτων. Στο FlameVerse, συμμετέχει στην πλήρη ανάπτυξη της πλατφόρμας, από τη διεπαφή χρήστη έως τις server-side λειτουργίες.",
-                social: {
-                    linkedin: "#",
-                    email: "#"
-                }
-            },
-            {
-                name: "Κυριακή Γιαμουστάρη",
-                role: "Data Analyst",
-                department: "development",
-                initials: "ΚΓ",
-                bio: "Η Κυριακή Γιαμουστάρη είναι Data Analyst με εμπειρία στην ανάλυση δεδομένων και την εξαγωγή χρήσιμων πληροφοριών. Έχει εργαστεί σε projects που αφορούν την επεξεργασία μεγάλων όγκων δεδομένων και την ανάπτυξη αναφορών. Στο FlameVerse, συμβάλλει στην ανάλυση των δεδομένων χρήστη και στην ανάπτυξη μοντέλων που βελτιώνουν την προσωποποιημένη εμπειρία.",
-                social: {
-                    linkedin: "#",
-                    email: "#"
-                }
-            },
-            {
-                name: "Δημήτρης Κώττας",
-                role: "Content Writer",
-                department: "volunteer",
-                initials: "ΔΚ",
-                bio: "Ο Δημήτρης Κώττας είναι Content Writer με εμπειρία στη δημιουργήσει ποιοτικού περιεχομένου για ψηφιακές πλατφόρμες. Έχει εργαστεί σε διάφορα projects που συνδυάζουν τεχνολογία, ψυχολογία και εκπαίδευση, με στόχο τη δημιουργήσει ελκυστικού και αποτελεσματικού περιεχομένου για νέους. Στο FlameVerse συμμετέχει στην ανάπτυξη εκπαιδευτικού υλικού και στην επικοινωνία της πλατφόρμας.",
-                social: {
-                    linkedin: "#",
-                    email: "#"
-                }
-            },
-            {
-                name: "Ευγενία Δρετάκη",
-                role: "Full Stack Developer",
-                department: "development",
-                initials: "ΕΔ",
-                bio: "Η Ευγενία Δρετάκη σπουδάζει Πληροφορική στο Πανεπιστήμιο Δυτικής Μακεδονίας και ασχολείται με την ανάπτυξη δυναμικών ιστοσελίδων (Full Stack Development), συνδυάζοντας την τεχνική σκέψη με τη δημιουργικότητα. Μέσα από τα πανεπιστημιακά της μαθήματα και προσωπικά projects, έχει ασχοληθεί με θέματα που εκτείνονται από την τεχνητή νοημοσύνη μέχρι την ανάπτυξη APIs, βάσεων δεδομένων και σύγχρονων web εφαρμογών με React και .NET. Έχει αναπτύξει ολοκληρωμένα έργα που συνδυάζουν αισθητική και λειτουργικότητα — όπως ιστοσελίδες ευεξίας, εκπαιδευτικά dashboards και IoT συστήματα με αισθητήρες και αυτοματισμούς.",
-                social: {
-                    linkedin: "#",
-                    email: "#"
-                }
-            },
-            {
-                name: "Ευάγγελος Θεολογής",
-                role: "Σύμβουλος Σταδιοδρομίας",
-                department: "volunteer",
-                initials: "ΕΘ",
-                bio: "Ο Ευάγγελος Θεολογής, ΠΕ83, MSc, είναι Πιστοποιημένος Σύμβουλος Σταδιοδρομίας/Επαγγελματικού Προσανατολισμού επιπέδου Α και υπηρετεί ως Υπεύθυνος Σχολικού Επαγγελματικού Προσανατολισμού στη Διεύθυνση Δευτεροβάθμιας Εκπαίδευσης Δυτικής Αττικής. Στο παρελθόν έχει υπηρετήσει στο 2ο ΚΕΣΥ Β' Αθήνας και στο ΚΕΣΥ Δυτικής Αττικής, με εξειδίκευση στη συμβουλευτική επαγγελματικού προσανατολισμού. Κατέχει μεταπτυχιακούς τίτλους στη Συμβουλευτική και τον Επαγγελματικό Προσανατολισμό, καθώς και στη Διδακτική Μαθημάτων Ειδικότητας με χρήση Νέων Τεχνολογιών.",
-                social: {
-                    linkedin: "#",
-                    email: "#"
-                }
-            },
-            {
-                name: "Μαίρη Κάντα",
-                role: "Social Media Coordinator",
-                department: "volunteer",
-                initials: "ΜΚ",
-                bio: "Η Μαίρη Κάντα είναι Social Media Coordinator με πάθος για τη δημιουργία ενδιαφέροντος κοινού και την ανάπτυξη ψηφιακής παρουσίας. Έχει εμπειρία στη διαχείριση κοινωνικών δικτύων και στην ανάπτυξη στρατηγικών περιεχομένου που ελκύουν και διατηρούν το ενδιαφέρον του κοινού. Στο FlameVerse, αναλαμβάνει τη διαχείριση των κοινωνικών δικτύων και την προώθηση της πλατφόρμας.",
-                social: {
-                    linkedin: "#",
-                    email: "#"
-                }
-            },
-            {
-                name: "Μαρία Λάππα",
-                role: "Front-end Developer",
-                department: "volunteer",
-                initials: "ΜΛ",
-                bio: "Η Μαρία Λάππα έχει σπουδάσει στο Τμήμα Ηλεκτρολόγων Μηχανικών και Μηχανικών Υπολογιστών του ΔΠΘ όπου ήρθε σε επαφή με ένα ευρύ φάσμα θεματικών, από μελέτη ηλεκτρικών κυκλωμάτων μέχρι εξόρυξη δεδομένων και machine learning. Το web development αποτελεί για εκείνη το σημείο συνάντησης ανάμεσα στη δημιουργική έκφραση και τη μηχανική σκέψη. Ασχολείται με τον σχεδιασμό και την κατασκευή ιστοσελίδων και εφαρμογών κυρίως με ReactJS ή WordPress, ενώ διαθέτει πιστοποιήσεις σε προγράμματα εκπαίδευσης στον σχεδιασμό διεπαφής και εμπειρίας χρήστη (Google UX Design Certificate).",
-                social: {
-                    linkedin: "#",
-                    email: "#"
-                }
-            },
-            {
-                name: "Μαρίνα Χατζηεφραιμίδου",
-                role: "Back-end Developer",
-                department: "development",
-                initials: "ΜΧ",
-                bio: "Η Μαρίνα Χατζηεφραιμίδου είναι Back-end Developer με εμπειρία στην ανάπτυξη server-side εφαρμογών και APIs. Έχει εργαστεί με τεχνολογίες όπως Node.js, Python και βάσεις δεδομένων. Στο FlameVerse, συμμετέχει στην ανάπτυξη και συντήρηση των back-end υποδομών, διασφαλίζοντας την αξιοπιστία και την επεκτασιμότητα της πλατφόρμας.",
-                social: {
-                    linkedin: "#",
-                    email: "#"
-                }
-            },
-            {
-                name: "Ιωάννης Νεραντζίδης",
-                role: "Production Coordinator",
-                department: "development",
-                initials: "ΙΝ",
-                bio: "Ο Ιωάννης Νεραντζίδης είναι φοιτητής του Τμήματος Εφαρμοσμένης Πληροφορικής στο Πανεπιστήμιο Μακεδονίας. Τα κύρια ενδιαφέροντά του περιλαμβάνουν τον προγραμματισμό, την κυβερνοασφάλεια και το Game Development. Έχει υλοποιήσει προσωπικά projects, όπως εργαστήρια δικτύων και ασφάλειας (personal labs) και μικρά παιχνίδια-demo, με στόχο την πρακτική εξάσκηση και την εμβάθυνση στις γνώσεις του. Παράλληλα, έχει παρακολουθήσει σχετικά σεμινάρια και εκπαιδευτικά courses, επιδιώκοντας να αναπτύξει δεξιότητες που θα του επιτρέψουν να συμβάλει σε καινοτόμες ιδέες και να αξιοποιήσει τη δημιουργικότητά του.",
-                social: {
-                    linkedin: "#",
-                    email: "#"
-                }
-            },
-            {
-                name: "Μαρουσώ Νομικού",
-                role: "Social Media Manager",
-                department: "volunteer",
-                initials: "ΜΝ",
-                bio: "Η Μαρουσώ Νομικού είναι φοιτήτρια στο τμήμα Πληροφορικής του ΟΠΑ, με ενδιαφέροντα που εστιάζουν στη ρομποτική, την τεχνητή νοημοσύνη, και το front-end development. Ασχολείται ενεργά με εκμάθηση γλωσσών προγραμματισμού και εξασκεί και αναπτύσσει τις δεξιότητές της με κάθε αφορμή. Έχει συμμετάσχει στο σεμινάριο της Vodafone 'Code Like a Girl', ανάπτυξης ιστοσελίδων, σε εθελοντικές ομάδες διάφορων περιεχομένων, και είναι ενεργό μέλος της θεατρικής ομάδας του ΟΠΑ, ενώ την ενδιαφέρει η συνεργασία τεχνολογίας και τέχνης σε μια εποχή που η τεχνητή νοημοσύνη φαίνεται να περιορίζει την δημιουργικότητα, αντί να συνεργάζεται μαζί της.",
-                social: {
-                    linkedin: "#",
-                    email: "#"
-                }
-            },
-            {
-                name: "Θεόδωρος Ξιφαράς",
-                role: "Junior Front-end Developer",
-                department: "development",
-                initials: "ΘΞ",
-                bio: "Ο Θεόδωρος Ξιφαράς είναι Junior Front-end Developer με γνώσεις σε HTML, CSS, JavaScript και React. Ασχολείται με την ανάπτυξη διεπαφών χρήστη που είναι όχι μόνο λειτουργικές αλλά και ελκυστικές. Στο FlameVerse συμβάλλει στην ανάπτυξη της διεπαφής χρήστη, εστιάζοντας στη βελτιστοποίηση της εμπειρίας χρήστη και στην προσβασιμότητα.",
-                social: {
-                    linkedin: "#",
-                    email: "#"
-                }
-            },
-            {
-                name: "Έφη Παρασκευοπούλου",
-                role: "Front-end Developer",
-                department: "volunteer",
-                initials: "ΕΠ",
-                bio: "Η Έφη Παρασκευοπούλου είναι φοιτήτρια στο τμήμα Πληροφορικής του ΟΠΑ, με ενδιαφέροντα που εστιάζουν στην κυβερνοασφάλεια, τα μαθηματικά και την ανάλυση δεδομένων. Ασχολείται ενεργά με τον προγραμματισμό σε διάφορες γλώσσες, καθώς και τον εθελοντισμό, και δίνει ιδιαίτερη έμφαση σε πρακτικές εφαρμογές που έχουν κοινωνικό αντίκτυπο, κυρίως μέσω της τεχνολογίας. Έχει συμμετάσχει σε ομάδες και events κυβερνοασφάλειας, ημερίδες περί ΑΙ και Οικονομίας και σεμινάρια πληροφορικής ποικίλης θεματολογίας, ενώ την ενδιαφέρει η διασταύρωση των ανθρωπιστικών επιστημών με την τεχνολογία και την επιχειρηματικότητα.",
-                social: {
-                    linkedin: "#",
-                    email: "#"
-                }
-            },
-            {
-                name: "Θεοχάρης Στεφανίδης",
-                role: "Back-end Developer",
-                department: "development",
-                initials: "ΘΣ",
-                bio: "Ο Θεοχάρης Στεφανίδης σπούδασε στο Τμήμα Μηχανολόγων Μηχανικών του ΑΠΘ, όπου ανέπτυξε ισχυρή αναλυτική σκέψη και εξοικειώθηκε με ένα ευρύ φάσμα τεχνικών αντικειμένων — από μοντελοποίηση και προσομοιώσεις έως αυτοματισμούς και δομική ανάλυση. Η ενασχόλησή του με τον προγραμματισμό ξεκίνησε ως εργαλείο επίλυσης προβλημάτων, αλλά σύντομα εξελίχθηκε σε βασικό επαγγελματικό του ενδιαφέρον. Έχει ολοκληρώσει κύκλους εκπαίδευσης στο Full Stack Development και πλέον εστιάζει στο back-end, αξιοποιώντας τεχνολογίες όπως Java, C#, SQL και Node.js, ενώ παράλληλα πειραματίζεται με DevOps εργαλεία και data processing. Στο FlameVerse συμμετέχει εθελοντικά στην ανάπτυξη των back-end υποδομών.",
-                social: {
-                    linkedin: "#",
-                    email: "#"
-                }
-            },
-            {
-                name: "Βασίλης Τουμπανάκης",
-                role: "Data Analyst",
-                department: "development",
-                initials: "ΒΤ",
-                bio: "Ο Βασίλης Τουμπανάκης είναι Data Analyst με εμπειρία στην ανάλυση δεδομένων και την ανάπτυξη στατιστικών μοντέλων. Έχει εργαστεί σε projects που αφορούν την εξόρυξη δεδομένων και την προγνωστική ανάλυση. Στο FlameVerse, συμβάλλει στην ανάλυση των δεδομένων χρήστη και στην ανάπτυξη αλγορίθμων που βελτιώνουν την προσωποποίηση της πλατφόρμας.",
-                social: {
-                    linkedin: "#",
-                    email: "#"
-                }
-            },
-            {
-                name: "Συμεών Τσαμκόσογλου",
-                role: "Content Writer",
-                department: "volunteer",
-                initials: "ΣΤ",
-                bio: "Ο Συμεών Τσαμκόσογλου είναι Content Writer και Education & Outreach Advisor. Ασχολείται με τη δημιουργήσει ποιοτικού περιεχομένου και την εκπαιδευτική υποστήριξη, συνδυάζοντας τις γνώσεις του στην τεχνολογία με τις δεξιότητές του στην επικοινωνία. Στόχος του είναι να συνεισφέρει στην ανάπτυξη εκπαιδευτικού υλικού που είναι προσιτό, ελκυστικό και αποτελεσματικό για τους νέους.",
-                social: {
-                    linkedin: "#",
-                    email: "#"
-                }
-            },
-            {
-                name: "Alexandros Kasapi",
-                role: "Software Developer",
-                department: "development",
-                initials: "ΑΚ",
-                bio: "Ο Alexandros Kasapi έχει καταρτιστεί στον τομέα της Πληροφορικής Ειδικότητας Ειδικός Εφαρμογών Πληροφορικής (Πολυμέσα / Web Designer-Developer / Videogames). Ασχολείται στο τμήμα Τεχνικής Υποστήριξης Δικτύων με ενδιαφέροντα που εστιάζουν στο Web Development και την Τεχνητή Νοημοσύνη με τον Προγραμματισμό, την δημιουργία UI - UX και τον εθελοντισμό. Έχει συμμετάσχει σε σεμινάρια Web Development και Τεχνητής Νοημοσύνης AI. Στόχος του είναι να συνδράμει στον επαγγελματικό προσανατολισμό, στην εξέλιξη της εκμάθησης ενσωματώνοντας την χρήση των σύγχρονων τεχνολογιών.",
-                social: {
-                    linkedin: "#",
-                    email: "#"
-                }
-            }
-        ];
-
-        // Ταξινόμηση με βάση το επίθετο (μετά τους πρώτους 6)
-        const firstSix = teamMembers.slice(0, 6);
-        const restMembers = teamMembers.slice(6);
+        // Mobile Menu Toggle
+        const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+        const navMenu = document.querySelector('.nav-menu');
         
-        // Ταξινόμηση των υπολοίπων με βάση το επίθετο
-        restMembers.sort((a, b) => {
-            const surnameA = a.name.split(' ').pop().toLowerCase();
-            const surnameB = b.name.split(' ').pop().toLowerCase();
-            return surnameA.localeCompare(surnameB);
+        mobileMenuBtn.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
         });
-
-        const sortedTeamMembers = [...firstSix, ...restMembers];
-
-        // Συνάρτηση για εμφάνιση μελών ομάδας
-        function displayTeamMembers(filter = "all") {
-            const container = document.getElementById("teamContainer");
-            container.innerHTML = "";
-            
-            const filteredMembers = filter === "all" 
-                ? sortedTeamMembers 
-                : sortedTeamMembers.filter(member => member.department === filter);
-            
-            filteredMembers.forEach(member => {
-                const memberElement = document.createElement("div");
-                memberElement.className = "flip-card";
-                
-                memberElement.innerHTML = `
-                    <div class="flip-card-inner">
-                        <div class="flip-card-front">
-                            <div class="member-photo">${member.initials}</div>
-                            <div class="member-name">${member.name}</div>
-                            <div class="member-role">${member.role}</div>
-                            <div class="member-department">${getDepartmentName(member.department)}</div>
-                            <div class="flip-hint">Κάντε κλικ για περισσότερες πληροφορίες</div>
-                        </div>
-                        <div class="flip-card-back">
-                            <div class="bio-title">Βιογραφικό</div>
-                            <div class="bio-text">${member.bio}</div>
-                            <div class="social-links">
-                                ${member.social.linkedin !== '#' ? `<a href="${member.social.linkedin}" target="_blank"><i class="fab fa-linkedin"></i></a>` : ''}
-                                ${member.social.email !== '#' ? `<a href="${member.social.email}"><i class="fas fa-envelope"></i></a>` : ''}
-                            </div>
-                        </div>
-                    </div>
-                `;
-                
-                container.appendChild(memberElement);
+        
+        // Back to Top Button
+        const backToTopButton = document.querySelector('.back-to-top');
+        
+        window.addEventListener('scroll', () => {
+            if (window.pageYOffset > 300) {
+                backToTopButton.classList.add('active');
+            } else {
+                backToTopButton.classList.remove('active');
+            }
+        });
+        
+        backToTopButton.addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
             });
-        }
-
-        // Βοηθητική συνάρτηση για ονόματα τμημάτων
-        function getDepartmentName(department) {
-            const departments = {
-                "founder": "Ιδρύτρια",
-                "scientific": "Επιστημονική Επιτροπή",
-                "legal": "Νομική Υποστήριξη",
-                "development": "Ανάπτυξη",
-                "support": "Διοικητική Υποστήριξη",
-                "volunteer": "Εθελοντική Ομάδα"
-            };
-            return departments[department] || department;
-        }
-
-        // Εκκίνηση με όλα τα μέλη
-        displayTeamMembers();
-
-        // Προσθήκη event listeners στα φίλτρα
-        document.querySelectorAll(".filter-btn").forEach(button => {
-            button.addEventListener("click", function() {
-                // Αφαίρεση active class από όλα τα κουμπιά
-                document.querySelectorAll(".filter-btn").forEach(btn => {
-                    btn.classList.remove("active");
-                });
+        });
+        
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
                 
-                // Προσθήκη active class στο επιλεγμένο κουμπί
-                this.classList.add("active");
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
                 
-                // Εφαρμογή φίλτρου
-                const filter = this.getAttribute("data-filter");
-                displayTeamMembers(filter);
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                    
+                    // Close mobile menu if open
+                    navMenu.classList.remove('active');
+                }
             });
         });
     </script>
