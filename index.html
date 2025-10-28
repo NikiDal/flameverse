@@ -14,28 +14,51 @@
         }
 
         :root {
-            --color-primary: #010128;
-            --color-secondary: #7371FC;
-            --color-accent: #A594F9;
-            --color-light: #E5D9F2;
-            --color-bg: #F5EFFF;
-            --color-gradient-start: #667eea;
-            --color-gradient-end: #764ba2;
+            --color-primary: #0a0a1a;
+            --color-secondary: #4f46e5;
+            --color-accent: #8b5cf6;
+            --color-neon: #06d6a0;
+            --color-light: #e2e8f0;
+            --color-bg: #0f0f23;
+            --color-gradient-start: #0f0f23;
+            --color-gradient-mid: #1e1b4b;
+            --color-gradient-end: #312e81;
         }
 
         body {
-            background: linear-gradient(135deg, var(--color-gradient-start) 0%, var(--color-gradient-end) 100%);
-            color: var(--color-primary);
+            background: linear-gradient(135deg, var(--color-gradient-start) 0%, var(--color-gradient-mid) 50%, var(--color-gradient-end) 100%);
+            color: var(--color-light);
             line-height: 1.6;
             min-height: 100vh;
+            background-attachment: fixed;
         }
 
         .glass-effect {
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(10px);
-            border-radius: 20px;
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+            background: rgba(15, 15, 35, 0.7);
+            backdrop-filter: blur(12px);
+            border-radius: 16px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+        }
+
+        .neon-border {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .neon-border::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(79, 70, 229, 0.4), transparent);
+            transition: left 0.7s;
+        }
+
+        .neon-border:hover::before {
+            left: 100%;
         }
 
         .container {
@@ -46,14 +69,15 @@
 
         /* Header Styles */
         header {
-            background: rgba(1, 1, 40, 0.8);
-            backdrop-filter: blur(10px);
+            background: rgba(10, 10, 26, 0.85);
+            backdrop-filter: blur(15px);
             color: white;
             padding: 1rem 0;
             position: sticky;
             top: 0;
             z-index: 100;
-            box-shadow: 0 4px 12px rgba(1, 1, 40, 0.1);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+            border-bottom: 1px solid rgba(79, 70, 229, 0.3);
         }
 
         .header-content {
@@ -70,12 +94,16 @@
 
         .logo i {
             font-size: 1.8rem;
-            color: var(--color-light);
+            color: var(--color-neon);
+            text-shadow: 0 0 10px rgba(6, 214, 160, 0.7);
         }
 
         .logo h1 {
             font-size: 1.5rem;
             font-weight: 700;
+            background: linear-gradient(to right, var(--color-light), var(--color-neon));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
 
         nav ul {
@@ -85,15 +113,17 @@
         }
 
         nav a {
-            color: white;
+            color: var(--color-light);
             text-decoration: none;
             font-weight: 500;
-            transition: color 0.3s;
+            transition: all 0.3s;
             position: relative;
+            padding: 5px 0;
         }
 
         nav a:hover {
-            color: var(--color-light);
+            color: var(--color-neon);
+            text-shadow: 0 0 8px rgba(6, 214, 160, 0.5);
         }
 
         nav a::after {
@@ -101,9 +131,9 @@
             position: absolute;
             width: 0;
             height: 2px;
-            bottom: -5px;
+            bottom: 0;
             left: 0;
-            background-color: var(--color-light);
+            background: linear-gradient(to right, var(--color-secondary), var(--color-neon));
             transition: width 0.3s;
         }
 
@@ -122,15 +152,31 @@
 
         /* Hero Section */
         .hero {
-            padding: 6rem 0;
+            padding: 8rem 0;
             text-align: center;
             color: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at center, rgba(79, 70, 229, 0.1) 0%, transparent 70%);
+            z-index: -1;
         }
 
         .hero h2 {
-            font-size: 3rem;
+            font-size: 3.5rem;
             margin-bottom: 1.5rem;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+            text-shadow: 0 0 20px rgba(79, 70, 229, 0.5);
+            background: linear-gradient(to right, #e2e8f0, #8b5cf6);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
 
         .hero p {
@@ -151,17 +197,34 @@
             transition: all 0.3s;
             border: none;
             cursor: pointer;
-            box-shadow: 0 4px 15px rgba(115, 113, 252, 0.4);
+            box-shadow: 0 4px 15px rgba(79, 70, 229, 0.4);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: left 0.7s;
+        }
+
+        .btn:hover::before {
+            left: 100%;
         }
 
         .btn:hover {
             transform: translateY(-3px);
-            box-shadow: 0 10px 25px rgba(115, 113, 252, 0.6);
+            box-shadow: 0 10px 25px rgba(79, 70, 229, 0.6);
         }
 
         /* Team Section */
         .team-section {
-            padding: 4rem 0;
+            padding: 5rem 0;
         }
 
         .section-title {
@@ -177,9 +240,10 @@
             display: block;
             width: 100px;
             height: 4px;
-            background: linear-gradient(to right, var(--color-secondary), var(--color-accent));
+            background: linear-gradient(to right, var(--color-secondary), var(--color-neon));
             margin: 15px auto;
             border-radius: 2px;
+            box-shadow: 0 0 10px rgba(79, 70, 229, 0.5);
         }
 
         .team-category {
@@ -190,9 +254,21 @@
             font-size: 2rem;
             margin-bottom: 3rem;
             padding-bottom: 15px;
-            border-bottom: 2px solid rgba(255, 255, 255, 0.3);
+            border-bottom: 2px solid rgba(79, 70, 229, 0.3);
             color: white;
             text-align: center;
+            position: relative;
+        }
+
+        .category-title::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 2px;
+            background: linear-gradient(to right, var(--color-secondary), var(--color-neon));
         }
 
         /* Flip Card Styles */
@@ -230,20 +306,21 @@
             height: 100%;
             -webkit-backface-visibility: hidden;
             backface-visibility: hidden;
-            border-radius: 20px;
+            border-radius: 16px;
             overflow: hidden;
         }
 
         .flip-card-front {
-            background: linear-gradient(135deg, rgba(255, 255, 255, 0.15), rgba(255, 255, 255, 0.05));
+            background: linear-gradient(135deg, rgba(79, 70, 229, 0.1), rgba(139, 92, 246, 0.05));
             backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.2);
+            border: 1px solid rgba(79, 70, 229, 0.2);
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
             padding: 2rem;
             color: white;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
         }
 
         .member-photo {
@@ -255,7 +332,8 @@
             align-items: center;
             justify-content: center;
             margin-bottom: 1.5rem;
-            border: 3px solid rgba(255, 255, 255, 0.3);
+            border: 3px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 0 15px rgba(79, 70, 229, 0.4);
         }
 
         .member-photo i {
@@ -283,6 +361,8 @@
             flex-direction: column;
             text-align: left;
             overflow-y: auto;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+            border: 1px solid rgba(79, 70, 229, 0.3);
         }
 
         .member-bio-full {
@@ -313,7 +393,9 @@
         .about-text h3 {
             font-size: 2.5rem;
             margin-bottom: 2rem;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+            background: linear-gradient(to right, #e2e8f0, #8b5cf6);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
 
         .about-text p {
@@ -328,8 +410,8 @@
 
         .flame-icon {
             font-size: 15rem;
-            color: rgba(255, 255, 255, 0.8);
-            filter: drop-shadow(0 0 20px rgba(255, 255, 255, 0.3));
+            color: var(--color-neon);
+            filter: drop-shadow(0 0 20px rgba(6, 214, 160, 0.5));
             animation: float 3s ease-in-out infinite;
         }
 
@@ -340,11 +422,12 @@
 
         /* Footer */
         footer {
-            background: rgba(1, 1, 40, 0.9);
-            backdrop-filter: blur(10px);
+            background: rgba(10, 10, 26, 0.9);
+            backdrop-filter: blur(15px);
             color: white;
             padding: 4rem 0 2rem;
             margin-top: 4rem;
+            border-top: 1px solid rgba(79, 70, 229, 0.3);
         }
 
         .footer-content {
@@ -369,7 +452,7 @@
             bottom: 0;
             width: 50px;
             height: 2px;
-            background: linear-gradient(to right, var(--color-secondary), var(--color-accent));
+            background: linear-gradient(to right, var(--color-secondary), var(--color-neon));
         }
 
         .footer-column ul {
@@ -390,7 +473,7 @@
         }
 
         .footer-column a:hover {
-            color: var(--color-secondary);
+            color: var(--color-neon);
         }
 
         .legal-info {
@@ -426,7 +509,7 @@
             visibility: hidden;
             transition: all 0.3s;
             z-index: 99;
-            box-shadow: 0 5px 20px rgba(115, 113, 252, 0.4);
+            box-shadow: 0 5px 20px rgba(79, 70, 229, 0.4);
             backdrop-filter: blur(10px);
             border: 1px solid rgba(255, 255, 255, 0.2);
         }
@@ -438,7 +521,7 @@
 
         .back-to-top:hover {
             transform: translateY(-5px) scale(1.1);
-            box-shadow: 0 10px 25px rgba(115, 113, 252, 0.6);
+            box-shadow: 0 10px 25px rgba(79, 70, 229, 0.6);
         }
 
         /* Responsive Design */
@@ -467,7 +550,7 @@
             }
             
             .hero h2 {
-                font-size: 2.2rem;
+                font-size: 2.5rem;
             }
             
             .hero p {
@@ -554,16 +637,16 @@
             <div class="team-category">
                 <h3 class="category-title">Ιδρύτρια - Project Manager</h3>
                 <div class="team-grid">
-                    <div class="flip-card">
+                    <div class="flip-card neon-border">
                         <div class="flip-card-inner">
-                            <div class="flip-card-front">
+                            <div class="flip-card-front glass-effect">
                                 <div class="member-photo">
                                     <i class="fas fa-user-tie"></i>
                                 </div>
                                 <h3>Νίκη Δαλιανά</h3>
                                 <p>Ιδρύτρια - Project Manager</p>
                             </div>
-                            <div class="flip-card-back">
+                            <div class="flip-card-back glass-effect">
                                 <div class="member-bio-full">
                                     <p>Η Νίκη Δαλιανά είναι απόφοιτος του τμήματος Φιλοσοφίας, Παιδαγωγικής και Ψυχολογίας (κατεύθυνση Ψυχολογίας) του Εθνικού και Καποδιστριακού Πανεπιστημίου Αθηνών, καθώς και κάτοχος μεταπτυχιακού τίτλου στην «Συμβουλευτική και Επαγγελματικό Προσανατολισμό» του ΕΚΠΑ. Ασκεί το αντικείμενο του επαγγελματικού προσανατολισμού και της ψυχολογικής ενδυνάμωσης με εμπειρία τόσο στον δημόσιο όσο και στον ιδιωτικό τομέα.</p>
                                     <p>Κατά τη διάρκεια των μεταπτυχιακών της σπουδών, πραγματοποίησε πρακτική άσκηση στο ΚΕΣΥΠ Ελευσίνας και στον ΟΑΕΔ, παρέχοντας συμβουλευτική σε εφήβους και ανέργους. Επί πέντε χρόνια υπήρξε υπεύθυνη της υπηρεσίας «Από Φοιτητές για Φοιτητές» του ΕΚΠΑ, ενώ υπήρξε και επιστημονικός συνεργάτης στη Μονάδα Εφηβικής Υγείας (ΜΕΥ) του Νοσοκομείου Παίδων «Π. & Α. Κυριακού» και της ΕΕΕΙ, παρέχοντας υποστήριξη σε εφήβους, γονείς και εκπαιδευτικούς.</p>
@@ -581,16 +664,16 @@
             <div class="team-category">
                 <h3 class="category-title">Επιστημονική Επιτροπή</h3>
                 <div class="team-grid">
-                    <div class="flip-card">
+                    <div class="flip-card neon-border">
                         <div class="flip-card-inner">
-                            <div class="flip-card-front">
+                            <div class="flip-card-front glass-effect">
                                 <div class="member-photo">
                                     <i class="fas fa-graduation-cap"></i>
                                 </div>
                                 <h3>Δρ. Αλέξανδρος-Σταμάτιος Αντωνίου</h3>
                                 <p>Καθηγητής Ψυχολογίας, ΕΚΠΑ</p>
                             </div>
-                            <div class="flip-card-back">
+                            <div class="flip-card-back glass-effect">
                                 <div class="member-bio-full">
                                     <p>Ο Αλέξανδρος-Σταμάτιος Αντωνίου είναι Καθηγητής Ψυχολογίας και κατέχει προπτυχιακούς και μεταπτυχιακούς τίτλους (3 διδακτορικά) στην Ψυχολογία, τη Φιλοσοφία, την Εκπαίδευση και τη Διοίκηση από πανεπιστήμια της Ελλάδας και του Ηνωμένου Βασιλείου (με υποτροφία του Ιδρύματος Κρατικών Υποτροφιών). Έχει διδάξει σε προπτυχιακούς και μεταπτυχιακούς φοιτητές πανεπιστημίων (Ιατρική Σχολή και Σχολή Φιλοσοφίας του ΕΚΠΑ, Πάντειο Πανεπιστήμιο κ.ά.), καθώς και σε γιατρούς νοσοκομείων, νοσηλευτικό προσωπικό, ψυχολόγους, εκπαιδευτικούς κ.ά.</p>
                                     <p>Έχει λάβει πολυάριθμα βραβεία και υποτροφίες και έχει συμμετάσχει ως εθνικός συντονιστής/ερευνητής σε πολλά εθνικά και ευρωπαϊκά ερευνητικά προγράμματα. Η επαγγελματική του εμπειρία περιλαμβάνει: α) Διευθυντής του Οργανισμού «Επάνοδος» του Υπουργείου Δικαιοσύνης, β) Επιστημονικός Σύμβουλος στην Εθνική Επιτροπή Ραδιοτηλεόρασης και γ) Σύμβουλος Ανθρώπινου Δυναμικού για δημόσιους και ιδιωτικούς οργανισμούς.</p>
@@ -600,16 +683,16 @@
                         </div>
                     </div>
                     
-                    <div class="flip-card">
+                    <div class="flip-card neon-border">
                         <div class="flip-card-inner">
-                            <div class="flip-card-front">
+                            <div class="flip-card-front glass-effect">
                                 <div class="member-photo">
                                     <i class="fas fa-brain"></i>
                                 </div>
                                 <h3>Δρ. Ορέστης Γιωτάκος</h3>
                                 <p>Νευροψυχίατρος</p>
                             </div>
-                            <div class="flip-card-back">
+                            <div class="flip-card-back glass-effect">
                                 <div class="member-bio-full">
                                     <p>Ο Ορέστης Γιωτάκος ολοκλήρωσε τις βασικές του σπουδές στην Στρατιωτική Ιατρική Σχολή, στη Θεσσαλονίκη, απέκτησε την ειδικότητα του Ψυχιάτρου στο Νοσοκομείο Ευαγγελισμός, το MSc in Neuroscience στο Institute of Psychiatry στο Λονδίνο και το Διδακτορικό στην Ιατρική Σχολή του Πανεπιστημίου Αθηνών.</p>
                                     <p>Έχει πλούσιο ερευνητικό και εκπαιδευτικό έργο, συνεργασίες με τοπικούς και διεθνείς επιστημονικούς οργανισμούς και είναι υπεύθυνος διοργάνωσης πολλών τακτικών συνεδρίων και εκδηλώσεων για την ψυχική υγεία. Έχει συγγράψει πλήθος άρθρων και βιβλίων, στην ελληνική και αγγλική γλώσσα, στoυς τομείς της ψυχιατρικής και της νευροεπιστήμης, με αντικείμενα κυρίως την ψυχοπαθολογία, τη νευροβιολογία των ψυχικών παθήσεων και την πρόληψη.</p>
@@ -625,16 +708,16 @@
             <div class="team-category">
                 <h3 class="category-title">Διοικητική & Νομική Υποστήριξη</h3>
                 <div class="team-grid">
-                    <div class="flip-card">
+                    <div class="flip-card neon-border">
                         <div class="flip-card-inner">
-                            <div class="flip-card-front">
+                            <div class="flip-card-front glass-effect">
                                 <div class="member-photo">
                                     <i class="fas fa-cogs"></i>
                                 </div>
                                 <h3>Ιάκωβος Δαρζέντας</h3>
                                 <p>Web Support Developer - Beta Operation Coordinator</p>
                             </div>
-                            <div class="flip-card-back">
+                            <div class="flip-card-back glass-effect">
                                 <div class="member-bio-full">
                                     <p>Ο Ιάκωβος είναι φοιτητής στο τμήμα Δημόσιας Διοίκησης του Ελληνικού Ανοικτού Πανεπιστημίου, με ενδιαφέροντα που εστιάζουν στην διοίκηση και την τεχνολογία. Ασχολείται ενεργά με projects που έχουν σχέση με την ηλεκτρονική αυτοματοποίηση διαδικασιών, και δίνει ιδιαίτερη έμφαση στη σύνδεση της θεωρητικής γνώσης με πρακτικές εφαρμογές που έχουν κοινωνικό αντίκτυπο.</p>
                                     <p>Έχει συμμετάσχει σε διάφορες εθελοντικές ομάδες με διαφορετικό ρόλο κάθε φορά, ενώ τον ενδιαφέρει η διασταύρωση τεχνολογίας – ανθρωπιστικών επιστημών. Στόχος του είναι να συνεισφέρει σε καινοτόμες λύσεις που προωθούν την αυτογνωσία, τη βιώσιμη μάθηση και την ενδυνάμωση των νέων.</p>
@@ -643,16 +726,16 @@
                         </div>
                     </div>
                     
-                    <div class="flip-card">
+                    <div class="flip-card neon-border">
                         <div class="flip-card-inner">
-                            <div class="flip-card-front">
+                            <div class="flip-card-front glass-effect">
                                 <div class="member-photo">
                                     <i class="fas fa-balance-scale"></i>
                                 </div>
                                 <h3>Δρ. Δέσποινα Κώτση</h3>
                                 <p>Νομική Σύμβουλος - Υπεύθυνη Κανονιστικής Συμμόρφωσης</p>
                             </div>
-                            <div class="flip-card-back">
+                            <div class="flip-card-back glass-effect">
                                 <div class="member-bio-full">
                                     <p>Η Δέσποινα Σπ. Κώτση είναι Δικηγόρος, παρ' Αρείω Πάγω, και Διδάκτωρ της Νομικής Σχολής Αθηνών (ΕΚΠΑ). Είναι κάτοχος δύο μεταπτυχιακών τίτλων, ήτοι στο Εξειδικευμένο Δημόσιο Δίκαιο (Νομική Σχολή Αθηνών & Νομική Σχολή Παν/μίου Montesquieu - Bordeaux IV) και στο Διεθνές Δίκαιο & Διπλωματικές Σπουδές (Πάντειο Πανεπιστήμιο).</p>
                                     <p>Το δημόσιο δίκαιο ως παράμετρος του εκπαιδευτικού συστήματος στην Ελλάδα ήταν η θεματική της διδακτορικής της διατριβής, η οποία στηρίχθηκε σε έναν πρωτότυπο τρόπο: την ανάλυση των συστατικών στοιχείων του εν λόγω συστήματος με βάση μία μαθηματική σχέση. Στα ενδιαφέροντα της περιλαμβάνεται η εφαρμογή του υπολογιστικού τρόπου σκέψης (computational thinking) στις κοινωνικές επιστήμες και ειδικά στο χώρο της νομικής.</p>
@@ -662,16 +745,16 @@
                         </div>
                     </div>
                     
-                    <div class="flip-card">
+                    <div class="flip-card neon-border">
                         <div class="flip-card-inner">
-                            <div class="flip-card-front">
+                            <div class="flip-card-front glass-effect">
                                 <div class="member-photo">
                                     <i class="fas fa-shield-alt"></i>
                                 </div>
                                 <h3>Ζωή Τσακιρίδου</h3>
                                 <p>Υπεύθυνη Προστασίας Προσωπικών Δεδομένων (DPO) - Content Writer</p>
                             </div>
-                            <div class="flip-card-back">
+                            <div class="flip-card-back glass-effect">
                                 <div class="member-bio-full">
                                     <p>Η Ζωή Τσακιρίδου, ως Υπεύθυνη Διοικητικού Τομέα στην εταιρεία ena Σύμβουλοι Ανάπτυξης, διαθέτει έντεκα χρόνια εμπειρίας και βαθιά γνώση στις διοικητικές λειτουργίες, την οργάνωση εσωτερικών διαδικασιών και την υποστήριξη έργων ψηφιακού μετασχηματισμού. Κατά την επαγγελματική της πορεία έχει αναλάβει ποικίλους ρόλους που συνδέονται με την εκπαίδευση, την ασφάλεια εργαζομένων και δεδομένων (DPO), την υποστήριξη ΙΤ, καθώς και την εταιρική επικοινωνία και κουλτούρα.</p>
                                     <p>Με αφοσίωση στη συνεχή βελτίωση, συμμετέχει ενεργά σε πρωτοβουλίες και καινοτομίες που ενισχύουν την αποδοτικότητα της ομάδας μέσω αυτοματισμών και βελτιστοποίησης ροών. Διαθέτει Πτυχίο Διοίκησης Επιχειρήσεων (ΤΕΙ ΑΜΘ) και Μεταπτυχιακό στη Διοίκηση Καινοτομίας, Τεχνολογίας και Επιχειρήσεων (ΔΠΘ). Έχει συμβάλει σε έργα πληροφορικής με έμφαση στην οργάνωση και παραμετροποίηση του πληροφοριακού συστήματος Entersoft, αποκτώντας πιστοποίηση ως Σύμβουλος Υλοποίησης Έργων.</p>
@@ -687,16 +770,16 @@
                 <h3 class="category-title">Εθελοντική Ομάδα Υλοποίησης</h3>
                 <div class="team-grid">
                     <!-- Βαγγέλης Κάβουρας -->
-                    <div class="flip-card">
+                    <div class="flip-card neon-border">
                         <div class="flip-card-inner">
-                            <div class="flip-card-front">
+                            <div class="flip-card-front glass-effect">
                                 <div class="member-photo">
                                     <i class="fas fa-code"></i>
                                 </div>
                                 <h3>Βαγγέλης Κάβουρας</h3>
                                 <p>Full Stack Developer</p>
                             </div>
-                            <div class="flip-card-back">
+                            <div class="flip-card-back glass-effect">
                                 <div class="member-bio-full">
                                     <p>Ο Βαγγέλης Κάβουρας είναι Full Stack Developer με εμπειρία τόσο σε front-end όσο και σε back-end τεχνολογίες. Έχει εργαστεί σε διάφορα projects που αφορούν την ανάπτυξη web εφαρμογών και την ενοποίηση διαφορετικών συστημάτων. Στο FlameVerse, συμμετέχει στην πλήρη ανάπτυξη της πλατφόρμας, από τη διεπαφή χρήστη έως τις server-side λειτουργίες.</p>
                                 </div>
@@ -705,16 +788,16 @@
                     </div>
                     
                     <!-- Κυριακή Γιαμουστάρη -->
-                    <div class="flip-card">
+                    <div class="flip-card neon-border">
                         <div class="flip-card-inner">
-                            <div class="flip-card-front">
+                            <div class="flip-card-front glass-effect">
                                 <div class="member-photo">
                                     <i class="fas fa-chart-bar"></i>
                                 </div>
                                 <h3>Κυριακή Γιαμουστάρη</h3>
                                 <p>Data Analyst</p>
                             </div>
-                            <div class="flip-card-back">
+                            <div class="flip-card-back glass-effect">
                                 <div class="member-bio-full">
                                     <p>Η Κυριακή Γιαμουστάρη είναι Data Analyst με εμπειρία στην ανάλυση δεδομένων και την εξαγωγή χρήσιμων πληροφοριών. Έχει εργαστεί σε projects που αφορούν την επεξεργασία μεγάλων όγκων δεδομένων και την ανάπτυξη αναφορών. Στο FlameVerse, συμβάλλει στην ανάλυση των δεδομένων χρήστη και στην ανάπτυξη μοντέλων που βελτιώνουν την προσωποποιημένη εμπειρία.</p>
                                 </div>
@@ -723,16 +806,16 @@
                     </div>
 
                     <!-- Ευγενία Δρετάκη -->
-                    <div class="flip-card">
+                    <div class="flip-card neon-border">
                         <div class="flip-card-inner">
-                            <div class="flip-card-front">
+                            <div class="flip-card-front glass-effect">
                                 <div class="member-photo">
                                     <i class="fas fa-laptop-code"></i>
                                 </div>
                                 <h3>Ευγενία Δρετάκη</h3>
                                 <p>Full Stack Developer</p>
                             </div>
-                            <div class="flip-card-back">
+                            <div class="flip-card-back glass-effect">
                                 <div class="member-bio-full">
                                     <p>Η Ευγενία Δρετάκη σπουδάζει Πληροφορική στο Πανεπιστήμιο Δυτικής Μακεδονίας και ασχολείται με την ανάπτυξη δυναμικών ιστοσελίδων (Full Stack Development), συνδυάζοντας την τεχνική σκέψη με τη δημιουργικότητα. Μέσα από τα πανεπιστημιακά της μαθήματα και προσωπικά projects, έχει ασχοληθεί με θέματα που εκτείνονται από την τεχνητή νοημοσύνη μέχρι την ανάπτυξη APIs, βάσεων δεδομένων και σύγχρονων web εφαρμογών με React και .NET. Έχει αναπτύξει ολοκληρωμένα έργα που συνδυάζουν αισθητική και λειτουργικότητα — όπως ιστοσελίδες ευεξίας, εκπαιδευτικά dashboards και IoT συστήματα με αισθητήρες και αυτοματισμούς.</p>
                                 </div>
@@ -741,16 +824,16 @@
                     </div>
 
                     <!-- Ευάγγελος Θεολογής -->
-                    <div class="flip-card">
+                    <div class="flip-card neon-border">
                         <div class="flip-card-inner">
-                            <div class="flip-card-front">
+                            <div class="flip-card-front glass-effect">
                                 <div class="member-photo">
                                     <i class="fas fa-user-graduate"></i>
                                 </div>
                                 <h3>Ευάγγελος Θεολογής</h3>
                                 <p>Πιστοποιημένος Σύμβουλος Σταδιοδρομίας</p>
                             </div>
-                            <div class="flip-card-back">
+                            <div class="flip-card-back glass-effect">
                                 <div class="member-bio-full">
                                     <p>Ο Ευάγγελος Θεολογής, ΠΕ83, MSc, είναι Πιστοποιημένος Σύμβουλος Σταδιοδρομίας/Επαγγελματικού Προσανατολισμού επιπέδου Α και υπηρετεί ως Υπεύθυνος Σχολικού Επαγγελματικού Προσανατολισμού στη Διεύθυνση Δευτεροβάθμιας Εκπαίδευσης Δυτικής Αττικής. Στο παρελθόν έχει υπηρετήσει στο 2ο ΚΕΣΥ Β' Αθήνας και στο ΚΕΣΥ Δυτικής Αττικής, με εξειδίκευση στη συμβουλευτική επαγγελματικού προσανατολισμού.</p>
                                     <p>Έχει επίσης διατελέσει μέλος του ΚΕΣΥΠ Ελευσίνας και του Γραφείου Σύνδεσης με την Αγορά Εργασίας (ΓΡΑΣΥ), ενώ υπηρέτησε και ως Σύμβουλος Σχολικής Ζωής στο 4ο Γυμνάσιο Ν. Ιωνίας.</p>
@@ -761,16 +844,16 @@
                     </div>
 
                     <!-- Μαίρη Κάντα -->
-                    <div class="flip-card">
+                    <div class="flip-card neon-border">
                         <div class="flip-card-inner">
-                            <div class="flip-card-front">
+                            <div class="flip-card-front glass-effect">
                                 <div class="member-photo">
                                     <i class="fas fa-hashtag"></i>
                                 </div>
                                 <h3>Μαίρη Κάντα</h3>
                                 <p>Social Media Coordinator</p>
                             </div>
-                            <div class="flip-card-back">
+                            <div class="flip-card-back glass-effect">
                                 <div class="member-bio-full">
                                     <p>Η Μαίρη Κάντα είναι Social Media Coordinator με πάθος για τη δημιουργία ενδιαφέροντος κοινού και την ανάπτυξη ψηφιακής παρουσίας. Έχει εμπειρία στη διαχείριση κοινωνικών δικτύων και στην ανάπτυξη στρατηγικών περιεχομένου που ελκύουν και διατηρούν το ενδιαφέρον του κοινού. Στο FlameVerse, αναλαμβάνει τη διαχείριση των κοινωνικών δικτύων και την προώθηση της πλατφόρμας.</p>
                                 </div>
@@ -779,16 +862,16 @@
                     </div>
 
                     <!-- Αθηνά Καραμαύρου -->
-                    <div class="flip-card">
+                    <div class="flip-card neon-border">
                         <div class="flip-card-inner">
-                            <div class="flip-card-front">
+                            <div class="flip-card-front glass-effect">
                                 <div class="member-photo">
                                     <i class="fas fa-code"></i>
                                 </div>
                                 <h3>Αθηνά Καραμαύρου</h3>
                                 <p>Front-end Developer</p>
                             </div>
-                            <div class="flip-card-back">
+                            <div class="flip-card-back glass-effect">
                                 <div class="member-bio-full">
                                     <p>Η Αθηνά Καραμαύρου είναι Front-end Developer με εμπειρία στην ανάπτυξη διεπαφών χρήστη και την εφαρμογή σύγχρονων τεχνολογιών web development. Συμμετέχει ενεργά στην ανάπτυξη της διεπαφής χρήστη του FlameVerse, εστιάζοντας στη δημιουργία μιας βελτιστοποιημένης και προσιτής εμπειρίας για όλους τους χρήστες.</p>
                                 </div>
@@ -797,16 +880,16 @@
                     </div>
 
                     <!-- Alexandros Kasapi -->
-                    <div class="flip-card">
+                    <div class="flip-card neon-border">
                         <div class="flip-card-inner">
-                            <div class="flip-card-front">
+                            <div class="flip-card-front glass-effect">
                                 <div class="member-photo">
                                     <i class="fas fa-server"></i>
                                 </div>
                                 <h3>Alexandros Kasapi</h3>
                                 <p>Software Developer (Back-end focus)</p>
                             </div>
-                            <div class="flip-card-back">
+                            <div class="flip-card-back glass-effect">
                                 <div class="member-bio-full">
                                     <p>Ο Alexandros Kasapi έχει καταρτιστεί στον τομέα της Πληροφορικής Ειδικότητας Ειδικός Εφαρμογών Πληροφορικής (Πολυμέσα / Web Designer-Developer / Videogames). Ασχολείται στο τμήμα Τεχνικής Υποστήριξης Δικτύων με ενδιαφέροντα που εστιάζουν στο Web Development και την Τεχνητή Νοημοσύνη με τον Προγραμματισμό, την δημιουργία UI - UX και τον εθελοντισμό. Έχει συμμετάσχει σε σεμινάρια Web Development και Τεχνητής Νοημοσύνης AI. Στόχος του είναι να συνδράμει στον επαγγελματικό προσανατολισμό, στην εξέλιξη της εκμάθησης ενσωματώνοντας την χρήση των σύγχρονων τεχνολογιών.</p>
                                 </div>
@@ -815,16 +898,16 @@
                     </div>
 
                     <!-- Νικόλας Κονίδης -->
-                    <div class="flip-card">
+                    <div class="flip-card neon-border">
                         <div class="flip-card-inner">
-                            <div class="flip-card-front">
+                            <div class="flip-card-front glass-effect">
                                 <div class="member-photo">
                                     <i class="fas fa-project-diagram"></i>
                                 </div>
                                 <h3>Νικόλας Κονίδης</h3>
                                 <p>Project Manager & Data Analyst</p>
                             </div>
-                            <div class="flip-card-back">
+                            <div class="flip-card-back glass-effect">
                                 <div class="member-bio-full">
                                     <p>Ο Νικόλας Κονίδης έχει εμπειρία στη διαχείριση έργων και την εκπαίδευση, τόσο στην Ελλάδα όσο και στο εξωτερικό, και τα τελευταία χρόνια δραστηριοποιείται στον χώρο της Πληροφορικής και της Ανάλυσης Δεδομένων. Έχει εργαστεί στην Κίνα ως καθηγητής Αγγλικών και Ελληνικών, ενώ σήμερα ηγείται έργων στην Ελλάδα, συνδυάζοντας τεχνολογία, ανάλυση δεδομένων και ομαδική συνεργασία. Σπουδάζει Πληροφοριακά και Επικοινωνιακά Συστήματα στο Πανεπιστήμιο Αιγαίου και είναι απόφοιτος του Τμήματος Αγγλικής και Ελληνικής Φιλολογίας του Πανεπιστημίου Αθηνών. Έχει επίσης συμμετάσχει σε εκδόσεις γλωσσολογικού και πολιτιστικού περιεχομένου στην Κίνα.</p>
                                 </div>
@@ -833,16 +916,16 @@
                     </div>
 
                     <!-- Δημήτρης Κώττας -->
-                    <div class="flip-card">
+                    <div class="flip-card neon-border">
                         <div class="flip-card-inner">
-                            <div class="flip-card-front">
+                            <div class="flip-card-front glass-effect">
                                 <div class="member-photo">
                                     <i class="fas fa-pen-fancy"></i>
                                 </div>
                                 <h3>Δημήτρης Κώττας</h3>
                                 <p>Content Writer</p>
                             </div>
-                            <div class="flip-card-back">
+                            <div class="flip-card-back glass-effect">
                                 <div class="member-bio-full">
                                     <p>Ο Δημήτρης Κώττας είναι Content Writer με εμπειρία στη δημιουργήσει ποιοτικού περιεχομένου για ψηφιακές πλατφόρμες. Έχει εργαστεί σε διάφορα projects που συνδυάζουν τεχνολογία, ψυχολογία και εκπαίδευση, με στόχο τη δημιουργήσει ελκυστικού και αποτελεσματικού περιεχομένου για νέους. Στο FlameVerse συμμετέχει στην ανάπτυξη εκπαιδευτικού υλικού και στην επικοινωνία της πλατφόρμας.</p>
                                 </div>
@@ -851,16 +934,16 @@
                     </div>
 
                     <!-- Μαρία Λάππα -->
-                    <div class="flip-card">
+                    <div class="flip-card neon-border">
                         <div class="flip-card-inner">
-                            <div class="flip-card-front">
+                            <div class="flip-card-front glass-effect">
                                 <div class="member-photo">
                                     <i class="fas fa-paint-brush"></i>
                                 </div>
                                 <h3>Μαρία Λάππα</h3>
                                 <p>Front-end Developer - UX Designer</p>
                             </div>
-                            <div class="flip-card-back">
+                            <div class="flip-card-back glass-effect">
                                 <div class="member-bio-full">
                                     <p>Η Μαρία Λάππα έχει σπουδάσει στο Τμήμα Ηλεκτρολόγων Μηχανικών και Μηχανικών Υπολογιστών του ΔΠΘ όπου ήρθε σε επαφή με ένα ευρύ φάσμα θεματικών, από μελέτη ηλεκτρικών κυκλωμάτων μέχρι εξόρυξη δεδομένων και machine learning. Το web development αποτελεί για εκείνη το σημείο συνάντησης ανάμεσα στη δημιουργική έκφραση και τη μηχανική σκέψη.</p>
                                     <p>Ασχολείται με τον σχεδιασμό και την κατασκευή ιστοσελίδων και εφαρμογών κυρίως με ReactJS ή WordPress, ενώ διαθέτει πιστοποιήσεις σε προγράμματα εκπαίδευσης στον σχεδιασμό διεπαφής και εμπειρίας χρήστη (Google UX Design Certificate), στο back-end development και στις σύγχρονες πρακτικές σχεδιασμού ιστοσελίδων. Παράλληλα, εμβαθύνει στις τεχνολογίες της C# και του Blazor, χτίζοντας τις δεξιότητές της στο σύγχρονο full-stack development.</p>
@@ -870,16 +953,16 @@
                     </div>
 
                     <!-- Ιωάννης Νεραντζίδης -->
-                    <div class="flip-card">
+                    <div class="flip-card neon-border">
                         <div class="flip-card-inner">
-                            <div class="flip-card-front">
+                            <div class="flip-card-front glass-effect">
                                 <div class="member-photo">
                                     <i class="fas fa-gamepad"></i>
                                 </div>
                                 <h3>Ιωάννης Νεραντζίδης</h3>
                                 <p>Production Coordinator - Front-end & Back-end Developer</p>
                             </div>
-                            <div class="flip-card-back">
+                            <div class="flip-card-back glass-effect">
                                 <div class="member-bio-full">
                                     <p>Ο Ιωάννης Νεραντζίδης είναι φοιτητής του Τμήματος Εφαρμοσμένης Πληροφορικής στο Πανεπιστήμιο Μακεδονίας. Τα κύρια ενδιαφέροντά του περιλαμβάνουν τον προγραμματισμό, την κυβερνοασφάλεια και το Game Development.</p>
                                     <p>Έχει υλοποιήσει προσωπικά projects, όπως εργαστήρια δικτύων και ασφάλειας (personal labs) και μικρά παιχνίδια-demo, με στόχο την πρακτική εξάσκηση και την εμβάθυνση στις γνώσεις του. Παράλληλα, έχει παρακολουθήσει σχετικά σεμινάρια και εκπαιδευτικά courses, επιδιώκοντας να αναπτύξει δεξιότητες που θα του επιτρέψουν να συμβάλει σε καινοτόμες ιδέες και να αξιοποιήσει τη δημιουργικότητά του.</p>
@@ -889,16 +972,16 @@
                     </div>
 
                     <!-- Μαρουσώ Νομικού -->
-                    <div class="flip-card">
+                    <div class="flip-card neon-border">
                         <div class="flip-card-inner">
-                            <div class="flip-card-front">
+                            <div class="flip-card-front glass-effect">
                                 <div class="member-photo">
                                     <i class="fas fa-robot"></i>
                                 </div>
                                 <h3>Μαρουσώ Νομικού</h3>
                                 <p>Social Media Manager - Front-end Developer</p>
                             </div>
-                            <div class="flip-card-back">
+                            <div class="flip-card-back glass-effect">
                                 <div class="member-bio-full">
                                     <p>Η Μαρουσώ Νομικού είναι φοιτήτρια στο τμήμα Πληροφορικής του ΟΠΑ, με ενδιαφέροντα που εστιάζουν στη ρομποτική, την τεχνητή νοημοσύνη, και το front-end development. Ασχολείται ενεργά με εκμάθηση γλωσσών προγραμματισμού και εξασκεί και αναπτύσσει τις δεξιότητές της με κάθε αφορμή.</p>
                                     <p>Έχει συμμετάσχει στο σεμινάριο της Vodafone "Code Like a Girl", ανάπτυξης ιστοσελίδων, σε εθελοντικές ομάδες διάφορων περιεχομένων, και είναι ενεργό μέλος της θεατρικής ομάδας του ΟΠΑ, ενώ την ενδιαφέρει η συνεργασία τεχνολογίας και τέχνης σε μια εποχή που η τεχνητή νοημοσύνη φαίνεται να περιορίζει την δημιουργικότητα, αντί να συνεργάται μαζί της.</p>
@@ -908,16 +991,16 @@
                     </div>
 
                     <!-- Θεόδωρος Ξιφαράς -->
-                    <div class="flip-card">
+                    <div class="flip-card neon-border">
                         <div class="flip-card-inner">
-                            <div class="flip-card-front">
+                            <div class="flip-card-front glass-effect">
                                 <div class="member-photo">
                                     <i class="fas fa-laptop"></i>
                                 </div>
                                 <h3>Θεόδωρος Ξιφαράς</h3>
                                 <p>Junior Front-end Developer</p>
                             </div>
-                            <div class="flip-card-back">
+                            <div class="flip-card-back glass-effect">
                                 <div class="member-bio-full">
                                     <p>Ο Θεόδωρος Ξιφαράς είναι Junior Front-end Developer με γνώσεις σε HTML, CSS, JavaScript και React. Ασχολείται με την ανάπτυξη διεπαφών χρήστη που είναι όχι μόνο λειτουργικές αλλά και ελκυστικές. Στο FlameVerse συμβάλλει στην ανάπτυξη της διεπαφής χρήστη, εστιάζοντας στη βελτιστοποίηση της εμπειρίας χρήστη και στην προσβασιμότητα.</p>
                                 </div>
@@ -926,16 +1009,16 @@
                     </div>
 
                     <!-- Έφη Παρασκευοπούλου -->
-                    <div class="flip-card">
+                    <div class="flip-card neon-border">
                         <div class="flip-card-inner">
-                            <div class="flip-card-front">
+                            <div class="flip-card-front glass-effect">
                                 <div class="member-photo">
                                     <i class="fas fa-shield-alt"></i>
                                 </div>
                                 <h3>Έφη Παρασκευοπούλου</h3>
                                 <p>Front-end Developer - UI Designer</p>
                             </div>
-                            <div class="flip-card-back">
+                            <div class="flip-card-back glass-effect">
                                 <div class="member-bio-full">
                                     <p>Η Έφη Παρασκευοπούλου είναι φοιτήτρια στο τμήμα Πληροφορικής του ΟΠΑ, με ενδιαφέροντα που εστιάζουν στην κυβερνοασφάλεια, τα μαθηματικά και την ανάλυση δεδομένων. Ασχολείται ενεργά με τον προγραμματισμό σε διάφορες γλώσσες, καθώς και τον εθελοντισμό, και δίνει ιδιαίτερη έμφαση σε πρακτικές εφαρμογές που έχουν κοινωνικό αντίκτυπο, κυρίως μέσω της τεχνολογίας.</p>
                                     <p>Έχει συμμετάσχει σε ομάδες και events κυβερνοασφάλειας, ημερίδες περί ΑΙ και Οικονομίας και σεμινάρια πληροφορικής ποικίλης θεματολογίας, ενώ την ενδιαφέρει η διασταύρωση των ανθρωπιστικών επιστημών με την τεχνολογία και την επιχειρηματικότητα. Στόχος της είναι να συνεισφέρει έμπρακτα σε δράσεις που προωθούν την αυτογνωσία, τη βιώσιμη μάθηση και την καινοτομία.</p>
@@ -945,16 +1028,16 @@
                     </div>
 
                     <!-- Θεοχάρης Στεφανίδης -->
-                    <div class="flip-card">
+                    <div class="flip-card neon-border">
                         <div class="flip-card-inner">
-                            <div class="flip-card-front">
+                            <div class="flip-card-front glass-effect">
                                 <div class="member-photo">
                                     <i class="fas fa-database"></i>
                                 </div>
                                 <h3>Θεοχάρης Στεφανίδης</h3>
                                 <p>Back-end Developer</p>
                             </div>
-                            <div class="flip-card-back">
+                            <div class="flip-card-back glass-effect">
                                 <div class="member-bio-full">
                                     <p>Ο Θεοχάρης Στεφανίδης σπούδασε στο Τμήμα Μηχανολόγων Μηχανικών του ΑΠΘ, όπου ανέπτυξε ισχυρή αναλυτική σκέψη και εξοικειώθηκε με ένα ευρύ φάσμα τεχνικών αντικειμένων — από μοντελοποίηση και προσομοιώσεις έως αυτοματισμούς και δομική ανάλυση. Η ενασχόλησή του με τον προγραμματισμό ξεκίνησε ως εργαλείο επίλυσης προβλημάτων, αλλά σύντομα εξελίχθηκε σε βασικό επαγγελματικό του ενδιαφέρον. Έχει ολοκληρώσει κύκλους εκπαίδευσης στο Full Stack Development και πλέον εστιάζει στο back-end, αξιοποιώντας τεχνολογίες όπως Java, C#, SQL και Node.js, ενώ παράλληλα πειραματίζεται με DevOps εργαλεία και data processing. Στο FlameVerse συμμετέχει εθελοντικά στην ανάπτυξη των back-end υποδομών.</p>
                                 </div>
@@ -963,16 +1046,16 @@
                     </div>
 
                     <!-- Βασίλης Τουμπανάκης -->
-                    <div class="flip-card">
+                    <div class="flip-card neon-border">
                         <div class="flip-card-inner">
-                            <div class="flip-card-front">
+                            <div class="flip-card-front glass-effect">
                                 <div class="member-photo">
                                     <i class="fas fa-chart-line"></i>
                                 </div>
                                 <h3>Βασίλης Τουμπανάκης</h3>
                                 <p>Data Analyst</p>
                             </div>
-                            <div class="flip-card-back">
+                            <div class="flip-card-back glass-effect">
                                 <div class="member-bio-full">
                                     <p>Ο Βασίλης Τουμπανάκης είναι Data Analyst με εμπειρία στην ανάλυση δεδομένων και την ανάπτυξη στατιστικών μοντέλων. Έχει εργαστεί σε projects που αφορούν την εξόρυξη δεδομένων και την προγνωστική ανάλυση. Στο FlameVerse, συμβάλλει στην ανάλυση των δεδομένων χρήστη και στην ανάπτυξη αλγορίθμων που βελτιώνουν την προσωποποίηση της πλατφόρμας.</p>
                                 </div>
@@ -981,16 +1064,16 @@
                     </div>
 
                     <!-- Συμεών Τσαμκόσογλου -->
-                    <div class="flip-card">
+                    <div class="flip-card neon-border">
                         <div class="flip-card-inner">
-                            <div class="flip-card-front">
+                            <div class="flip-card-front glass-effect">
                                 <div class="member-photo">
                                     <i class="fas fa-chalkboard-teacher"></i>
                                 </div>
                                 <h3>Συμεών Τσαμκόσογλου</h3>
                                 <p>Content Writer - Education & Outreach Advisor</p>
                             </div>
-                            <div class="flip-card-back">
+                            <div class="flip-card-back glass-effect">
                                 <div class="member-bio-full">
                                     <p>Ο Συμεών Τσαμκόσογλου είναι εκπαιδευτικός πρωτοβάθμιας εκπαίδευσης, με ενδιαφέροντα που εστιάζουν στην εφαρμογή καινοτόμων εκπαιδευτικών μεθόδων γύρω από το STEM στην εκπαίδευση. Είναι κάτοχος 2 μεταπτυχιακών τίτλων, στις Ψηφιακές Ανθρωπιστικές Επιστήμες και στις Διεθνείς και Ευρωπαϊκές Πολιτικές για την Έκπαιδευση, την Κατάρτιση και την Έρευνα.</p>
                                     <p>Ασχολείται ενεργά με προγράμματα Erasmus με στόχο την ανταλλαγή βέλτιστων πρακτικών και τη συνεργασία με άλλους εκπαιδευτικούς. Στόχος του είναι να διευρύνει τους ορίζοντες των εκπαιδευομένων ώστε να ανταπεξέλθουν ως μελλοντικοί πολίτες σε μια σύγχρονη κοινωνία.</p>
@@ -1000,16 +1083,16 @@
                     </div>
 
                     <!-- Μαρίνα Χατζηεφραιμίδου -->
-                    <div class="flip-card">
+                    <div class="flip-card neon-border">
                         <div class="flip-card-inner">
-                            <div class="flip-card-front">
+                            <div class="flip-card-front glass-effect">
                                 <div class="member-photo">
                                     <i class="fas fa-server"></i>
                                 </div>
                                 <h3>Μαρίνα Χατζηεφραιμίδου</h3>
                                 <p>Back-end Developer</p>
                             </div>
-                            <div class="flip-card-back">
+                            <div class="flip-card-back glass-effect">
                                 <div class="member-bio-full">
                                     <p>Η Μαρίνα Χατζηεфραιμίδου είναι Back-end Developer με εμπειρία στην ανάπτυξη server-side εφαρμογών και APIs. Έχει εργαστεί με τεχνολογίες όπως Node.js, Python και βάσεις δεδομένων. Στο FlameVerse, συμμετέχει στην ανάπτυξη και συντήρηση των back-end υποδομών, διασφαλίζοντας την αξιοπιστία και την επεκτασιμότητα της πλατφόρμας.</p>
                                 </div>
@@ -1136,4 +1219,10 @@
         document.querySelectorAll('.flip-card').forEach(card => {
             card.addEventListener('click', function() {
                 if (window.innerWidth <= 768) {
-                    this.querySelector('.flip
+                    this.querySelector('.flip-card-inner').classList.toggle('flipped');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
